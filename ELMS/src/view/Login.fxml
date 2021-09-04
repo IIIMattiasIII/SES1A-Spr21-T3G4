@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="controller.LoginController"
+      alignment="center" spacing="10"
+      styleClass="root"
+      prefWidth="1280"
+      prefHeight="720"
+      maxHeight="720">
+    <HBox spacing="10" alignment="CENTER_LEFT" styleClass="h1">
+        <ImageView> 
+            <image>
+                <Image url="@logo_scaled.png"/>
+            </image> 
+        </ImageView>
+        <Label styleClass="h1" text="Account Login"/>
+    </HBox>
+    <VBox spacing="10" alignment="CENTER" prefHeight="410">
+        <Button text="Login - TBD: Login Page" onAction="#handleLoginBtn" style="button" prefHeight="100" prefWidth="250"/>  
+    </VBox>  
+    <HBox spacing="10" alignment="BOTTOM_CENTER">
+        <Button text="Exit eLibrary" onAction="#handleExitBtn" styleClass="button" prefWidth="150" />
+    </HBox>
+    <stylesheets>
+        <URL value="@styles.css"/>
+    </stylesheets>
+</VBox>
