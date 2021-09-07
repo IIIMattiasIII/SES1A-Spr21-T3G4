@@ -22,4 +22,6 @@ public class Account {
     
     public int getID() { return this.ID.get(); }
     public ReadOnlyIntegerProperty idProperty() { return ID; }
+    
+    public String getPassword() { return password; }
 }
