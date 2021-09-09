@@ -25,15 +25,15 @@
         </ImageView>
         <Label styleClass="h1" text="Account Login"/>
     </HBox>
-    <VBox spacing="10" alignment="CENTER" prefHeight="410">
+    <VBox spacing="30" alignment="CENTER" prefHeight="410">
         <GridPane alignment="center" vgap="20" hgap="10">
-            <Label text="ID:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
-            <Label  text="Password:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+            <Label text="ID:" GridPane.columnIndex="0" GridPane.rowIndex="0" styleClass="message"/>
+            <Label  text="Password:" GridPane.columnIndex="0" GridPane.rowIndex="1" styleClass="message"/>
             <TextField fx:id="idTf" GridPane.columnIndex="1" GridPane.rowIndex="0" prefWidth="150.0"/>
             <PasswordField fx:id="passTf" GridPane.columnIndex="1" GridPane.rowIndex="1" prefWidth="150.0"/>
         </GridPane>
-        <Text fx:id="msgTxt" styleClass="message"/>
-        <Button fx:id="loginBtn" text="Login" onAction="#handleLoginBtn" style="button" prefHeight="100" prefWidth="250"/>  
+        <Button fx:id="loginBtn" text="Login" onAction="#handleLoginBtn" style="button" prefHeight="80" prefWidth="250"/>
+        <Label fx:id="msgTxt" styleClass="message"/>
     </VBox>  
     <HBox spacing="10" alignment="BOTTOM_CENTER">
         <Button text="Exit eLibrary" onAction="#handleExitBtn" styleClass="button" prefWidth="150" />

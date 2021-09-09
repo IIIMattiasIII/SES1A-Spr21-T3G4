@@ -11,6 +11,7 @@ import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.*;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
@@ -28,7 +29,7 @@ public class LoginController extends Controller<ELMS> {
     @FXML
     private Button loginBtn;
     @FXML
-    private Text msgTxt;
+    private Label msgTxt;
 
     @FXML
     public void initialize() {
@@ -52,8 +53,8 @@ public class LoginController extends Controller<ELMS> {
         return Integer.parseInt(idTf.getText());
     }
 
-    private final String getPass() {
-        return passTf.getText();
+    private final int getPass() {
+        return passTf.getText().hashCode();
     }
 
     void login() throws IOException {
@@ -61,7 +62,7 @@ public class LoginController extends Controller<ELMS> {
         Account selected = null;
         for (Account a : getELMS().getAccounts()) {
             if (a != null && a.getID() == this.getID()) {
-                if (a.getPassword().equals(this.getPass())) {
+                if (a.getPassHash() == this.getPass()) {
                     selected = a;
                     getELMS().setSelectedAccount(selected);
                     break;
