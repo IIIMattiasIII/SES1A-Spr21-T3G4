@@ -1,0 +1,19 @@
+#BlueJ class context
+comment0.target=AddBookFrame
+comment1.params=
+comment1.target=AddBookFrame()
+comment2.params=
+comment2.target=void\ initComponents()
+comment3.params=evt
+comment3.target=void\ actionPerformed(java.awt.event.ActionEvent)
+comment4.params=evt
+comment4.target=void\ actionPerformed(java.awt.event.ActionEvent)
+comment5.params=evt
+comment5.target=void\ cancelButtonActionPerformed(java.awt.event.ActionEvent)
+comment6.params=evt
+comment6.target=void\ NewBButtonActionPerformed(java.awt.event.ActionEvent)
+comment7.params=args
+comment7.target=void\ main(java.lang.String[])
+comment8.params=
+comment8.target=void\ run()
+numComments=9
