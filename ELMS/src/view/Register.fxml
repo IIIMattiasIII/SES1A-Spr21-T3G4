@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="controller.RegisterController"
+      alignment="center" spacing="10"
+      styleClass="root"
+      prefWidth="640"
+      prefHeight="720"
+      maxHeight="720">
+    <HBox spacing="10" alignment="CENTER_LEFT" styleClass="h1">
+        <ImageView> 
+            <image>
+                <Image url="@logo_scaled.png"/>
+            </image> 
+        </ImageView>
+        <Label styleClass="h1" text="Account Login"/>
+    </HBox>
+    <VBox spacing="20" alignment="CENTER" prefHeight="410">
+        <GridPane alignment="center" vgap="20" hgap="10">
+            <Label text="University ID:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+            <Label text="First Name:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+            <Label text="Last Name:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+            <Label  text="Password:" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+            <Label  text="Repeat Password: " GridPane.columnIndex="0" GridPane.rowIndex="4"/>
+            <TextField fx:id="idTf" GridPane.columnIndex="1" GridPane.rowIndex="0" prefWidth="150.0" styleClass="textField"/>
+            <TextField fx:id="nameFTf" GridPane.columnIndex="1" GridPane.rowIndex="1" prefWidth="150.0" styleClass="textField"/>
+            <TextField fx:id="nameSTf" GridPane.columnIndex="1" GridPane.rowIndex="2" prefWidth="150.0" styleClass="textField"/>
+            <PasswordField fx:id="passTf" GridPane.columnIndex="1" GridPane.rowIndex="3" prefWidth="150.0" styleClass="textField"/>
+            <PasswordField fx:id="passRepTf" GridPane.columnIndex="1" GridPane.rowIndex="4" prefWidth="150.0" styleClass="textField"/>
+        </GridPane>
+        
+        <HBox spacing="30" alignment="CENTER">
+            <fx:define>
+                <ToggleGroup fx:id="roleTog"/>
+            </fx:define>
+            <RadioButton fx:id="radioButton" text="Student" toggleGroup="$roleTog" selected="true"/>
+            <RadioButton fx:id="radioButton2" text="Staff" toggleGroup="$roleTog" />
+        </HBox>
+        
+        <Button fx:id="regBtn" text="Register" onAction="#handleRegBtn" style="button" prefHeight="80" prefWidth="250"/>
+        <Label fx:id="msgTxt" styleClass="message"/>
+    </VBox>  
+    <HBox spacing="10" alignment="BOTTOM_CENTER">
+        <Button text="Close Window" onAction="#handleExitBtn" styleClass="button" prefWidth="150" />
+    </HBox>
+    <stylesheets>
+        <URL value="@styles.css"/>
+    </stylesheets>
+</VBox>

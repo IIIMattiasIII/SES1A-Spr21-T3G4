@@ -17,6 +17,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 import model.ELMS;
 import model.Account;
 
@@ -28,6 +29,8 @@ public class LoginController extends Controller<ELMS> {
     private PasswordField passTf;
     @FXML
     private Button loginBtn;
+    @FXML
+    private Button regBtn;
     @FXML
     private Label msgTxt;
 
@@ -57,6 +60,11 @@ public class LoginController extends Controller<ELMS> {
         return passTf.getText().hashCode();
     }
 
+    void displayMsg(String s) {
+        msgTxt.setVisible(true);
+        msgTxt.setText(s);
+    }
+    
     void login() throws IOException {
         msgTxt.setVisible(false);
         Account selected = null;
@@ -72,8 +80,7 @@ public class LoginController extends Controller<ELMS> {
         if (selected != null) {
             ViewLoader.showStage(getELMS(), "/view/ELMS.fxml", this.stage.getTitle(), this.stage);
         } else {
-            msgTxt.setVisible(true);
-            msgTxt.setText("Invalid ID or password. Please try again.");
+            displayMsg("Invalid ID or password. Please try again.");
         }
     }
 
@@ -82,8 +89,7 @@ public class LoginController extends Controller<ELMS> {
             try {
                 login();
             } catch (IOException ex) {
-                msgTxt.setVisible(true);
-                msgTxt.setText("An error has occured. Please contact your IT administrator. Error: " + ex);
+                displayMsg("An error has occured. Please contact your IT administrator. Error: " + ex);
             }
         }
     }
@@ -91,6 +97,11 @@ public class LoginController extends Controller<ELMS> {
     @FXML
     public void handleLoginBtn(ActionEvent e) throws IOException {
         login();
+    }
+    
+    @FXML
+    public void handleRegBtn(ActionEvent e) throws IOException {
+        ViewLoader.showStage(getELMS(), "/view/Register.fxml", this.stage.getTitle(), new Stage());
     }
 
     @FXML

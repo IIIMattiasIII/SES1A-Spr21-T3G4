@@ -29,10 +29,13 @@
         <GridPane alignment="center" vgap="20" hgap="10">
             <Label text="ID:" GridPane.columnIndex="0" GridPane.rowIndex="0" styleClass="message"/>
             <Label  text="Password:" GridPane.columnIndex="0" GridPane.rowIndex="1" styleClass="message"/>
-            <TextField fx:id="idTf" GridPane.columnIndex="1" GridPane.rowIndex="0" prefWidth="150.0"/>
-            <PasswordField fx:id="passTf" GridPane.columnIndex="1" GridPane.rowIndex="1" prefWidth="150.0"/>
+            <TextField fx:id="idTf" GridPane.columnIndex="1" GridPane.rowIndex="0" prefWidth="310.0" styleClass="textField"/>
+            <PasswordField fx:id="passTf" GridPane.columnIndex="1" GridPane.rowIndex="1" prefWidth="310.0" styleClass="textField"/>
         </GridPane>
-        <Button fx:id="loginBtn" text="Login" onAction="#handleLoginBtn" style="button" prefHeight="80" prefWidth="250"/>
+        <HBox spacing="10" alignment="CENTER"> 
+            <Button fx:id="regBtn" text="Register" onAction="#handleRegBtn" style="button" prefHeight="80" prefWidth="200"/>
+            <Button fx:id="loginBtn" text="Login" onAction="#handleLoginBtn" style="button" prefHeight="80" prefWidth="200"/>
+        </HBox>
         <Label fx:id="msgTxt" styleClass="message"/>
     </VBox>  
     <HBox spacing="10" alignment="BOTTOM_CENTER">

@@ -29,6 +29,7 @@ public class ELMS {
     
     public void addAccount(int ID, String nameF, String nameS, String pass, int permLvl) {
         accounts.add(new Account(ID, nameF, nameS, pass, permLvl));
+        // TBD: Add integration with accounts csv
     }
     
     public Account getSelectedAccount() {
