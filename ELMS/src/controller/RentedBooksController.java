@@ -14,3 +14,8 @@ public class RentedBooksController extends Controller<ELMS> {
     public RentedBooksController() {
         //
     }
+    
+    @FXML public void handleExitBtn(ActionEvent e) { Platform.exit(); }
+    @FXML public void handleReturnBtn(ActionEvent e) throws IOException { 
+        ViewLoader.showStage(getELMS(), "/view/Account.fxml", this.stage.getTitle(), this.stage);
+    }
