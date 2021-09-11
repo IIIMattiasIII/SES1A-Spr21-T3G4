@@ -12,6 +12,9 @@ import model.ELMS;
 
 public class RentedBooksController extends Controller<ELMS> {    
     public RentedBooksController() {
+        @FXML private TableView<Book> rentBookTable;
+       @FXML private Button handeExitBtn;
+       @FXML private Button handleReturnBtn;
         //
     }
     
