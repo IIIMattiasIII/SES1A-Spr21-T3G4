@@ -15,7 +15,9 @@
     -fx-font-family: "Verdana";
     -fx-padding: 10;
     -fx-background-color: -background;
-    -fx-text-fill: -textLight;
+    -fx-light-text-color: -textLight;
+    -fx-mid-text-color: -textLight;
+    -fx-dark-text-color: -textLight;
 }
 
 .h1 {
@@ -72,6 +74,10 @@
     -fx-font-family: "Verdana";
     -fx-text-fill: -textLight;
     -fx-font-weight: bold;
+}
+
+.textField {
+    -fx-text-fill: black;
 }
 
 .table-view{
