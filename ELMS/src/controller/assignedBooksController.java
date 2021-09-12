@@ -14,12 +14,12 @@ import javafx.stage.Stage;
 import model.ELMS;
 
 public class assignedBooksController extends Controller<ELMS> {    
-    public assignedBooksController() {
-        @FXML private TableView<Book> assignedBooksTable;
-       @FXML private Button handeExitBtn;
-       @FXML private Button handleReturnBtn;
+    public assignedBooksController() throws IOException{
         //
     }
+    @FXML private TableView<Book> assignedBooksTable;
+       @FXML private Button handeExitBtn;
+       @FXML private Button handleReturnBtn;
      public final ELMS getELMS() { return model; }
     @FXML public void handleExitBtn(ActionEvent e) { Platform.exit(); }
     @FXML public void handleReturnBtn(ActionEvent e) throws IOException { 
