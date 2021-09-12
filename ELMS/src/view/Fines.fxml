@@ -27,7 +27,7 @@
                 <Image url="@logo_scaled.png"/>
             </image> 
         </ImageView>
-        <Label styleClass="h1" text=""/> <!--title of page goes in the quotations here-->
+        <Label styleClass="h1" text="details of account"/> <!--title of page goes in the quotations here-->
     </HBox>
   <HBox>
         <TableView fx:id = "finesTable" prefWidth = "600" prefHeight = "200" styleClass = "table-view">
