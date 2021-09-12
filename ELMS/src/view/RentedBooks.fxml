@@ -9,10 +9,13 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.text.*?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
 
 <!--replace ELMSController with the name of the controller for the given view-->
 <VBox xmlns:fx="http://javafx.com/fxml"
-      fx:controller="controller.RentedBookController" 
+      fx:controller="controller.RentedBooksController" 
       alignment="center" spacing="10"
       styleClass="root"
       prefWidth="1280"
@@ -32,14 +35,14 @@
                     <TableColumn fx:id = "titleClmn" text = "Title">
                         <cellValueFactory><PropertyValueFactory property = "title"/></cellValueFactory>
                     </TableColumn>
-                    <TableColumn fx:id = "yearClmn" text = "Year">
-                        <cellValueFactory><PropertyValueFactory property = "year"/></cellValueFactory>
+                    <TableColumn fx:id = "authorClmn" text = "Author">
+                        <cellValueFactory><PropertyValueFactory property = "Author"/></cellValueFactory>
                     </TableColumn>
-                    <TableColumn fx:id = "genreClmn" text = "Genre">
-                        <cellValueFactory><PropertyValueFactory property = "genre"/></cellValueFactory>
+                    <TableColumn fx:id = "stockClmn" text = "Stock">
+                        <cellValueFactory><PropertyValueFactory property = "Stock"/></cellValueFactory>
                     </TableColumn>
-                    <TableColumn fx:id = "priceClmn" text = "Price">
-                        <cellValueFactory><PropertyValueFactory property = "price"/></cellValueFactory>
+                    <TableColumn fx:id = "IDClmn" text = "ID">
+                        <cellValueFactory><PropertyValueFactory property = "ID"/></cellValueFactory>
                     </TableColumn>
                 </columns>
             </TableView>

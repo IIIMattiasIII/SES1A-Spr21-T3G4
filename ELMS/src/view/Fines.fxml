@@ -15,7 +15,7 @@
 
 <!--replace ELMSController with the name of the controller for the given view-->
 <VBox xmlns:fx="http://javafx.com/fxml"
-      fx:controller="controller.rentingHistoryController" 
+      fx:controller="controller.FinesController" 
       alignment="center" spacing="10"
       styleClass="root"
       prefWidth="1280"
@@ -30,7 +30,7 @@
         <Label styleClass="h1" text=""/> <!--title of page goes in the quotations here-->
     </HBox>
   <HBox>
-        <TableView fx:id = "rentingHistoryTable" prefWidth = "600" prefHeight = "200" styleClass = "table-view">
+        <TableView fx:id = "finesTable" prefWidth = "600" prefHeight = "200" styleClass = "table-view">
                 <columns>
                     <TableColumn fx:id = "titleClmn" text = "Title">
                         <cellValueFactory><PropertyValueFactory property = "title"/></cellValueFactory>
@@ -45,7 +45,7 @@
                         <cellValueFactory><PropertyValueFactory property = "ID"/></cellValueFactory>
                     </TableColumn>
                 </columns>
-        </TableView>
+            </TableView>
     </HBox>
     <VBox spacing="10" alignment="CENTER" prefHeight="410">
         <!--stage content goes here-->

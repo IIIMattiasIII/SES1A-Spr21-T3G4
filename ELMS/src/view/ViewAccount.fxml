@@ -9,6 +9,9 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.text.*?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
 
 <!--replace ELMSController with the name of the controller for the given view-->
 <VBox xmlns:fx="http://javafx.com/fxml"
@@ -18,17 +21,42 @@
       prefWidth="1280"
       prefHeight="720"
       maxHeight="720">
-    <HBox spacing="10" alignment="CENTER_LEFT" styleClass="h1">
+    <HBox spacing="200" alignment="CENTER_LEFT" styleClass="h1">
         <ImageView> 
             <image>
                 <Image url="@logo_scaled.png"/>
             </image> 
         </ImageView>
-        <Label styleClass="h1" text=""/> <!--title of page goes in the quotations here-->
+        <Label styleClass="h1" text="details of account"/>
     </HBox>
-    <VBox spacing="10" alignment="CENTER" prefHeight="410">
-        <!--stage content goes here-->
-    </VBox> 
+    <VBox spacing="20" alignment="CENTER_LEFT" prefHeight="410">
+        <VBox spacing ="10" alignment = "CENTER_LEFT">
+            <Button text ="Rented Books" onAction="#handleRentBooksBtn" styleClass = "button"/>
+            <Button text ="Assigned Books" onAction="#handleAssignedBooksBtn" styleClass ="button"/>
+            <Button text = "Fines" onAction ="#handleFinesBtn" styleClass ="button"/>
+            <Button text = "Renting History" onAction ="#handleRentHistBtn" styleClass ="button"/>
+        </VBox>
+    </VBox>
+    <VBox>
+        <HBox alignment = "CENTER" spacing = "10">
+        <TableView fx:id = "mainTable" prefWidth = "800" prefHeight = "600">
+                <columns>
+                    <TableColumn fx:id = "titleClmn" text = "Title">
+                        <cellValueFactory><PropertyValueFactory property = "title"/></cellValueFactory>
+                    </TableColumn>
+                    <TableColumn fx:id = "authorClmn" text = "Author">
+                        <cellValueFactory><PropertyValueFactory property = "Author"/></cellValueFactory>
+                    </TableColumn>
+                    <TableColumn fx:id = "stockClmn" text = "Stock">
+                        <cellValueFactory><PropertyValueFactory property = "Stock"/></cellValueFactory>
+                    </TableColumn>
+                    <TableColumn fx:id = "IDClmn" text = "ID">
+                        <cellValueFactory><PropertyValueFactory property = "ID"/></cellValueFactory>
+                    </TableColumn>
+                </columns>
+            </TableView>
+        </HBox>
+    </VBox>
     <HBox spacing="30" alignment="BOTTOM_CENTER">
         <Button text="Return to Menu" onAction="#handleReturnBtn" styleClass="button" prefWidth="150" />
         <Button text="Exit eLibrary" onAction="#handleExitBtn" styleClass="button" prefWidth="150" />
