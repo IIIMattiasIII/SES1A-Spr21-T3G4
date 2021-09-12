@@ -1,0 +1,118 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Sep 11, 2021, 1:39:03 AM
+    Author     : ALI TAHMID KARIM
+*/
+
+.root {
+    -background: #1a1a1b;
+    -highlight: #266666;
+    -textLight: #e2e2e2;
+    -textDark: #4d4b44;
+    -textHeading: white;
+    -backgroundMid: #343536;
+    -backgroundLight: #d7dadc;
+
+    -fx-font-family: "Verdana";
+    -fx-padding: 10;
+    -fx-background-color: -background;
+    -fx-text-fill: -textLight;
+}
+
+.h1 {
+    -fx-font-family: "Verdana";
+    -fx-font-size: 42px;   
+    -fx-text-fill: -textHeading;
+
+}
+
+.h2 {
+    -fx-font-family: "Verdana";
+    -fx-font-size: 24px;
+    -fx-text-fill: -textHeading;
+
+}
+
+
+.button {
+    -fx-font-family: "Verdana";
+    -fx-background-color: -backgroundMid;
+    -fx-text-fill: -textLight;
+}
+
+
+.button:hover {
+    -fx-font-family: "Verdana";
+    -fx-background-color: -highlight;
+    -fx-text-fill: -textLight;
+}
+
+
+/*.largeButton {
+    -fx-font-family: "Verdana";
+    -fx-pref-width: 200px;
+    -fx-pref-height: 200px;
+    -fx-font-size: 28px;
+    -fx-background-color: #dedede;
+    -fx-text-fill: white;
+    -fx-border-color: white;
+}*/
+
+
+.menuButton {
+    -fx-font-family: "Verdana";
+    -fx-pref-width: 400px;
+    -fx-pref-height: 200px;
+    -fx-font-size: 28px;
+    -fx-background-color: -backgroundMid;
+    -fx-text-fill: -textLight;
+    -fx-border-color: -backgroundLight;
+}
+.heading {
+    -fx-font-family: "Verdana";
+    -fx-pref-width: 500px;
+    -fx-pref-height: 300px;
+    -fx-font-size: 40px;
+   // -fx-background-color: -backgroundMid;
+   //-fx-text-fill: -textLight;
+   // -fx-border-color: -backgroundLight;
+    
+    
+    
+    
+}
+
+.message {
+    
+   
+    -fx-border-color: -backgroundLight;
+    -fx-font-family: "Verdana";
+    -fx-text-fill: -textLight;
+    -fx-font-weight: bold;
+}
+
+.table-view{
+    -fx-border-color: -highlight;
+}
+
+.list-view{
+    -fx-border-color: -highlight;
+}
+
+.table-row-cell:selected {
+    -fx-background-color: -highlight;
+    -fx-text-fill: -textLight;
+}
+
+.list-cell:selected {
+    -fx-background-color: -highlight;
+    -fx-text-fill: -textLight;
+}
+
+*:focused {
+    -fx-focus-color: -highlight;
+}
