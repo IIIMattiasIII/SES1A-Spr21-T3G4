@@ -4,6 +4,7 @@ import au.edu.uts.ap.javafx.Controller;
 import au.edu.uts.ap.javafx.ViewLoader;
 import java.io.IOException;
 import javafx.application.Platform;
+import java.awt.print.Book;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -12,12 +13,12 @@ import javafx.stage.Stage;
 import model.ELMS;
 
 public class rentingHistoryController extends Controller<ELMS> {    
-    public rentingHistoryController() {
-      @FXML private TableView<Book> rentingHistoryTable;
-       @FXML private Button handeExitBtn;
-       @FXML private Button handleReturnBtn;
+    public rentingHistoryController() throws IOException {
         //
     }
+    @FXML private TableView<Book> rentingHistoryTable;
+       @FXML private Button handeExitBtn;
+       @FXML private Button handleReturnBtn;
      public final ELMS getELMS() { return model; }
     @FXML public void handleExitBtn(ActionEvent e) { Platform.exit(); }
     @FXML public void handleReturnBtn(ActionEvent e) throws IOException { 
