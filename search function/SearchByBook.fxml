@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox spacing = "10" alignment = "center" xmlns:fx = "http://javafx.com/fxml/1" >
+    <Label text = "Search By Book:"/>
+    <GridPane alignment = "center" hgap = "10" vgap = "10">
+     <Label text = "Book" GridPane.columnIndex = "1" GridPane.rowIndex = "0" />
+     <TextField GridPane.columnIndex = "2" GridPane.rowIndex = "0"/>
+         
+        
+        
+    </GridPane>
+    <stylesheets>
+        <URL value = "@style.css"/>
+    </stylesheets>
+        
+         <Button text = "Search"/>
+      
+    
+        
+    
+    
+</VBox>
+
