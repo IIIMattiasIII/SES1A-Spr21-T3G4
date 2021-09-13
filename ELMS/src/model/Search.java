@@ -3,18 +3,23 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package model;
-
-// import here
 import java.util.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+/**import java.util.*;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+ *
+ * @author ALI TAHMID KARIM
+ */
+public class Search {
+
 
 /**
  *
  * @author chantelmills
  */
-public class Search {
+
     
     // attributes
     ObservableList<Book> books; // Book class
@@ -105,3 +110,4 @@ public class Search {
 //    }
     
 }
+
