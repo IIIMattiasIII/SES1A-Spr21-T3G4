@@ -30,4 +30,5 @@ public class Account {
     public Boolean isFined() {
         return fined;
     }
+    public int getPermissionLevel() { return this.permissionLevel; }
 }
