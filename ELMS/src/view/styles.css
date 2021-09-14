@@ -79,7 +79,6 @@
 .textField {
     -fx-text-fill: black;
     -fx-padding: 10;
-    -fx-text-fill: -textLight;
 }
 
 .table-view{

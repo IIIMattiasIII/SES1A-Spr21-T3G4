@@ -41,7 +41,7 @@ public class AddBookController extends Controller<ELMS> {
         // Change listener to force the contents of the stock text field to be only numbers
         stockTf.textProperty().addListener((ObservableValue<? extends String> observable, String oldValue, String newValue) -> {
             if (!newValue.matches("\\d*")) {
-                idTf.setText(newValue.replaceAll("[^\\d]", ""));
+                stockTf.setText(newValue.replaceAll("[^\\d]", ""));
             }
         });
         msgTxt.setVisible(false);
