@@ -71,8 +71,10 @@
     -fx-font-family: "Verdana";
     -fx-font-weight: bold;
     -fx-padding: 10;
-    -fx-background-color: -textLight;
+    -fx-text-fill: -textLight;
 }
+
+.textField {}
 
 .table-view{
     -fx-border-color: -highlight;
