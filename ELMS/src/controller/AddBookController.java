@@ -2,13 +2,12 @@ package controller;
 
 import au.edu.uts.ap.javafx.*;
 import javafx.beans.binding.Bindings;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
 import model.Book;
 import model.ELMS;
 
@@ -33,11 +32,18 @@ public class AddBookController extends Controller<ELMS> {
 
     @FXML
     public void initialize() {
+        // Disable button when textfields are empty
         addBtn.disableProperty().bind(Bindings.isEmpty(idTf.textProperty()));
         addBtn.disableProperty().bind(Bindings.isEmpty(titleTf.textProperty()));
         addBtn.disableProperty().bind(Bindings.isEmpty(authorTf.textProperty()));
         addBtn.disableProperty().bind(Bindings.isEmpty(genreTf.textProperty()));
         addBtn.disableProperty().bind(Bindings.isEmpty(stockTf.textProperty()));
+        // Change listener to force the contents of the stock text field to be only numbers
+        stockTf.textProperty().addListener((ObservableValue<? extends String> observable, String oldValue, String newValue) -> {
+            if (!newValue.matches("\\d*")) {
+                idTf.setText(newValue.replaceAll("[^\\d]", ""));
+            }
+        });
         msgTxt.setVisible(false);
     }
 
@@ -58,7 +64,7 @@ public class AddBookController extends Controller<ELMS> {
     }
 
     private final String getGenre() {
-        return genreTf.getText();
+        return genreTf.getText().trim();
     }
 
     private final int getStock() {
@@ -74,25 +80,19 @@ public class AddBookController extends Controller<ELMS> {
         msgTxt.setVisible(false);
         boolean idMatch = false;
         for (Book b : getELMS().getBooks()) {
-            if (b != null && this.getID().equals(b.getID())) {
+            if (b != null && this.getID().equals(b.getID())) { // Check a book does not exist with the entered ID
                 idMatch = true;
                 break;
             }
         }
-        if (idMatch) {
+        if (idMatch) { // Inform user if match is found
             displayMsg("A book has already been added to the library with this ID.");
-        } else {
+        } else { // Else, add book to library and update the view accordingly
             getELMS().addBook(this.getID(), this.getTitle(), this.getAuthor(), this.getGenre(), this.getStock());
             displayMsg("Book has been added. You can now close this window.");
             closeBtn.setText("Close");
             //        addBtn.setDisable(true);  <-- This is returning errors. Will use the line below until this is fixed.
             addBtn.setVisible(false);
-        }
-    }
-
-    void regEnterCheck(KeyEvent event) {
-        if (event.getCode() == KeyCode.ENTER) {
-            addBook();
         }
     }
 
