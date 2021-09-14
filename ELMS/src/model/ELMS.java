@@ -54,12 +54,12 @@ public class ELMS {
         accounts.add(new Account(ID, nameF, nameS, pass, permLvl));
     }
     
-    public void addBook(int ID, String title, String author, String genre, int stock) {
+    public void addBook(String ID, String title, String author, String genre, int stock) {
         FileWriter csvWriter;
         try {
             final String dir = System.getProperty("user.dir");
             csvWriter = new FileWriter(dir+"/src/data/books.csv", true); // Not sure this is best way to get the source - may need to be modified
-            csvWriter.append(""+ID);
+            csvWriter.append(ID);
             csvWriter.append(",");
             csvWriter.append(title);
             csvWriter.append(",");
@@ -70,7 +70,7 @@ public class ELMS {
             csvWriter.append(""+stock);
             csvWriter.append("\n");
             csvWriter.close();
-            accounts.add(new Account(ID, title, author, genre, stock));
+            books.add(new Book(ID, title, author, genre, stock));
         } catch (FileNotFoundException ex) {
             Logger.getLogger(ELMS.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
