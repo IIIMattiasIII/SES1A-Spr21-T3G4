@@ -11,8 +11,6 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
 import model.Account;
 import model.ELMS;
 
@@ -37,12 +35,13 @@ public class RegisterController extends Controller<ELMS> {
 
     @FXML
     public void initialize() {
+        // Bind button to textfields. Requires contents to be re-enabled
         regBtn.disableProperty().bind(Bindings.isEmpty(idTf.textProperty()));
         regBtn.disableProperty().bind(Bindings.isEmpty(nameFTf.textProperty()));
         regBtn.disableProperty().bind(Bindings.isEmpty(nameSTf.textProperty()));
         regBtn.disableProperty().bind(Bindings.isEmpty(passTf.textProperty()));
         regBtn.disableProperty().bind(Bindings.isEmpty(passRepTf.textProperty()));
-        
+        // Change listeners to force the contents of certain text fields
         idTf.textProperty().addListener((ObservableValue<? extends String> observable, String oldValue, String newValue) -> {
             if (!newValue.matches("\\d*")) {
                 idTf.setText(newValue.replaceAll("[^\\d]", ""));
@@ -93,15 +92,15 @@ public class RegisterController extends Controller<ELMS> {
     void register() {
         msgTxt.setVisible(false);
         int role;
-        RadioButton selRad = (RadioButton) roleTog.getSelectedToggle();
+        RadioButton selRad = (RadioButton) roleTog.getSelectedToggle(); // Getting and setting the permission level based on the toggle
         if (selRad.getText().equals("Staff")) {
             role = 1;
         } else {
             role = 2;
         }
-        if (getPass().equals(getPassRep())) {
+        if (getPass().equals(getPassRep())) { // Check the passwords match
             boolean idMatch = false;
-            for (Account a : getELMS().getAccounts()) {
+            for (Account a : getELMS().getAccounts()) { // Check for existing account
                 if (this.getID() == a.getID()) { 
                     idMatch = true;
                     break;
