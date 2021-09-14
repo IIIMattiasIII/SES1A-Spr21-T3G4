@@ -43,8 +43,6 @@ public class LoginController extends Controller<ELMS> {
                 idTf.setText(newValue.replaceAll("[^\\d]", ""));
             }
         });
-        passTf.setOnKeyPressed(event -> loginEnterCheck(event));
-        idTf.setOnKeyPressed(event -> loginEnterCheck(event));
         msgTxt.setVisible(false);
     }
 
@@ -81,16 +79,6 @@ public class LoginController extends Controller<ELMS> {
             ViewLoader.showStage(getELMS(), "/view/ELMS.fxml", this.stage.getTitle(), this.stage);
         } else {
             displayMsg("Invalid ID or password. Please try again.");
-        }
-    }
-
-    void loginEnterCheck(KeyEvent event) {
-        if (event.getCode() == KeyCode.ENTER) {
-            try {
-                login();
-            } catch (IOException ex) {
-                displayMsg("An error has occured. Please contact your IT administrator. Error: " + ex);
-            }
         }
     }
 

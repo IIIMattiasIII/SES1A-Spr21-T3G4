@@ -58,13 +58,6 @@ public class RegisterController extends Controller<ELMS> {
                 nameSTf.setText(newValue.replaceAll("[^a-zA-Z]", ""));
             }
         });
-        
-        idTf.setOnKeyPressed(event -> regEnterCheck(event));
-        nameFTf.setOnKeyPressed(event -> regEnterCheck(event));
-        nameSTf.setOnKeyPressed(event -> regEnterCheck(event));
-        passTf.setOnKeyPressed(event -> regEnterCheck(event));
-        passRepTf.setOnKeyPressed(event -> regEnterCheck(event));
-        
         msgTxt.setVisible(false);
     }
 
@@ -119,16 +112,11 @@ public class RegisterController extends Controller<ELMS> {
             } else {
                 getELMS().addAccount(this.getID(), this.getNameF(), this.getNameS(), this.getPass(), role);
                 displayMsg("Account has been created. You can now close this window.");
+                regBtn.setVisible(false); // Like with addBooks, setDisable(true) causes errors. So this is the temporary workaround
                 // TBD: Add and call method for sending account creation email.
             }
         } else {
             displayMsg("Passwords do not match.");
-        }
-    }
-
-    void regEnterCheck(KeyEvent event) {
-        if (event.getCode() == KeyCode.ENTER) {
-            register();
         }
     }
 

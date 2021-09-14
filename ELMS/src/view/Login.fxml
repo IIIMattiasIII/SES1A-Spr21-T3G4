@@ -34,7 +34,7 @@
         </GridPane>
         <HBox spacing="10" alignment="CENTER"> 
             <Button fx:id="regBtn" text="Register" onAction="#handleRegBtn" style="button" prefHeight="80" prefWidth="200"/>
-            <Button fx:id="loginBtn" text="Login" onAction="#handleLoginBtn" style="button" prefHeight="80" prefWidth="200"/>
+            <Button fx:id="loginBtn" text="Login" onAction="#handleLoginBtn" style="button" prefHeight="80" prefWidth="200" defaultButton="true" />
         </HBox>
         <Label fx:id="msgTxt" styleClass="message"/>
     </VBox>  

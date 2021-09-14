@@ -47,11 +47,11 @@
             <RadioButton fx:id="radioButton2" text="Staff" toggleGroup="$roleTog" />
         </HBox>
         
-        <Button fx:id="regBtn" text="Register" onAction="#handleRegBtn" style="button" prefHeight="80" prefWidth="250"/>
+        <Button fx:id="regBtn" text="Register" onAction="#handleRegBtn" style="button" prefHeight="80" prefWidth="250" defaultButton="true" />
         <Label fx:id="msgTxt" styleClass="message"/>
     </VBox>  
     <HBox spacing="10" alignment="BOTTOM_CENTER">
-        <Button text="Close Window" onAction="#handleExitBtn" styleClass="button" prefWidth="150" />
+        <Button text="Close Window" onAction="#handleExitBtn" styleClass="button" prefWidth="150" cancelButton="true" />
     </HBox>
     <stylesheets>
         <URL value="@styles.css"/>
