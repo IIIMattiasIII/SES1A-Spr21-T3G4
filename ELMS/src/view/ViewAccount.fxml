@@ -9,8 +9,10 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.text.*?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
 
-<!--replace ELMSController with the name of the controller for the given view-->
 <VBox xmlns:fx="http://javafx.com/fxml"
       fx:controller="controller.ViewAccountController" 
       alignment="center" spacing="10"
@@ -24,11 +26,29 @@
                 <Image url="@logo_scaled.png"/>
             </image> 
         </ImageView>
-        <Label styleClass="h1" text=""/> <!--title of page goes in the quotations here-->
+        <Label styleClass="h1" text="View Account"/>
     </HBox>
-    <VBox spacing="10" alignment="CENTER" prefHeight="410">
-        <!--stage content goes here-->
-    </VBox> 
+    <VBox spacing="20" alignment="CENTER_LEFT" prefHeight="410">
+        <HBox alignment = "CENTER" spacing = "40">
+            <VBox spacing ="20" alignment = "CENTER_LEFT">
+                <Button fx:id="rentBtn" text ="Rented Books" onAction="#handleRentBooksBtn" styleClass = "button" prefWidth="250" prefHeight="110"/>
+                <Button fx:id="assignedBtn" text ="Assigned Books" onAction="#handleAssignedBooksBtn" styleClass ="button" prefWidth="250" prefHeight="110"/>
+                <Button fx:id="finesBtn" text = "Fines" onAction ="#handleFinesBtn" styleClass ="button" prefWidth="250" prefHeight="110"/>
+                <Button fx:id="historyBtn" text = "Renting History" onAction ="#handleRentHistBtn" styleClass ="button" prefWidth="250" prefHeight="110"/>
+            </VBox>
+            <TableView fx:id = "mainTv" styleClass="table-view" prefWidth = "700" prefHeight = "240">
+                <placeholder>
+                    <Label text="No results found."/>
+                </placeholder>
+                <columns>
+                    <TableColumn fx:id = "IDCol" text = "ID" prefWidth="90.0"/>
+                    <TableColumn fx:id = "titleCol" text = "Title" prefWidth="210.0"/>
+                    <TableColumn fx:id = "authorCol" text = "Author" prefWidth="210.0"/>
+                    <TableColumn fx:id = "genreCol" text = "Stock" prefWidth="190.0"/>
+                </columns>
+            </TableView>
+        </HBox>
+    </VBox>
     <HBox spacing="30" alignment="BOTTOM_CENTER">
         <Button text="Return to Menu" onAction="#handleReturnBtn" styleClass="button" prefWidth="150" />
         <Button text="Exit eLibrary" onAction="#handleExitBtn" styleClass="button" prefWidth="150" />

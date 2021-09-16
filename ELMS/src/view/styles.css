@@ -17,7 +17,7 @@
     -fx-background-color: -background;
     -fx-light-text-color: -textLight;
     -fx-mid-text-color: -textLight;
-    -fx-dark-text-color: -textLight;
+    -fx-dark-text-color: -textDark;
 }
 
 .h1 {
@@ -43,6 +43,12 @@
 
 
 .button:hover {
+    -fx-font-family: "Verdana";
+    -fx-background-color: -highlight;
+    -fx-text-fill: -textLight;
+}
+
+.buttonToggled {
     -fx-font-family: "Verdana";
     -fx-background-color: -highlight;
     -fx-text-fill: -textLight;
@@ -82,11 +88,18 @@
 }
 
 .table-view{
-    -fx-border-color: -highlight;
+    -fx-border-color: -backgroundLight;
+    -fx-background-color: -backgroundMid;
+}
+
+.table-view .column-header .label{
+    -fx-text-fill: -textDark;
+    -fx-font-weight: bold;
 }
 
 .list-view{
-    -fx-border-color: -highlight;
+    -fx-border-color: -backgroundLight;
+    -fx-background-color: -backgroundMid;
 }
 
 .table-row-cell:selected {

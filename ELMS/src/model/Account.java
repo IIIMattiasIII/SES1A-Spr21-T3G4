@@ -5,6 +5,7 @@ import javafx.beans.property.ReadOnlyIntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import javafx.collections.ObservableList;
 
 public class Account {
     private IntegerProperty ID = new SimpleIntegerProperty();
@@ -12,6 +13,9 @@ public class Account {
     private final int permissionLevel;
     private final String password;
     private final Boolean fined;
+    private ObservableList<Book> rentedBooks;
+    private ObservableList<Book> rentHistory;
+    private ObservableList<Book> assignedBooks;
     
     public Account(int ID, String nameF, String nameS, String password, int permLvl) {
         this.ID.set(ID);
@@ -30,5 +34,18 @@ public class Account {
     public Boolean isFined() {
         return fined;
     }
+    
     public int getPermissionLevel() { return this.permissionLevel; }
+    
+    public ObservableList<Book> getRented() {
+        return this.rentedBooks;
+    }
+    
+    public ObservableList<Book> getRentHist() {
+        return this.rentHistory;
+    }
+    
+    public ObservableList<Book> getAssigned() {
+        return this.assignedBooks;
+    }
 }

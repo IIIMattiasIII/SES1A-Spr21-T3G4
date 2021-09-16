@@ -22,7 +22,7 @@ public class ELMS {
     public ELMS() {
         userSelected = false;
         importAccounts();
-//        importBooks();
+        importBooks();
     }
     
     private void importBooks() {
@@ -33,7 +33,6 @@ public class ELMS {
             String row;
             while ((row = csvReader.readLine()) != null) {
                 String[] data = row.split(",");
-//                System.out.println(data[0]+", "+data[1]+", "+data[2]+", "+data[3]+", "+data[4]);
                 books.add(new Book(data[0], data[1], data[2], data[3], Integer.parseInt(data[4])));
             }
             csvReader.close();
