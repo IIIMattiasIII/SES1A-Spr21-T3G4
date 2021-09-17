@@ -9,7 +9,7 @@ import java.util.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 /**import java.util.*;
-import javafx.collections.FXCollections;
+import javafx.collections.FXCollections;   
 import javafx.collections.ObservableList;
  *
  * @author ALI TAHMID KARIM
@@ -27,8 +27,9 @@ public class Search {
     ObservableList<Book> books; // Book class
     
     // Constructors
-    public Search(ObservableList<Book> inputBooks) {
-        books = inputBooks;
+    //ObservableList<Book> inputBooks
+    public Search() {
+         books.add(new Book("software", "113212", "Mohammad Karim")); //will come up with a better solution for constructor later, meantime this is just for testing -Mohammad Karim
     }
     
     // Methods

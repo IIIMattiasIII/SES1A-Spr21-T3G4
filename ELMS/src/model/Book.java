@@ -28,9 +28,9 @@ public class Book {
         // TBD: Add other attributes in constructor
     }
     
-    public String getTitle() { return this.title.get(); }
+    public final String getTitle() { return this.title.get(); }
     public void setTitle(String title) { this.title.set(title); }
-    public StringProperty titleProperty() { return this.title; }
+    public final StringProperty titleProperty() { return this.title; }
     
     
     public String getIsbn() { // method copied from 'Bookshell' branch

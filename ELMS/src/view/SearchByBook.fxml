@@ -7,17 +7,24 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox spacing = "10" alignment = "center" xmlns:fx = "http://javafx.com/fxml/1" >
-    <Label text = "Search By Book:"/>
-    <GridPane alignment = "center" hgap = "10" vgap = "10">
-     <Label text = "Book" GridPane.columnIndex = "1" GridPane.rowIndex = "0" />
-     <TextField GridPane.columnIndex = "2" GridPane.rowIndex = "0"/>
-         
-        
-        
+<VBox spacing = "40" alignment = "center" xmlns:fx = "http://javafx.com/fxml/1" fx:controller = "controller.SearchByBooks" >
+    <Label styleClass="h1" text = "Search By Book:"/>
+    <GridPane alignment = "center" hgap = "30" vgap = "30">
+    <Label text = "Book" GridPane.columnIndex = "1" GridPane.rowIndex = "0" />
+    <TextField fx:id = "BookName" GridPane.columnIndex = "2" GridPane.rowIndex = "0"/>
+    
     </GridPane>
+    <VBox alignment = "center" spacing = "30">
+     <ListView fx:id = "List" prefWidth = "300" prefHeight = "500" items = "${controller.SearchByBooks.getSearch().byTitle(controller.getName())}" >  
+        <placeholder>
+          //   <Label text = "No Books"/>
+         </placeholder>
+     </ListView>
+    </VBox>
+    
+
     <stylesheets>
-        <URL value = "@style.css"/>
+        <URL value = "@styles.css"/>
     </stylesheets>
         
          <Button text = "Search"/>

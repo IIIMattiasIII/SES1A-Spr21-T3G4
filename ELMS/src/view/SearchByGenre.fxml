@@ -8,7 +8,8 @@
 <?import javafx.scene.layout.*?>
 
 <VBox spacing = "10" alignment = "center" xmlns:fx = "http://javafx.com/fxml/1">
-    <Label text = "Search By Genre:"/>
+    
+    <Label styleClass="h1" text = "Search By Genre:"/>
     <GridPane alignment = "center" hgap = "10" vgap = "10">
      <Label text = "Genre" GridPane.columnIndex = "1" GridPane.rowIndex = "0" />
      <TextField GridPane.columnIndex = "2" GridPane.rowIndex = "0"/>
@@ -17,13 +18,13 @@
         
     </GridPane>
     <stylesheets>
-        <URL value = "@style.css"/>
+        <URL value = "@styles.css"/>
     </stylesheets>
         
          <Button text = "Search"/>
       
     
-        
+   
     
     
 </VBox>
