@@ -1,9 +1,12 @@
+/*
+ * This class contains the record of each individually borrowed book
+ * 
+ */
+
 package model;
 
-//// import
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-
+//// imports  
+import java.time.LocalDateTime;
 
 /**
  *
@@ -12,34 +15,36 @@ import javafx.collections.ObservableList;
 public class Borrow {
     
     ////attributes
-    ObservableList<Book> books;
-    public ObservableList<Book> borrowedBooks = FXCollections.observableArrayList(); // list that stores all the books the user has borrowed
-    int max;
+    Book book;
+    Account account;
+    LocalDateTime dueDate;
+    LocalDateTime borrowedDate;
+    
     
     ////constructors
-    public Borrow (/* books + users (?) */) {
-        max = 3;
-        // TBC
+    public Borrow (Book book, Account account) {
+        this.book = book;
+        this.account = account;
+        borrowedDate = LocalDateTime.now();
+        dueDate = borrowedDate.plusDays(14); // assume 2 week borrow times
     }
     
     ////methods
     
-    // method for borrowing
-    // if stock == 0 to begin with, then book can't be borrowed
-    // if the user has already reached the max, then the book can't be borrowed
-    public Book borrowBook() {
-        if (borrowedBooks.size() < max) {   
-            if (/*book selected*/.getStock() != 0) { // will be fixed up
-                borrowedBooks.add(/*book selected*/);
-                stockChange();
-            }
-        }
+    public Book getBook() {
+        return book;
+    }
+            
+    public Account getAccount() {
+        return account;
     }
     
-    // method to change stock available
-    private int stockChange() {
-        return getStock()--;
+    public LocalDateTime getDueDate() {
+        return dueDate;
     }
     
+    public LocalDateTime getBorrowedDate() {
+        return borrowedDate;
+    }
     
 }
