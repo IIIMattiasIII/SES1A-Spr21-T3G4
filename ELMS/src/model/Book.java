@@ -41,5 +41,13 @@ public class Book {
     public void setStock(String stock) { this.title.set(stock); }
     public IntegerProperty stockProperty() { return this.stock; }
     
+    // methods added for borrow function //
+    public void addStock(int amount) {
+        stock.set(stock.get() + amount);
+    }
+    
+    public void reduceStock(int amount) {
+        stock.set(stock.get() - amount);
+    }
 
 }
