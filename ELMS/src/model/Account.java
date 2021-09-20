@@ -12,6 +12,7 @@ public class Account {
     private final int permissionLevel;
     private final String password;
     private final Boolean fined;
+    private int borrowCount;
     
     public Account(int ID, String nameF, String nameS, String password, int permLvl) {
         this.ID.set(ID);
@@ -20,6 +21,7 @@ public class Account {
         this.password = password;
         fined = false;
         // TBD: Add other attributes in constructor + their getters and setters
+        borrowCount = 0;
     }
     
     public int getID() { return this.ID.get(); }
@@ -31,4 +33,17 @@ public class Account {
         return fined;
     }
     public int getPermissionLevel() { return this.permissionLevel; }
+
+    // Methods added for the borrow function //
+    public int getBorrowCount() {
+        return borrowCount;
+    }
+    
+    public void borrowedBook() {
+        borrowCount++;
+    }
+    
+    public void returnedBook(){
+        borrowCount--;
+    }
 }
