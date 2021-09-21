@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="controller.ModifyLibraryController"
+      alignment="center" spacing="10"
+      styleClass="root"
+      prefWidth="1280"
+      prefHeight="720"
+      maxHeight="720">
+    <HBox spacing="10" alignment="CENTER_LEFT" styleClass="h1">
+        <ImageView> 
+            <image>
+                <Image url="@logo_scaled.png"/>
+            </image> 
+        </ImageView>
+        <Label styleClass="h1" text="Select a Book to Modify"/>
+    </HBox>
+    <VBox spacing="40" alignment="CENTER" prefHeight="410">
+        <TableView fx:id="booksTv" prefHeight="250" prefWidth="885" maxWidth="885" styleClass="table-view">
+            <placeholder>
+                <Label text="No results found."/>
+            </placeholder>
+            <columns>
+                <TableColumn text="ID" fx:id="idCol" prefWidth="160.0"/>
+                <TableColumn text="Title" fx:id="titleCol" prefWidth="240.0"/>
+                <TableColumn text="Author" fx:id="authorCol" prefWidth="240.0" />
+                <TableColumn text="Genre" fx:id="genreCol" prefWidth="220.0"/>
+            </columns>
+        </TableView>
+        <Label fx:id="msgTxt" styleClass="message"/>
+        <HBox spacing="20" alignment="CENTER">
+            <Button text="Remove Book" fx:id="removeBtn" onAction="#handleRemoveBtn" styleClass="menuButton" maxWidth="250" maxHeight="75"/>
+            <Button text="Modify Book" fx:id="modBtn" onAction="#handleModBtn" styleClass="menuButton" maxWidth="250" maxHeight="75"/>
+        </HBox>
+    </VBox>  
+    <HBox spacing="10" alignment="BOTTOM_CENTER">
+        <Button text="Return to Menu" onAction="#handleReturnBtn" styleClass="button" prefWidth="150" />
+        <Button text="Exit eLibrary" onAction="#handleExitBtn" styleClass="button" prefWidth="150" />
+    </HBox>
+    <stylesheets>
+        <URL value="@styles.css"/>
+    </stylesheets>
+</VBox>

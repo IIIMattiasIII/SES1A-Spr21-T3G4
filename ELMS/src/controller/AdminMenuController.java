@@ -8,15 +8,15 @@ import javafx.fxml.*;
 import javafx.stage.Stage;
 import model.ELMS;
 
-public class AdminController extends Controller<ELMS> { 
-    public AdminController() {
-        //
-    }
-
+public class AdminMenuController extends Controller<ELMS> { 
     public final ELMS getELMS() { return model; }
     
     @FXML public void handleAddBtn(ActionEvent e) throws IOException {
         ViewLoader.showStage(getELMS(), "/view/AddBook.fxml", this.stage.getTitle(), new Stage());
+    }
+    
+    @FXML public void handleModBtn(ActionEvent e) throws IOException {
+        ViewLoader.showStage(getELMS(), "/view/ModifyLibrary.fxml", this.stage.getTitle(), this.stage);
     }
     
     @FXML public void handleExitBtn(ActionEvent e) { Platform.exit(); }
