@@ -38,7 +38,7 @@ public class Book {
     public StringProperty genreProperty() { return this.genre; }
     
     public int getStock() { return this.stock.get(); }
-    public void setStock(String stock) { this.title.set(stock); }
+    public void setStock(int stock) { this.stock.set(stock); }
     public IntegerProperty stockProperty() { return this.stock; }
     
 
