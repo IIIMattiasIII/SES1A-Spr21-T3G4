@@ -15,11 +15,14 @@ import javafx.collections.ObservableList;
 
 public class ELMS { 
     private final ObservableList<Account> accounts = FXCollections.observableArrayList();
-    private Account selectedAccount = null;
+    private Account selectedAccount;
     private final ObservableList<Book> books = FXCollections.observableArrayList();
+    private Book selectedBook;
     private boolean userSelected;
 
     public ELMS() {
+        selectedAccount = null;
+        selectedBook = null;
         userSelected = false;
         importAccounts();
         importBooks();
@@ -125,6 +128,14 @@ public class ELMS {
     
     public boolean isUserSelected() {
         return userSelected;
+    }
+    
+    public Book getSelectedBook() {
+        return selectedBook;
+    }
+    
+    public void setSelectedBook(Book b) {
+        selectedBook = b;
     }
     
     public ObservableList<Book> getBooks() {

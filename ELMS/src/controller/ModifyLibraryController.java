@@ -26,13 +26,16 @@ public class ModifyLibraryController extends Controller<ELMS> {
     @FXML private Button removeBtn;
     @FXML private Button modBtn;
     @FXML private Label msgTxt;
-    private Book selBook = null;
 
     @FXML
     public void initialize() {
         modBtn.disableProperty().bind(Bindings.isEmpty(booksTv.getSelectionModel().getSelectedItems()));
         removeBtn.disableProperty().bind(Bindings.isEmpty(booksTv.getSelectionModel().getSelectedItems()));
-        booksTv.setItems(getELMS().getBooks());
+        booksTv.setItems(getELMS().getBooks()); // Needs to be updated to getAvailableBooks once availableBooks list is added
+        idCol.setCellValueFactory(cellData -> cellData.getValue().idProperty());
+        titleCol.setCellValueFactory(cellData -> cellData.getValue().titleProperty());
+        authorCol.setCellValueFactory(cellData -> cellData.getValue().authorProperty());
+        genreCol.setCellValueFactory(cellData -> cellData.getValue().genreProperty());
         msgTxt.setVisible(false);
     }
 
@@ -40,19 +43,30 @@ public class ModifyLibraryController extends Controller<ELMS> {
         return model;
     }
     
-    private final Book getSelected() { 
-        if (booksTv.getSelectionModel().getSelectedItem() != null) 
-            return booksTv.getSelectionModel().getSelectedItem();
-        else
-            return null;
+    private Book getSelected() {
+        return booksTv.getSelectionModel().getSelectedItem();
+    }
+    
+    void displayMsg(String s) {
+        msgTxt.setVisible(true);
+        msgTxt.setText(s);
     }
     
     @FXML public void handleModBtn(ActionEvent e) throws IOException {
-        ViewLoader.showStage(getELMS(), "/view/ModifyBook.fxml", this.stage.getTitle(), new Stage());
+        if (getSelected() != null) {
+            getELMS().setSelectedBook(getSelected());
+            ViewLoader.showStage(getELMS(), "/view/ModifyBook.fxml", this.stage.getTitle(), new Stage());
+        } else {
+            displayMsg("Invalid selection.");
+        }
     }
     
     @FXML public void handleRemoveBtn(ActionEvent e) throws IOException {
-        //
+        if (getSelected() != null) {
+            getELMS().getBooks().remove(getSelected()); // Needs to be updated to getAvailableBooks once availables books list is added
+        } else {
+            displayMsg("Invalid selection.");
+        }
     }
 
     @FXML public void handleExitBtn(ActionEvent e) { Platform.exit(); }

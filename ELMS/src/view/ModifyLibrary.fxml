@@ -23,24 +23,27 @@
                 <Image url="@logo_scaled.png"/>
             </image> 
         </ImageView>
-        <Label styleClass="h1" text="Select a Book to Modify"/>
+        <Label styleClass="h1" text="Modify a Book in the Library"/>
     </HBox>
-    <VBox spacing="40" alignment="CENTER" prefHeight="410">
-        <TableView fx:id="booksTv" prefHeight="250" prefWidth="885" maxWidth="885" styleClass="table-view">
+    <VBox spacing="20" alignment="CENTER" prefHeight="410">
+        <TableView fx:id="booksTv" prefHeight="250" prefWidth="881" maxWidth="881" styleClass="table-view">
             <placeholder>
                 <Label text="No results found."/>
             </placeholder>
             <columns>
-                <TableColumn text="ID" fx:id="idCol" prefWidth="160.0"/>
-                <TableColumn text="Title" fx:id="titleCol" prefWidth="240.0"/>
+                <TableColumn text="ID" fx:id="idCol" prefWidth="120.0"/>
+                <TableColumn text="Title" fx:id="titleCol" prefWidth="280.0"/>
                 <TableColumn text="Author" fx:id="authorCol" prefWidth="240.0" />
                 <TableColumn text="Genre" fx:id="genreCol" prefWidth="220.0"/>
             </columns>
         </TableView>
         <Label fx:id="msgTxt" styleClass="message"/>
-        <HBox spacing="20" alignment="CENTER">
+        <HBox spacing="60" alignment="CENTER">
             <Button text="Remove Book" fx:id="removeBtn" onAction="#handleRemoveBtn" styleClass="menuButton" maxWidth="250" maxHeight="75"/>
             <Button text="Modify Book" fx:id="modBtn" onAction="#handleModBtn" styleClass="menuButton" maxWidth="250" maxHeight="75"/>
+            <padding>
+                <Insets bottom="35"/>
+            </padding>
         </HBox>
     </VBox>  
     <HBox spacing="10" alignment="BOTTOM_CENTER">
