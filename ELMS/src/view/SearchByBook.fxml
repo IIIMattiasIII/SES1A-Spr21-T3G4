@@ -6,8 +6,9 @@
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import controller.SearchByBooks?>
 
-<VBox spacing = "40" alignment = "center" xmlns:fx = "http://javafx.com/fxml/1" fx:controller = "controller.SearchByBooks" >
+<VBox xmlns:fx = "http://javafx.com/fxml/1" fx:controller = "controller.SearchByBooks" spacing = "40" alignment = "center" >
     <Label styleClass="h1" text = "Search By Book:"/>
     <GridPane alignment = "center" hgap = "30" vgap = "30">
     <Label text = "Book" GridPane.columnIndex = "1" GridPane.rowIndex = "0" />
@@ -15,9 +16,9 @@
     
     </GridPane>
     <VBox alignment = "center" spacing = "30">
-     <ListView fx:id = "List" prefWidth = "300" prefHeight = "500" items = "${controller.SearchByBooks.getSearch().byTitle(controller.getName())}" >  
+     <ListView fx:id = "List" prefWidth = "300" prefHeight = "500">  
         <placeholder>
-          //   <Label text = "No Books"/>
+            <Label text = "No Books"/>
          </placeholder>
      </ListView>
     </VBox>
@@ -27,7 +28,7 @@
         <URL value = "@styles.css"/>
     </stylesheets>
         
-         <Button text = "Search"/>
+         <Button fx:id = "search_button" text = "Search" onAction = "#setList"/>
       
     
         

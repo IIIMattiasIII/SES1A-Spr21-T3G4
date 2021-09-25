@@ -5,12 +5,15 @@
  */
 
 package controller;
+
+import au.edu.uts.ap.javafx.*;
+import java.io.IOException;
+import javafx.application.Platform;
+import javafx.event.ActionEvent;
 import javafx.fxml.*;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
-import javafx.stage.Stage;
+import javafx.scene.control.*;
+import model.ELMS;
+import model.Account;
 import model.Search;
 
 
@@ -18,14 +21,22 @@ import model.Search;
  *
  * @author ALI TAHMID KARIM
  */
-public class SearchByBooks {
+public class SearchByBooks extends Controller<ELMS>  {
+  public SearchByBooks() throws IOException {
+        //
+    }
 @FXML private TextField BookName;
-    
+@FXML private ListView  List;
+@FXML private Button search_Button; 
 Search search = new Search();
 
 @FXML public String getName(){
     return BookName.getText();
     
 }   
-public final Search getSearch(){return search;}
+
+
+@FXML public void setList(ActionEvent e)throws IOException{
+    List.setItems(search.byTitle(getName()));
+}
 }

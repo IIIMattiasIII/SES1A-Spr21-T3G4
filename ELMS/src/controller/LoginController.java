@@ -1,14 +1,18 @@
 package controller;
-
 import au.edu.uts.ap.javafx.*;
 import java.io.IOException;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.*;
+import javafx.scene.control.*;
 import model.ELMS;
 import model.Account;
+import model.*;
+
+
 
 public class LoginController extends Controller<ELMS> {    
+
     public LoginController() throws IOException {
         //
     }
@@ -32,4 +36,6 @@ public class LoginController extends Controller<ELMS> {
     }
     
     @FXML public void handleExitBtn(ActionEvent e) { Platform.exit(); }
+    
+
 }
