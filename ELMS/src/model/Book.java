@@ -41,7 +41,7 @@ public class Book {
     }
     
     public String getAuthor() { // method copied from 'Bookshell' branch
-        return isbn;
+        return author;
     }
     public void setAuthor(String isbn) { // method copied from 'Bookshell' branch
         this.isbn = isbn;

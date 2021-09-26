@@ -24,7 +24,7 @@ public class Search {
 
     
     // attributes
-    ObservableList<Book> books; // Book class
+    ObservableList<Book> books = FXCollections.observableArrayList(); // Book class
     
     // Constructors
     //ObservableList<Book> inputBooks
@@ -40,14 +40,15 @@ public class Search {
 //        return searchInput;
 //    }
     
-    
-    public ObservableList<Book> byTitle(String title) {
+    //ObservableList<Book>
+    public ObservableList<String> byTitle(String title) {
         // loop over database (list of books) // return books that match
-        ObservableList<Book> matches = FXCollections.observableArrayList(); // please check
+       ObservableList<String> matches = FXCollections.observableArrayList(); // please check
         
         for (Book bookMatch : books) {
             if (bookMatch.getTitle().toLowerCase().contains(title.toLowerCase())) {
-                matches.add(bookMatch);
+                matches.add(bookMatch.getTitle());
+               
             }
         }
         return matches;
@@ -61,26 +62,26 @@ public class Search {
 //        }
 //    }
     
-    public ObservableList<Book> byCategory(String category) {
+    public ObservableList<String> byCategory(String category) {
 //         IDs contain one letter (J,B,A,P) followed by 4 digit number / eg. J0001, B1234
 //         J-journal, B-book, A-article, P-research paper
-        ObservableList<Book> matches = FXCollections.observableArrayList(); // please check!
+        ObservableList<String> matches = FXCollections.observableArrayList(); // please check!
         
         for (Book bookMatch : books) {
             if (bookMatch.getIsbn().toLowerCase().contains(category.toLowerCase())) {
-                matches.add(bookMatch);
+                matches.add(bookMatch.getTitle());
             }
         }
         return matches;
     }
     
-    public ObservableList<Book> byAuthor(String author) {
+    public ObservableList<String> byAuthor(String author) {
         // loop over database (list of books) // return books that match
-        ObservableList<Book> matches = FXCollections.observableArrayList(); // please check!
+        ObservableList<String> matches = FXCollections.observableArrayList(); // please check!
         
         for (Book bookMatch : books) {
             if (bookMatch.getAuthor().toLowerCase().contains(author.toLowerCase())) {
-                matches.add(bookMatch);
+                matches.add(bookMatch.getTitle());
             }
         }
         return matches;

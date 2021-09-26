@@ -30,7 +30,10 @@
         
          <Button fx:id = "search_button" text = "Search" onAction = "#setList"/>
       
-    
+    <HBox spacing="30" alignment="BOTTOM_CENTER">
+        <Button text="Return to Menu" onAction="#handleReturnBtn" styleClass="button" prefWidth="150" />
+        <Button text="Exit eLibrary" onAction="#handleExitBtn" styleClass="button" prefWidth="150" />
+    </HBox>
         
     
     

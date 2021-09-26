@@ -8,6 +8,7 @@
 <?import javafx.scene.layout.*?>
 
 <VBox spacing = "10" alignment = "center" 
+      fx:controller = "controller.SearchByAuthor"
       styleClass="root"
       prefWidth="1280"
       prefHeight="720"
@@ -16,16 +17,23 @@
     <Label styleClass="h1" text = "Search By Author:"/>
     <GridPane alignment = "center" hgap = "10" vgap = "10">
      <Label text = "Author" GridPane.columnIndex = "1" GridPane.rowIndex = "0" />
-     <TextField GridPane.columnIndex = "2" GridPane.rowIndex = "0"/>
+     <TextField fx:id = "BookAuthor" GridPane.columnIndex = "2" GridPane.rowIndex = "0"/>
          
         
         
     </GridPane>
+    <VBox alignment = "center" spacing = "30">
+     <ListView fx:id = "List" prefWidth = "300" prefHeight = "500">  
+        <placeholder>
+            <Label text = "No Books"/>
+         </placeholder>
+     </ListView>
+    </VBox>
     <stylesheets>
         <URL value = "@styles.css"/>
     </stylesheets>
         
-         <Button text = "Search"/>
+         <Button fx:id = "button" text = "Search" onAction = "#setList"/>
       
     
         
