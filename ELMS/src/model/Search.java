@@ -30,6 +30,7 @@ public class Search {
     //ObservableList<Book> inputBooks
     public Search() {
          books.add(new Book("software", "113212", "Mohammad Karim")); //will come up with a better solution for constructor later, meantime this is just for testing -Mohammad Karim
+         books.add(new Book("Study", "11212", "difficult"));
     }
     
     // Methods
@@ -53,7 +54,13 @@ public class Search {
         }
         return matches;
     }
-    
+    public ObservableList<String> getAvailablebooks(){
+    ObservableList<String> sendAvailable = FXCollections.observableArrayList();
+    for(Book availableBook: books){
+    sendAvailable.add(availableBook.getTitle());
+    }
+    return sendAvailable;
+    }
 //    // shows whole list of books available when the "search" menu is open
 //    public void showAllBooks() {
 //        // show all books on opening

@@ -5,13 +5,16 @@ import java.io.IOException;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.*;
+import javafx.scene.control.ListView;
 import model.ELMS;
+import model.Search;
 
 public class ELMSController extends Controller<ELMS> {    
+   
     public ELMSController() {
         //
     }
-
+  
     public final ELMS getELMS() { return model; }
     
     @FXML public void handleLibBtn(ActionEvent e) throws IOException {
@@ -23,4 +26,5 @@ public class ELMSController extends Controller<ELMS> {
     }
     
     @FXML public void handleExitBtn(ActionEvent e) { Platform.exit(); }
+    
 }

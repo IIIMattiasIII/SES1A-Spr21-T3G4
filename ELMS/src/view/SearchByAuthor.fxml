@@ -14,14 +14,15 @@
       prefHeight="720"
       maxHeight="720"
       xmlns:fx = "http://javafx.com/fxml/1" >
+    <HBox spacing = "50" alignment = "center">
     <Label styleClass="h1" text = "Search By Author:"/>
-    <GridPane alignment = "center" hgap = "10" vgap = "10">
-     <Label text = "Author" GridPane.columnIndex = "1" GridPane.rowIndex = "0" />
-     <TextField fx:id = "BookAuthor" GridPane.columnIndex = "2" GridPane.rowIndex = "0"/>
-         
+    <TextField fx:id = "BookAuthor"/>
+    <Button fx:id = "button" text = "Search" onAction = "#setList"/>
+    <Button fx:id = "reset" text = "Reset" onAction = "#resetList"/>  
+     </HBox>    
         
         
-    </GridPane>
+   
     <VBox alignment = "center" spacing = "30">
      <ListView fx:id = "List" prefWidth = "300" prefHeight = "500">  
         <placeholder>
@@ -33,10 +34,13 @@
         <URL value = "@styles.css"/>
     </stylesheets>
         
-         <Button fx:id = "button" text = "Search" onAction = "#setList"/>
+        
       
     
-        
+    <HBox spacing="30" alignment="BOTTOM_CENTER">
+        <Button text="Return to Menu" onAction="#handleReturnBtn" styleClass="button" prefWidth="150" />
+        <Button text="Exit eLibrary" onAction="#handleExitBtn" styleClass="button" prefWidth="150" />
+    </HBox>
     
     
 </VBox>

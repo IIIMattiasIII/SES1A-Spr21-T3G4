@@ -9,16 +9,17 @@
 <?import controller.SearchByBooks?>
 
 <VBox xmlns:fx = "http://javafx.com/fxml/1" fx:controller = "controller.SearchByBooks" spacing = "40" alignment = "center" >
+    <HBox spacing = "40" alignment = "center">
     <Label styleClass="h1" text = "Search By Book:"/>
-    <GridPane alignment = "center" hgap = "30" vgap = "30">
-    <Label text = "Book" GridPane.columnIndex = "1" GridPane.rowIndex = "0" />
     <TextField fx:id = "BookName" GridPane.columnIndex = "2" GridPane.rowIndex = "0"/>
+    <Button fx:id = "search_button" text = "Search" onAction = "#setList"/>
+    <Button fx:id = "reset" text = "Reset" onAction = "#resetList"/>  
+    </HBox>
     
-    </GridPane>
     <VBox alignment = "center" spacing = "30">
-     <ListView fx:id = "List" prefWidth = "300" prefHeight = "500">  
+     <ListView fx:id = "List" prefWidth = "30" prefHeight = "500">  
         <placeholder>
-            <Label text = "No Books"/>
+            <Label text = "No books"/>
          </placeholder>
      </ListView>
     </VBox>
@@ -28,7 +29,7 @@
         <URL value = "@styles.css"/>
     </stylesheets>
         
-         <Button fx:id = "search_button" text = "Search" onAction = "#setList"/>
+    <Button text = "Borrow" />    
       
     <HBox spacing="30" alignment="BOTTOM_CENTER">
         <Button text="Return to Menu" onAction="#handleReturnBtn" styleClass="button" prefWidth="150" />
