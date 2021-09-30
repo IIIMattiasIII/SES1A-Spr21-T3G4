@@ -1,52 +1,57 @@
 package model;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
-/**
- *
- * @author ALI TAHMID KARIM
- */
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
 
 
 public class Book {
+    private final StringProperty id = new SimpleStringProperty();
     private final StringProperty title = new SimpleStringProperty();
-    private String isbn; // copied from 'Bookshell' branch
-    private String author; // copied from 'Bookshell' branch
-    // TBD: Add other attributes
+    private final StringProperty author = new SimpleStringProperty();
+    private final StringProperty genre = new SimpleStringProperty();
+    private final IntegerProperty stock = new SimpleIntegerProperty();
     
-    public Book(String title, String id, String author) {
+    public Book(String ID, String title, String author, String genre, int stock) {
+        this.id.set(ID);
         this.title.set(title);
-        this.isbn = id; // copied from 'Bookshell' branch
-        this.author = author; // copied from 'Bookshell' branch
-        // TBD: Add other attributes in constructor
+        this.author.set(author);
+        this.genre.set(genre);
+        this.stock.set(stock);
+        
     }
     
-    public final String getTitle() { return this.title.get(); }
+    public String getID() { return this.id.get(); }
+    public void setID(String id) { this.id.set(id); }
+    public StringProperty idProperty() { return this.id; }
+    
+    public String getTitle() { return this.title.get(); }
     public void setTitle(String title) { this.title.set(title); }
     public final StringProperty titleProperty() { return this.title; }
     
+    public String getAuthor() { return this.author.get(); }
+    public void setAuthor(String author) { this.author.set(author); }
+    public StringProperty authorProperty() { return this.author; }
     
-    public String getIsbn() { // method copied from 'Bookshell' branch
-        return isbn;
-    }
-    public void setIsbn(String isbn) { // method copied from 'Bookshell' branch
-        this.isbn = isbn;
+    public String getGenre() { return this.genre.get(); }
+    public void setGenre(String genre) { this.genre.set(genre); }
+    public StringProperty genreProperty() { return this.genre; }
+        
+    public int getStock() { return this.stock.get(); }
+    public void setStock(String stock) { this.title.set(stock); }
+    public IntegerProperty stockProperty() { return this.stock; }
+    
+    // methods added for borrow function //
+    public void addStock(int amount) {
+        stock.set(stock.get() + amount);
     }
     
-    public String getAuthor() { // method copied from 'Bookshell' branch
-        return author;
+    public void reduceStock(int amount) {
+        stock.set(stock.get() - amount);
     }
-    public void setAuthor(String isbn) { // method copied from 'Bookshell' branch
-        this.isbn = isbn;
-    }
-    
-    // TBD: Add other getters and setters for other attribute properties
+
 }
 
