@@ -112,6 +112,51 @@ public class Search {
         }
         return matches;
     }
+
+    public ObservableList<String> allAuthors(){
+        // method to display all available authors in the database
+        ObservableList<String> authorList = FXCollections.observableArrayList();
+        String anAuthor;
+        boolean notFound = true;
+        
+        for (Book book : books) {
+            anAuthor = book.getAuthor();
+            for (String author : authorList) {
+                if (anAuthor.equals(author)) {
+                    notFound = false;
+                    break;
+                }
+            }
+            if (notFound) {
+                authorList.add(anAuthor);
+            }
+        }
+        
+        return authorList;
+    }
+    
+    
+    public ObservableList<String> allGenres() {
+        // method to display all available genres/categories in the database
+        ObservableList<String> genreList = FXCollections.observableArrayList();
+        String aGenre;
+        boolean notFound = true;
+        
+        for (Book book : books) {
+            aGenre = book.getAuthor();
+            for (String author : genreList) {
+                if (aGenre.equals(author)) {
+                    notFound = false;
+                    break;
+                }
+            }
+            if (notFound) {
+                genreList.add(aGenre);
+            }
+        }
+        
+        return genreList;
+    }
     
     // show all books searched for
 //    public void showSearchedBook() {
