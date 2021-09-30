@@ -27,7 +27,7 @@ import model.ELMS;
  */
 public class SearchByBooks extends Controller<ELMS>  {
 @FXML private TextField BookName;
-
+@FXML private Button borrow_button;
 @FXML private Button search_Button; 
   public SearchByBooks() throws IOException {
         //
@@ -48,7 +48,14 @@ public final ELMS getELMS() { return model; }
 
 @FXML public void handleExitBtn(ActionEvent e) { Platform.exit(); }
 
+private String getSelectedBook(){
+return (String) List.getSelectionModel().getSelectedItem();
+}
+
 @FXML public void handleReturnBtn(ActionEvent e) throws IOException { 
      ViewLoader.showStage(getELMS(), "/view/LibraryMenu.fxml",stage.getTitle(), stage);
     }
+@FXML public void handleBorrow(ActionEvent event){//borrowings.borrowBook(search.byName(getSelectedBook()),getAccount())
+    System.out.println(getSelectedBook());
+}
 }

@@ -52,6 +52,8 @@ public class Book {
     public void reduceStock(int amount) {
         stock.set(stock.get() - amount);
     }
-
+   public Boolean hasTitle(String name){
+    return title.get().toLowerCase().contains(name.toLowerCase());
+   }
 }
 

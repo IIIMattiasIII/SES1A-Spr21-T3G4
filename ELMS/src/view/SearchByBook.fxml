@@ -29,7 +29,7 @@
         <URL value = "@styles.css"/>
     </stylesheets>
         
-    <Button text = "Borrow" />    
+    <Button fx:id = "borrow_button" text = "Borrow" onAction = "#handleBorrow"/>    
       
     <HBox spacing="30" alignment="BOTTOM_CENTER">
         <Button text="Return to Menu" onAction="#handleReturnBtn" styleClass="button" prefWidth="150" />

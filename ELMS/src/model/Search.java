@@ -6,6 +6,10 @@ import javafx.collections.ObservableList;
 
 public class Search {
     ObservableList<Book> books = FXCollections.observableArrayList(); // Book class
+    public Search(){
+        books.add(new Book("11","software","Mohammad Karim","study",12));
+         books.add(new Book("11","Engineering","UTS","study",12));
+    }
     
     public ObservableList<String> byTitle(String title) {
         // loop over database (list of books) // return books that match
@@ -19,6 +23,20 @@ public class Search {
         }
         return matches;
     }
+     public ObservableList<Book> byName(String title) {
+        // loop over database (list of books) // return books that match
+       ObservableList<Book> matches = FXCollections.observableArrayList(); // please check
+        
+        for (Book bookMatch : books) {
+            if (bookMatch.getTitle().toLowerCase().contains(title.toLowerCase())) {
+                matches.add(bookMatch);
+               
+            }
+        }
+        return matches;
+    }
+    //public ObservableList<Book> byName(String title) {
+    
     public ObservableList<String> getAvailablebooks(){
     ObservableList<String> sendAvailable = FXCollections.observableArrayList();
     for(Book availableBook: books){
@@ -39,6 +57,7 @@ public class Search {
         }
         return matches;
     }
+    
     
     public ObservableList<String> byAuthor(String author) {
         // loop over database (list of books) // return books that match
