@@ -6,6 +6,9 @@ import javafx.collections.ObservableList;
 
 public class Search {
     ObservableList<Book> books = FXCollections.observableArrayList(); // Book class
+
+    ObservableList<String> authorList = FXCollections.observableArrayList(); // list of all authors in database
+    ObservableList<String> genreList = FXCollections.observableArrayList(); // list of all genres in database
     
     public ObservableList<String> byTitle(String title) {
         // loop over database (list of books) // return books that match
@@ -73,7 +76,7 @@ public class Search {
 
     public ObservableList<String> allAuthors(){
         // method to display all available authors in the database
-        ObservableList<String> authorList = FXCollections.observableArrayList();
+        //ObservableList<String> authorList = FXCollections.observableArrayList(); << moved to start of class
         String anAuthor;
         boolean notFound = true;
         
@@ -96,7 +99,7 @@ public class Search {
     
     public ObservableList<String> allGenres() {
         // method to display all available genres/categories in the database
-        ObservableList<String> genreList = FXCollections.observableArrayList();
+        //ObservableList<String> genreList = FXCollections.observableArrayList(); << moved to start of class
         String aGenre;
         boolean notFound = true;
         
@@ -115,5 +118,27 @@ public class Search {
         
         return genreList;
     }    
+
+    public ObservableList<String> matchAuthor (String searchedAuthor) {
+        // method to return all authors that match author typed in
+        ObservableList<String> authorMatch = FXCollections.observableArrayList();
+        
+        for (String author : authorList) {
+            if (author.toLowerCase().contains(searchedAuthor.toLowerCase())) { 
+                authorMatch.add(author);
+            }
+        }
+    }
+    
+    public ObservableList<String> matchGenre (String searchedGenre) {
+        // method to return all genres that match genre typed in
+        ObservableList<String> genreMatch = FXCollections.observableArrayList();
+        
+        for (String genre : genreList) {
+            if (genre.toLowerCase().contains(searchedGenre.toLowerCase())) { 
+                genreMatch.add(genre);
+            }
+        }
+    }
 }
 
