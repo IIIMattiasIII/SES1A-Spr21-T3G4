@@ -128,6 +128,7 @@ public class Search {
                 authorMatch.add(author);
             }
         }
+        return authorMatch;
     }
     
     public ObservableList<String> matchGenre (String searchedGenre) {
@@ -139,6 +140,7 @@ public class Search {
                 genreMatch.add(genre);
             }
         }
+        return genreMatch;
     }
 }
 
