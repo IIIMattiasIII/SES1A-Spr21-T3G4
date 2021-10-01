@@ -101,9 +101,9 @@ public class Search {
         boolean notFound = true;
         
         for (Book book : books) {
-            aGenre = book.getAuthor();
-            for (String author : genreList) {
-                if (aGenre.equals(author)) {
+            aGenre = book.getGenre();
+            for (String genre : genreList) {
+                if (aGenre.equals(genre)) {
                     notFound = false;
                     break;
                 }
