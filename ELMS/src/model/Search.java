@@ -6,6 +6,15 @@ import javafx.collections.ObservableList;
 
 public class Search {
     ObservableList<Book> books = FXCollections.observableArrayList(); // Book class
+
+    //constructors
+    // This was brought back in because we need a way for the search class to have access to the list of books
+    // The value of inputBooks will == ELMS.books
+    // The ELMS class will need an attribute of class Search
+    // So the class will have a link/reference to the list of books
+    public Search(ObservableList<Book> inputBooks) {
+        books = inputBooks;
+    }
     
     public ObservableList<String> byTitle(String title) {
         // loop over database (list of books) // return books that match
