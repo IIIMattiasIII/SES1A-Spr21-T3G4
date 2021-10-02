@@ -17,17 +17,18 @@ public class ViewAccountController extends Controller<ELMS> {
     @FXML private TableView<Book> mainTable;
 
     public final ELMS getELMS() { return model; }
-    /*titleClmn.setCellValueFactory(cellData -> cellData.getValue().titleProperty());
-    authorClmn.setCellValueFactory(cellData -> cellData.getValue().authorProperty());
-    stockClmn.setCellValueFactory(cellData -> cellData.getValue().stockProperty());
-    IDClmn.setCellValueFactory(cellData -> cellData.getValue().IDProperty());*/
+    
     @FXML public void handleRentBooksBtn(ActionEvent e) throws IOException {
+        mainTable.setItems(getELMS().getRentedBooks());
     }
     @FXML public void handleAssignedBooksBtn(ActionEvent e) throws IOException {
+        //mainTable.setItems(getELMS().getAssignedBooks());
     }
     @FXML public void handleFinesBtn(ActionEvent e) throws IOException {
+        
     }
     @FXML public void handleRentHistBtn(ActionEvent e) throws IOException {
+        //mainTable.setItems(getELMS().getBooks());
     }
     
     @FXML public void handleExitBtn(ActionEvent e) { Platform.exit(); }

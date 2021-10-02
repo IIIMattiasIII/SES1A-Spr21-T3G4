@@ -47,6 +47,9 @@
                     <TableColumn fx:id = "authorClmn" text = "Author">
                         <cellValueFactory><PropertyValueFactory property = "Author"/></cellValueFactory>
                     </TableColumn>
+                    <TableColumn fx:id = "GenreClmn" text = "Genre">
+                        <cellValueFactory><PropertyValueFactory property = "Genre"/></cellValueFactory>
+                    </TableColumn>
                     <TableColumn fx:id = "stockClmn" text = "Stock">
                         <cellValueFactory><PropertyValueFactory property = "Stock"/></cellValueFactory>
                     </TableColumn>
