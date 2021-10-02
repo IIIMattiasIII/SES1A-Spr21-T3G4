@@ -9,6 +9,6 @@ package model;
  *
  * @author pulkitjain
  */
-public class BorrowingsCopy {
+public class Borrowings {
     
 }
