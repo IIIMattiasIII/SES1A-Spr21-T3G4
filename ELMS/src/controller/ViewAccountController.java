@@ -8,6 +8,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.*;
 import javafx.scene.control.TableView;
 import model.Book;
+import model.Borrow;
+import model.Borrowings;
 import model.ELMS;
 
 public class ViewAccountController extends Controller<ELMS> {    
@@ -17,8 +19,10 @@ public class ViewAccountController extends Controller<ELMS> {
     @FXML private TableView<Book> mainTable;
 
     public final ELMS getELMS() { return model; }
+    public final Borrowings getBorrowings() { return model; }
     
     @FXML public void handleRentBooksBtn(ActionEvent e) throws IOException {
+        mainTable.setItems(getBorrowings().borrowedBooks());
     }
     @FXML public void handleAssignedBooksBtn(ActionEvent e) throws IOException {
         //mainTable.setItems(getELMS().getAssignedBooks());
