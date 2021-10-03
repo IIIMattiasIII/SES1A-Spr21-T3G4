@@ -19,7 +19,6 @@ public class ViewAccountController extends Controller<ELMS> {
     public final ELMS getELMS() { return model; }
     
     @FXML public void handleRentBooksBtn(ActionEvent e) throws IOException {
-        mainTable.setItems(getELMS().getRentedBooks());
     }
     @FXML public void handleAssignedBooksBtn(ActionEvent e) throws IOException {
         //mainTable.setItems(getELMS().getAssignedBooks());
