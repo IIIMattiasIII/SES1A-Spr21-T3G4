@@ -8,7 +8,7 @@ public class Search {
     ObservableList<Book> books = FXCollections.observableArrayList(); // Book class
     public Search(){
         books.add(new Book("11","software","Mohammad Karim","study",12));
-         books.add(new Book("11","Engineering","UTS","study",12));
+         books.add(new Book("11","Engineering","UTS","rocks",12));
     }
     
     public ObservableList<String> byTitle(String title) {
@@ -51,7 +51,7 @@ public class Search {
         ObservableList<String> matches = FXCollections.observableArrayList(); // please check!
         
         for (Book bookMatch : books) {
-            if (bookMatch.getID().toLowerCase().contains(category.toLowerCase())) {
+            if (bookMatch.getGenre().toLowerCase().contains(category.toLowerCase())) {
                 matches.add(bookMatch.getTitle());
             }
         }
@@ -66,6 +66,17 @@ public class Search {
         for (Book bookMatch : books) {
             if (bookMatch.getAuthor().toLowerCase().contains(author.toLowerCase())) {
                 matches.add(bookMatch.getTitle());
+            }
+        }
+        return matches;
+    }
+    public ObservableList<Book> byauthor(String author) {
+        // loop over database (list of books) // return books that match
+        ObservableList<Book> matches = FXCollections.observableArrayList(); // please check!
+        
+        for (Book bookMatch : books) {
+            if (bookMatch.getAuthor().toLowerCase().contains(author.toLowerCase())) {
+                matches.add(bookMatch);
             }
         }
         return matches;
@@ -120,7 +131,7 @@ public class Search {
         boolean notFound = true;
         
         for (Book book : books) {
-            aGenre = book.getAuthor();
+            aGenre = book.getGenre();
             for (String author : genreList) {
                 if (aGenre.equals(author)) {
                     notFound = false;

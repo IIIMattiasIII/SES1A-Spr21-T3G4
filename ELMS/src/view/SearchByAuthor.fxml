@@ -7,9 +7,8 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox spacing = "10" alignment = "center" 
+<VBox styleClass = "search" spacing = "10" alignment = "center" 
       fx:controller = "controller.SearchByAuthor"
-      styleClass="root"
       prefWidth="1280"
       prefHeight="720"
       maxHeight="720"
@@ -18,7 +17,7 @@
     <Label styleClass="h1" text = "Search By Author:"/>
     <TextField fx:id = "BookAuthor"/>
     <Button fx:id = "button" text = "Search" onAction = "#setList"/>
-    <Button fx:id = "reset" text = "Reset" onAction = "#resetList"/>  
+    <Button fx:id = "reset" text = "Reset" onAction = "#resetlist"/>  
      </HBox>    
         
         
@@ -34,7 +33,9 @@
         <URL value = "@styles.css"/>
     </stylesheets>
         
-        
+    <Button text = "borrow" onAction = "#handleBorrow2"/>
+    <Text fx:id = "text"/>
+       
       
     
     <HBox spacing="30" alignment="BOTTOM_CENTER">

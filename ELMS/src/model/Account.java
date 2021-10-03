@@ -26,6 +26,7 @@ public class Account {
     
     public int getID() { return this.ID.get(); }
     public ReadOnlyIntegerProperty idProperty() { return ID; }
+    public String getName(){return name.get();}
     
     public int getPassHash() { return password.hashCode(); }
 

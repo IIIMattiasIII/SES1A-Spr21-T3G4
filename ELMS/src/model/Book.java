@@ -55,5 +55,6 @@ public class Book {
    public Boolean hasTitle(String name){
     return title.get().toLowerCase().contains(name.toLowerCase());
    }
+   
 }
 
