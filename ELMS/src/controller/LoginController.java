@@ -16,7 +16,6 @@ import model.ELMS;
 import model.Account;
 
 public class LoginController extends Controller<ELMS> {
-
     @FXML
     private TextField idTf;
     @FXML

@@ -98,24 +98,28 @@ public class RegisterController extends Controller<ELMS> {
         } else {
             role = 2;
         }
-        if (getPass().equals(getPassRep())) { // Check the passwords match
-            boolean idMatch = false;
-            for (Account a : getELMS().getAccounts()) { // Check for existing account
-                if (this.getID() == a.getID()) { 
-                    idMatch = true;
-                    break;
+        if (idTf.getText().length() > 1 && getNameF().length() > 1 && getNameS().length() > 1 && getPass().length() > 4) {
+            if (getPass().equals(getPassRep())) { // Check the passwords match
+                boolean idMatch = false;
+                for (Account a : getELMS().getAccounts()) { // Check for existing account
+                    if (this.getID() == a.getID()) { 
+                        idMatch = true;
+                        break;
+                    }
                 }
-            }
-            if (idMatch) {
-                displayMsg("An account has already been created with this ID.");
+                if (idMatch) {
+                    displayMsg("An account has already been created with this ID.");
+                } else {
+                    getELMS().addAccount(this.getID(), this.getNameF(), this.getNameS(), this.getPass(), role);
+                    displayMsg("Account has been created. You can now close this window.");
+                    regBtn.setVisible(false); // Like with addBooks, setDisable(true) causes errors. So this is the temporary workaround
+                    // TBD: Add and call method for sending account creation email.
+                }
             } else {
-                getELMS().addAccount(this.getID(), this.getNameF(), this.getNameS(), this.getPass(), role);
-                displayMsg("Account has been created. You can now close this window.");
-                regBtn.setVisible(false); // Like with addBooks, setDisable(true) causes errors. So this is the temporary workaround
-                // TBD: Add and call method for sending account creation email.
+                displayMsg("Passwords do not match.");
             }
         } else {
-            displayMsg("Passwords do not match.");
+            displayMsg("Invalid entry. A field is incomplete.");
         }
     }
 

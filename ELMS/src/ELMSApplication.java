@@ -5,10 +5,6 @@ import javafx.scene.image.Image;
 import model.ELMS;
 
 public class ELMSApplication extends Application {
-
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
         launch(args);
     }

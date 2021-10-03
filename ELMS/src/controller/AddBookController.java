@@ -85,7 +85,7 @@ public class AddBookController extends Controller<ELMS> {
                 break;
             }
         }
-        if (idMatch) { // Inform user if match is found
+        if (idMatch) { // Inform admin if match is found
             displayMsg("A book has already been added to the library with this ID.");
         } else { // Else, add book to library and update the view accordingly
             getELMS().addBook(this.getID(), this.getTitle(), this.getAuthor(), this.getGenre(), this.getStock());

@@ -12,10 +12,6 @@ public class ELMSController extends Controller<ELMS> {
     @FXML private Button adminBtn;
     @FXML private Button staffBtn;
     
-    public ELMSController() {
-        //
-    }
-    
     @FXML public void initialize() {
         switch (getELMS().getSelectedAccount().getPermissionLevel()) {
             case 0:
