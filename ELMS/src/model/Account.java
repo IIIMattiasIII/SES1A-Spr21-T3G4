@@ -16,6 +16,7 @@ public class Account {
     private ObservableList<Book> rentedBooks;
     private ObservableList<Book> rentHistory;
     private ObservableList<Book> assignedBooks;
+    private int borrowCount;
     
     public Account(int ID, String nameF, String nameS, String password, int permLvl) {
         this.ID.set(ID);
@@ -47,5 +48,17 @@ public class Account {
     
     public ObservableList<Book> getAssigned() {
         return this.assignedBooks;
+    }
+    
+    public int getBorrowCount() {
+        return borrowCount;
+    }
+    
+    public void borrowedBook() {
+        borrowCount++;
+    }
+    
+    public void returnedBook(){
+        borrowCount--;
     }
 }

@@ -18,7 +18,6 @@ public class Book {
         this.author.set(author);
         this.genre.set(genre);
         this.stock.set(stock);
-        
     }
     
     public String getID() { return this.id.get(); }
@@ -41,5 +40,11 @@ public class Book {
     public void setStock(String stock) { this.title.set(stock); }
     public IntegerProperty stockProperty() { return this.stock; }
     
-
+    public void addStock(int amount) {
+        stock.set(stock.get() + amount);
+    }
+    
+    public void reduceStock(int amount) {
+        stock.set(stock.get() - amount);
+    }
 }
