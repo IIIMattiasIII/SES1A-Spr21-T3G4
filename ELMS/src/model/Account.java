@@ -1,11 +1,14 @@
 package model;
 
+import java.util.Date;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.ReadOnlyIntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.util.Pair;
 
 public class Account {
     private IntegerProperty ID = new SimpleIntegerProperty();
@@ -16,6 +19,7 @@ public class Account {
     private ObservableList<Book> rentedBooks;
     private ObservableList<Book> rentHistory;
     private ObservableList<Book> assignedBooks;
+    public ObservableList<Book> borrowedBooks = FXCollections.observableArrayList();
     private int borrowCount;
     
     public Account(int ID, String nameF, String nameS, String password, int permLvl) {
@@ -24,6 +28,9 @@ public class Account {
         permissionLevel = permLvl;
         this.password = password;
         fined = false;
+        borrowedBooks.add(new Book("B002","Holes","Lous Sacha","Adventure",1));
+        borrowedBooks.add(new Book("B011","Dune","Frank Herben","Adventure",1));
+        borrowedBooks.add(new Book("B014","Sahara","Clive Cussle","Adventure",1));
         // TBD: Add other attributes in constructor + their getters and setters
     }
     
@@ -52,6 +59,10 @@ public class Account {
     
     public int getBorrowCount() {
         return borrowCount;
+    }
+    
+    public ObservableList<Book> getBorrowedBooks() {
+        return this.borrowedBooks;
     }
     
     public void borrowedBook() {

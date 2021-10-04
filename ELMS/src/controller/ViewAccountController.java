@@ -2,6 +2,8 @@ package controller;
 
 import au.edu.uts.ap.javafx.*;
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 import javafx.application.Platform;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -21,42 +23,47 @@ public class ViewAccountController extends Controller<ELMS> {
     @FXML private TableColumn<Book, String> idCol;
     @FXML private TableColumn<Book, String> titleCol;
     @FXML private TableColumn<Book, String> authorCol;
+    @FXML private TableColumn<Book, String> stockCol;
     @FXML private TableColumn<Book, String> genreCol;
+    @FXML private TableColumn<Book, String> returnDateCol;
     @FXML private Button rentBtn;
     @FXML private Button assignedBtn;
     @FXML private Button finesBtn;
     @FXML private Button historyBtn;
     private Button prevBtn;
     private Account user;
+    
 
     public ViewAccountController() {
         //
     }
     
-    @FXML private void initialize() {
+    @FXML private void initialize(URL location, ResourceBundle resources) {
         user = getELMS().getSelectedAccount();
         rentBtn.fire();
-        /*idCol.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getID()));
-        titleCol.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getTitle()));
-        authorCol.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getAuthor()));
-        genreCol.setCellValueFactory(cellData -> new SimpleIntegerProperty(cellData.getValue().getStock()));*/
+        idCol.setCellValueFactory(new PropertyValueFactory<>("ID"));
+        titleCol.setCellValueFactory(new PropertyValueFactory<>("Title"));
+        authorCol.setCellValueFactory(new PropertyValueFactory<>("Author"));
+        stockCol.setCellValueFactory(new PropertyValueFactory<>("Stock"));
+        genreCol.setCellValueFactory(new PropertyValueFactory<>("Genre"));
+        returnDateCol.setCellValueFactory(new PropertyValueFactory<>("Return Date"));
     }
-
+    
     public final ELMS getELMS() { return model; }
     
     @FXML public void handleRentBooksBtn(ActionEvent e) throws IOException {
         mainTv.setItems(getELMS().getBooks());
-        //selectBtn(rentBtn);
+        selectBtn(rentBtn);
     }
     
     @FXML public void handleAssignedBooksBtn(ActionEvent e) throws IOException {
         selectBtn(assignedBtn);
-        mainTv.setItems(getELMS().getBooks());
+        //mainTv.setItems(getELMS().getBooks());
     }
     
     @FXML public void handleRentHistBtn(ActionEvent e) throws IOException {
         selectBtn(historyBtn);
-        mainTv.setItems(getELMS().getBooks());
+        //mainTv.setItems(getELMS().getBooks());
     }
     
     @FXML public void handleFinesBtn(ActionEvent e) throws IOException {

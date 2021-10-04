@@ -41,10 +41,36 @@
                     <Label text="No results found."/>
                 </placeholder>
                 <columns>
-                    <TableColumn fx:id = "IDCol" text = "ID" prefWidth="90.0"/>
-                    <TableColumn fx:id = "titleCol" text = "Title" prefWidth="210.0"/>
-                    <TableColumn fx:id = "authorCol" text = "Author" prefWidth="210.0"/>
-                    <TableColumn fx:id = "genreCol" text = "Stock" prefWidth="190.0"/>
+                    <TableColumn fx:id = "IDCol" text = "ID" prefWidth="90.0">
+                        <cellValueFactory>
+                            <PropertyValueFactory property = "ID"/>
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn fx:id = "titleCol" text = "Title" prefWidth="210.0">
+                        <cellValueFactory>
+                            <PropertyValueFactory property = "Title"/>
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn fx:id = "authorCol" text = "Author" prefWidth="210.0">
+                        <cellValueFactory>
+                            <PropertyValueFactory property = "Author"/>
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn fx:id = "genreCol" text = "Genre" prefWidth="190.0">
+                        <cellValueFactory>
+                            <PropertyValueFactory property = "Genre"/>
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn fx:id = "stockCol" text = "Stock" prefWidth="190.0">
+                        <cellValueFactory>
+                            <PropertyValueFactory property = "Stock"/>
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn fx:id = "returnDateCol" text = "Return Date" prefWidth="190.0">
+                        <cellValueFactory>
+                            <PropertyValueFactory property = "Return Date"/>
+                        </cellValueFactory>
+                    </TableColumn>
                 </columns>
             </TableView>
         </HBox>
