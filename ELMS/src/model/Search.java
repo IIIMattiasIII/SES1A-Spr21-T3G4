@@ -6,9 +6,15 @@ import javafx.collections.ObservableList;
 
 public class Search {
     ObservableList<Book> books = FXCollections.observableArrayList(); // Book class
-    public Search(){
-        books.add(new Book("11","software","Mohammad Karim","study",12));
-         books.add(new Book("11","Engineering","UTS","rocks",12));
+
+    //constructors
+    // This was brought back in because we need a way for the search class to have access to the list of books
+    // The value of inputBooks will == ELMS.books
+    // The ELMS class will need an attribute of class Search
+    // So the class will have a link/reference to the list of books
+    public Search(ObservableList<Book> inputBooks) {
+        books = inputBooks;
+
     }
     
     public ObservableList<String> byTitle(String title) {
@@ -132,8 +138,8 @@ public class Search {
         
         for (Book book : books) {
             aGenre = book.getGenre();
-            for (String author : genreList) {
-                if (aGenre.equals(author)) {
+            for (String genre : genreList) {
+                if (aGenre.equals(genre)) {
                     notFound = false;
                     break;
                 }
@@ -145,5 +151,29 @@ public class Search {
         
         return genreList;
     }    
+
+    public ObservableList<String> matchAuthor (String searchedAuthor, ObservableList<String> authorList) {
+        // method to return all authors that match author typed in
+        ObservableList<String> authorMatch = FXCollections.observableArrayList();
+        
+        for (String author : authorList) {
+            if (author.toLowerCase().contains(searchedAuthor.toLowerCase())) { 
+                authorMatch.add(author);
+            }
+        }
+        return authorMatch;
+    }
+    
+    public ObservableList<String> matchGenre (String searchedGenre, ObservableList<String> genreList) {
+        // method to return all genres that match genre typed in
+        ObservableList<String> genreMatch = FXCollections.observableArrayList();
+        
+        for (String genre : genreList) {
+            if (genre.toLowerCase().contains(searchedGenre.toLowerCase())) { 
+                genreMatch.add(genre);
+            }
+        }
+        return genreMatch;
+    }
 }
 
