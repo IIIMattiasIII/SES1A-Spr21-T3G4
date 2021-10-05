@@ -8,6 +8,8 @@ import javafx.fxml.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.util.Pair;
+import model.Account;
 import model.Book;
 import model.ELMS;
 
@@ -74,7 +76,7 @@ public class StaffBookReqController extends Controller<ELMS> {
         if (match) { // Inform user if match is found
             displayMsg("It looks like this book already exists in the library.\nIf you think this is an error, please contact the library management.");
         } else { // Else, add book to requests list for review by admins
-            getELMS().getRequests().add(new Book(getTitle(), getAuthor(), getYear()));
+            getELMS().getRequests().add(new Pair<>(getELMS().getSelectedAccount(), new Book(getTitle(), getAuthor(), getYear())));
             displayMsg("The book has been requested. You can now close this window.");
             closeBtn.setText("Close");
             //        reqBtn.setDisable(true);  <-- This is returning errors. Will use the line below until this is fixed.

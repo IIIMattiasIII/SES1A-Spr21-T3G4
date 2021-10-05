@@ -2,6 +2,7 @@ package model;
 
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.ReadOnlyIntegerProperty;
+import javafx.beans.property.ReadOnlyStringProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
@@ -22,6 +23,9 @@ public class Account {
     
     public int getID() { return this.ID.get(); }
     public ReadOnlyIntegerProperty idProperty() { return ID; }
+    
+    public int getName() { return this.ID.get(); }
+    public ReadOnlyStringProperty nameProperty() { return name; }
     
     public int getPermissionLevel() { return this.permissionLevel; }
 }
