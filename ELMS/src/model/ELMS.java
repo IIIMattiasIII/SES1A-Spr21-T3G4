@@ -15,6 +15,7 @@ public class ELMS {
     private final ObservableList<Account> accounts = FXCollections.observableArrayList();
     private Account selectedAccount = null;
     private final ObservableList<Book> books = FXCollections.observableArrayList();
+    private final ObservableList<Book> requestedBooks = FXCollections.observableArrayList();
     private boolean userSelected;
 
     public ELMS() {
@@ -93,5 +94,9 @@ public class ELMS {
     
     public ObservableList<Book> getBooks() {
         return this.books;
+    }
+    
+    public ObservableList<Book> getRequests() {
+        return this.requestedBooks;
     }
 }
