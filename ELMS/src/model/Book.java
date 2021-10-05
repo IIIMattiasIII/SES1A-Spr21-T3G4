@@ -9,6 +9,7 @@ public class Book {
     private final StringProperty id = new SimpleStringProperty();
     private final StringProperty title = new SimpleStringProperty();
     private final StringProperty author = new SimpleStringProperty();
+    private final IntegerProperty year = new SimpleIntegerProperty();
     private final StringProperty genre = new SimpleStringProperty();
     private final IntegerProperty stock = new SimpleIntegerProperty();
     
@@ -18,6 +19,17 @@ public class Book {
         this.author.set(author);
         this.genre.set(genre);
         this.stock.set(stock);
+        
+    }
+    
+    // Constructor variant used for staff book request
+    public Book(String title, String author, int year) {
+        this.id.set(null);
+        this.title.set(title);
+        this.author.set(author);
+        this.year.set(year);
+        this.genre.set(null);
+        this.stock.set(0);
         
     }
     
@@ -32,6 +44,10 @@ public class Book {
     public String getAuthor() { return this.author.get(); }
     public void setAuthor(String author) { this.author.set(author); }
     public StringProperty authorProperty() { return this.author; }
+    
+    public int getYear() { return this.year.get(); }
+    public void setYear(int year) { this.year.set(year); }
+    public IntegerProperty yearProperty() { return this.year; }
     
     public String getGenre() { return this.genre.get(); }
     public void setGenre(String genre) { this.genre.set(genre); }

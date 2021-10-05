@@ -10,13 +10,15 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.util.Pair;
 
 public class ELMS { 
     private final ObservableList<Account> accounts = FXCollections.observableArrayList();
     private Account selectedAccount;
-    private final ObservableList<Book> books = FXCollections.observableArrayList();
-    private Book selectedBook;
     private boolean userSelected;
+    private final ObservableList<Book> books = FXCollections.observableArrayList();
+    private final ObservableList<Pair<Account, Book>> requestedBooks = FXCollections.observableArrayList();
+    private Book selectedBook;
 
     public ELMS() {
         selectedAccount = null;
@@ -138,5 +140,9 @@ public class ELMS {
     
     public ObservableList<Book> getBooks() {
         return this.books;
+    }
+    
+    public ObservableList<Pair<Account, Book>> getRequests() {
+        return this.requestedBooks;
     }
 }

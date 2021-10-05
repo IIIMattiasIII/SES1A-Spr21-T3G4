@@ -11,7 +11,7 @@
 <?import javafx.scene.text.*?>
 
 <VBox xmlns:fx="http://javafx.com/fxml"
-      fx:controller="controller.AdminMenuController" 
+      fx:controller="controller.StaffMenuController" 
       alignment="center" spacing="10"
       styleClass="root"
       prefWidth="1280"
@@ -23,12 +23,11 @@
                 <Image url="@logo_scaled.png"/>
             </image> 
         </ImageView>
-        <Label styleClass="h1" text="Administrative Menu"/>
+        <Label styleClass="h1" text="Staff Menu"/>
     </HBox>
     <VBox spacing="40" alignment="CENTER" prefHeight="410">
-        <Button text="Add a New Book" onAction="#handleAddBtn" styleClass="menuButton" maxWidth="400" maxHeight="100"/>
-        <Button text="Modify an Existing Book" onAction="#handleModBtn" styleClass="menuButton" maxWidth="400" maxHeight="100"/>
-        <Button text="View Requests" onAction="#handleReqBtn" styleClass="menuButton" maxWidth="400" maxHeight="100"/>
+        <Button text="Prescribe a Book" onAction="#handleSetBtn" styleClass="menuButton" maxWidth="350" maxHeight="100"/>
+        <Button text="Request a Book" onAction="#handleReqBtn" styleClass="menuButton" maxWidth="350" maxHeight="100"/>
     </VBox> 
     <HBox spacing="30" alignment="BOTTOM_CENTER">
         <Button text="Return to Menu" onAction="#handleReturnBtn" styleClass="button" prefWidth="150" />

@@ -8,19 +8,19 @@ import javafx.fxml.*;
 import javafx.stage.Stage;
 import model.ELMS;
 
-public class AdminMenuController extends Controller<ELMS> { 
-    public final ELMS getELMS() { return model; }
-    
-    @FXML public void handleAddBtn(ActionEvent e) throws IOException {
-        ViewLoader.showStage(getELMS(), "/view/AddBook.fxml", this.stage.getTitle(), new Stage());
-    }
-    
-    @FXML public void handleModBtn(ActionEvent e) throws IOException {
-        ViewLoader.showStage(getELMS(), "/view/ModifyLibrary.fxml", this.stage.getTitle(), this.stage);
+public class StaffMenuController extends Controller<ELMS> { 
+    public StaffMenuController() {
+        //
     }
 
+    public final ELMS getELMS() { return model; }
+    
+    @FXML public void handleSetBtn(ActionEvent e) throws IOException {
+//        ViewLoader.showStage(getELMS(), "/view/PrescribeBook.fxml", this.stage.getTitle(), new Stage());
+    }
+    
     @FXML public void handleReqBtn(ActionEvent e) throws IOException {
-        ViewLoader.showStage(getELMS(), "/view/ViewRequests.fxml", this.stage.getTitle(), this.stage);
+        ViewLoader.showStage(getELMS(), "/view/StaffBookReq.fxml", this.stage.getTitle(), new Stage());
     }
     
     @FXML public void handleExitBtn(ActionEvent e) { Platform.exit(); }
