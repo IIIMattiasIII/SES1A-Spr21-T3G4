@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="controller.StaffMenuController" 
+      alignment="center" spacing="10"
+      styleClass="root"
+      prefWidth="1280"
+      prefHeight="720"
+      maxHeight="720">
+    <HBox spacing="10" alignment="CENTER_LEFT" styleClass="h1">
+        <ImageView> 
+            <image>
+                <Image url="@logo_scaled.png"/>
+            </image> 
+        </ImageView>
+        <Label styleClass="h1" text="Staff Menu"/>
+    </HBox>
+    <VBox spacing="40" alignment="CENTER" prefHeight="410">
+        <Button text="Prescribe a Book" onAction="#handleSetBtn" styleClass="menuButton" maxWidth="350" maxHeight="100"/>
+        <Button text="Request a Book" onAction="#handleReqBtn" styleClass="menuButton" maxWidth="350" maxHeight="100"/>
+    </VBox> 
+    <HBox spacing="30" alignment="BOTTOM_CENTER">
+        <Button text="Return to Menu" onAction="#handleReturnBtn" styleClass="button" prefWidth="150" />
+        <Button text="Exit eLibrary" onAction="#handleExitBtn" styleClass="button" prefWidth="150" />
+    </HBox>
+    <stylesheets>
+        <URL value="@styles.css"/>
+    </stylesheets>
+</VBox>
