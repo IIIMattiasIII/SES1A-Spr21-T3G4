@@ -23,7 +23,7 @@
                 <Image url="@logo_scaled.png"/>
             </image> 
         </ImageView>
-        <Label styleClass="h1" text="Account Login"/>
+        <Label styleClass="h1" text="${'Add a New Book\nto the Library'}"/>
     </HBox>
     <VBox spacing="40" alignment="CENTER" prefHeight="410">
         <GridPane alignment="center" vgap="20" hgap="10">
