@@ -20,6 +20,8 @@ public class AddBookController extends Controller<ELMS> {
     @FXML
     private TextField authorTf;
     @FXML
+    private TextField yearTf;
+    @FXML
     private TextField genreTf;
     @FXML
     private TextField stockTf;
@@ -62,6 +64,10 @@ public class AddBookController extends Controller<ELMS> {
     private final String getAuthor() {
         return authorTf.getText().trim();
     }
+    
+    private final int getYear() {
+        return Integer.parseInt(yearTf.getText().trim());
+    }
 
     private final String getGenre() {
         return genreTf.getText().trim();
@@ -88,7 +94,7 @@ public class AddBookController extends Controller<ELMS> {
         if (idMatch) { // Inform admin if match is found
             displayMsg("A book has already been added to the library with this ID.");
         } else { // Else, add book to library and update the view accordingly
-            getELMS().addBook(this.getID(), this.getTitle(), this.getAuthor(), this.getGenre(), this.getStock());
+            getELMS().addBook(this.getID(), this.getTitle(), this.getAuthor(), this.getYear(), this.getGenre(), this.getStock());
             displayMsg("Book has been added. You can now close this window.");
             closeBtn.setText("Close");
             //        addBtn.setDisable(true);  <-- This is returning errors. Will use the line below until this is fixed.

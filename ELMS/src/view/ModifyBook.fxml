@@ -30,13 +30,15 @@
             <Label text="ID:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
             <Label text="Title:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
             <Label text="Author: " GridPane.columnIndex="0" GridPane.rowIndex="2"/>
-            <Label  text="Genre" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
-            <Label  text="Stock:" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
+            <Label text="Year:" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+            <Label  text="Genre" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
+            <Label  text="Stock:" GridPane.columnIndex="0" GridPane.rowIndex="5"/>
             <TextField fx:id="idTf" GridPane.columnIndex="1" GridPane.rowIndex="0" prefWidth="150.0" styleClass="textField"/>
             <TextField fx:id="titleTf" GridPane.columnIndex="1" GridPane.rowIndex="1" prefWidth="150.0" styleClass="textField"/>
             <TextField fx:id="authorTf" GridPane.columnIndex="1" GridPane.rowIndex="2" prefWidth="150.0" styleClass="textField"/>
-            <TextField fx:id="genreTf" GridPane.columnIndex="1" GridPane.rowIndex="3" prefWidth="150.0" styleClass="textField"/>
-            <TextField fx:id="stockTf" GridPane.columnIndex="1" GridPane.rowIndex="4" prefWidth="150.0" styleClass="textField"/>
+            <TextField fx:id="yearTf" GridPane.columnIndex="1" GridPane.rowIndex="3" prefWidth="150.0" styleClass="textField"/>
+            <TextField fx:id="genreTf" GridPane.columnIndex="1" GridPane.rowIndex="4" prefWidth="150.0" styleClass="textField"/>
+            <TextField fx:id="stockTf" GridPane.columnIndex="1" GridPane.rowIndex="5" prefWidth="150.0" styleClass="textField"/>
         </GridPane>
         <Label fx:id="msgTxt" styleClass="message"/>
     </VBox>  

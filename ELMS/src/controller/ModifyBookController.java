@@ -21,6 +21,8 @@ public class ModifyBookController extends Controller<ELMS> {
     @FXML
     private TextField authorTf;
     @FXML
+    private TextField yearTf;
+    @FXML
     private TextField genreTf;
     @FXML
     private TextField stockTf;
@@ -39,6 +41,7 @@ public class ModifyBookController extends Controller<ELMS> {
         idTf.setText(selBook.getID());
         titleTf.setText(selBook.getTitle());
         authorTf.setText(selBook.getAuthor());
+        yearTf.setText(selBook.getYear()+"");
         genreTf.setText(selBook.getGenre());
         stockTf.setText(selBook.getStock()+"");
         // Change listener to force the contents of the stock text field to be only numbers
@@ -66,6 +69,10 @@ public class ModifyBookController extends Controller<ELMS> {
         return authorTf.getText().trim();
     }
 
+    private final int getYear() {
+        return Integer.parseInt(yearTf.getText().trim());
+    }
+
     private final String getGenre() {
         return genreTf.getText().trim();
     }
@@ -84,6 +91,7 @@ public class ModifyBookController extends Controller<ELMS> {
         selBook.setID(this.getID());
         selBook.setTitle(this.getTitle());
         selBook.setAuthor(this.getAuthor());
+        selBook.setYear(this.getYear());
         selBook.setGenre(this.getGenre());
         selBook.setStock(this.getStock());             
         displayMsg("Book has been updated. You can now close this window.");

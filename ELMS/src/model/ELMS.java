@@ -36,7 +36,7 @@ public class ELMS {
             String row;
             while ((row = csvReader.readLine()) != null) {
                 String[] data = row.split(",");
-                books.add(new Book(data[0], data[1], data[2], data[3], Integer.parseInt(data[4])));
+                books.add(new Book(data[0], data[1], data[2], Integer.parseInt(data[3]), data[4], Integer.parseInt(data[5])));
             }
             csvReader.close();
         } catch (FileNotFoundException ex) {
@@ -93,7 +93,7 @@ public class ELMS {
         }
     }
     
-    public void addBook(String ID, String title, String author, String genre, int stock) {
+    public void addBook(String ID, String title, String author, int year, String genre, int stock) {
         FileWriter csvWriter;
         try {
             final String dir = System.getProperty("user.dir");
@@ -104,12 +104,14 @@ public class ELMS {
             csvWriter.append(",");
             csvWriter.append(author);
             csvWriter.append(",");
+            csvWriter.append(""+year);
+            csvWriter.append(",");
             csvWriter.append(genre);
             csvWriter.append(",");
             csvWriter.append(""+stock);
             csvWriter.append("\n");
             csvWriter.close();
-            books.add(new Book(ID, title, author, genre, stock));
+            books.add(new Book(ID, title, author, year, genre, stock));
         } catch (FileNotFoundException ex) {
             Logger.getLogger(ELMS.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {

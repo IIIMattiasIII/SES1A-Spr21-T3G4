@@ -19,6 +19,7 @@ public class ModifyLibraryController extends Controller<ELMS> {
     @FXML private TableColumn<Book, String> idCol;
     @FXML private TableColumn<Book, String> titleCol;
     @FXML private TableColumn<Book, String> authorCol;
+    @FXML private TableColumn<Book, String> yearCol;
     @FXML private TableColumn<Book, String> genreCol;
     
     @FXML private Button removeBtn;
@@ -33,6 +34,7 @@ public class ModifyLibraryController extends Controller<ELMS> {
         idCol.setCellValueFactory(cellData -> cellData.getValue().idProperty());
         titleCol.setCellValueFactory(cellData -> cellData.getValue().titleProperty());
         authorCol.setCellValueFactory(cellData -> cellData.getValue().authorProperty());
+        yearCol.setCellValueFactory(cellData -> cellData.getValue().yearProperty().asString());
         genreCol.setCellValueFactory(cellData -> cellData.getValue().genreProperty());
         msgTxt.setVisible(false);
     }

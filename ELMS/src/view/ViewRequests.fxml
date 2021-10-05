@@ -26,7 +26,7 @@
         <Label styleClass="h1" text="View Book Requests from Staff"/>
     </HBox>
     <VBox spacing="10" alignment="CENTER" prefHeight="410">
-        <TableView fx:id="reqsTv" prefHeight="250" prefWidth="804" maxWidth="804" 
+        <TableView fx:id="reqsTv" prefHeight="250" prefWidth="821" maxWidth="821" 
                 styleClass="table-view">
             <placeholder>
                 <Label text="No unresolved requests."/>

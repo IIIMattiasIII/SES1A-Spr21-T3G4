@@ -13,10 +13,11 @@ public class Book {
     private final StringProperty genre = new SimpleStringProperty();
     private final IntegerProperty stock = new SimpleIntegerProperty();
     
-    public Book(String ID, String title, String author, String genre, int stock) {
+    public Book(String ID, String title, String author, int year, String genre, int stock) {
         this.id.set(ID);
         this.title.set(title);
         this.author.set(author);
+        this.year.set(year);
         this.genre.set(genre);
         this.stock.set(stock);
         
