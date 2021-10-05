@@ -26,7 +26,20 @@
         <Label styleClass="h1" text="View Book Requests from Staff"/>
     </HBox>
     <VBox spacing="10" alignment="CENTER" prefHeight="410">
-        <!--stage content goes here-->
+        <TableView fx:id="reqsTv" prefHeight="250" prefWidth="800" maxWidth="800" 
+                styleClass="table-view">
+            <placeholder>
+                <Label text="No unresolved requests."/>
+            </placeholder>
+            <columns>
+                <TableColumn text="Requester" fx:id="requesterCol" prefWidth="250.0"/>
+                <TableColumn text="Title" fx:id="titleCol" prefWidth="220.0" />
+                <TableColumn text="Author" fx:id="authorCol" prefWidth="200.0"/>
+                <TableColumn text="Year" fx:id="yearCol" prefWidth="130.0"/>
+            </columns>
+        </TableView>
+        <Label fx:id="msgTxt" styleClass="message"/>
+        <Button fx:id="removeBtn" text="Remove from List" styleClass="button" onAction="#handleRemoveBtn" />
     </VBox> 
     <HBox spacing="30" alignment="BOTTOM_CENTER">
         <Button text="Return to Menu" onAction="#handleReturnBtn" styleClass="button" prefWidth="150" />
