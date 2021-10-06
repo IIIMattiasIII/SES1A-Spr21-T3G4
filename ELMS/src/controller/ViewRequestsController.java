@@ -27,6 +27,8 @@ public class ViewRequestsController extends Controller<ELMS> {
     @FXML public void initialize() {
         removeBtn.disableProperty().bind(Bindings.isEmpty(reqsTv.getSelectionModel().getSelectedItems()));
         reqsTv.setItems(getELMS().getRequests());
+        int size = getELMS().getRequests().size() > 8 ? 821 : 804;
+        reqsTv.setMaxWidth(size);
         requesterCol.setCellValueFactory(cellData -> cellData.getValue().getKey().nameProperty());
         titleCol.setCellValueFactory(cellData -> cellData.getValue().getValue().titleProperty());
         authorCol.setCellValueFactory(cellData -> cellData.getValue().getValue().authorProperty());
