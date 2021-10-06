@@ -11,7 +11,6 @@ public class Book {
     private final StringProperty author = new SimpleStringProperty();
     private final StringProperty genre = new SimpleStringProperty();
     private final IntegerProperty stock = new SimpleIntegerProperty();
-    //private final IntegerProperty returnDate = new SimpleIntegerProperty();
     
     public Book(String ID, String title, String author, String genre, int stock) {
         this.id.set(ID);
@@ -19,7 +18,6 @@ public class Book {
         this.author.set(author);
         this.genre.set(genre);
         this.stock.set(stock);
-        //this.returnDate.set(returnDate);
     }
     
     public String getID() { return this.id.get(); }
@@ -41,16 +39,4 @@ public class Book {
     public int getStock() { return this.stock.get(); }
     public void setStock(String stock) { this.title.set(stock); }
     public IntegerProperty stockProperty() { return this.stock; }
-    
-    /*public int getreturnDate() { return this.returnDate.get(); }
-    public void serReturnDate(int returnDate) { this.returnDate.set(returnDate); }
-    public IntegerProperty returnDateProperty() { return this.returnDate; }*/
-    
-    public void addStock(int amount) {
-        stock.set(stock.get() + amount);
-    }
-    
-    public void reduceStock(int amount) {
-        stock.set(stock.get() - amount);
-    }
 }

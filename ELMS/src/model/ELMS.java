@@ -2,26 +2,26 @@ package model;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.net.URL;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 public class ELMS { 
-    private final ObservableList<Account> accounts = FXCollections.observableArrayList();
+    private final ObservableList<Account> accounts;
     private Account selectedAccount = null;
-    private final ObservableList<Book> books = FXCollections.observableArrayList();
+    private final ObservableList<Book> books;
     private boolean userSelected;
-    private final ObservableList<Book> rentedBooks = FXCollections.observableArrayList();
-    //private final ObservableList<Book> assignedBooks = FXCollections.observableArrayList()
+    private final ObservableList<Book> availableBooks;
 
     public ELMS() {
+        this.accounts = FXCollections.observableArrayList();
+        this.books = FXCollections.observableArrayList();
+        this.availableBooks = FXCollections.observableArrayList();
         userSelected = false;
         importAccounts();
         importBooks();
@@ -133,11 +133,7 @@ public class ELMS {
         return this.books;
     }
     
-    public ObservableList<Book> getRentedBooks() {
-        return this.rentedBooks;
+    public ObservableList<Book> getAvailableBooks() {
+        return this.availableBooks;
     }
-    
-    /*public ObservableList<Book> getAssignedBooks() {
-        return this.assignedBooks;
-    }*/
 }
