@@ -29,50 +29,27 @@
         <Label styleClass="h1" text="View Account"/>
     </HBox>
     <VBox spacing="20" alignment="CENTER_LEFT" prefHeight="410">
-        <HBox alignment = "CENTER" spacing = "40">
+        <HBox alignment = "TOP_CENTER" spacing = "40">
             <VBox spacing ="20" alignment = "CENTER_LEFT">
-                <Button fx:id="rentBtn" text ="Rented Books" onAction="#handleRentBooksBtn" styleClass = "button" prefWidth="250" prefHeight="110"/>
-                <Button fx:id="assignedBtn" text ="Assigned Books" onAction="#handleAssignedBooksBtn" styleClass ="button" prefWidth="250" prefHeight="110"/>
-                <Button fx:id="finesBtn" text = "Fines" onAction ="#handleFinesBtn" styleClass ="button" prefWidth="250" prefHeight="110"/>
-                <Button fx:id="historyBtn" text = "Renting History" onAction ="#handleRentHistBtn" styleClass ="button" prefWidth="250" prefHeight="110"/>
+                <Button fx:id="rentBtn" text="Rented Books" onAction="#handleRentBooksBtn" styleClass="button" prefWidth="250" prefHeight="110"/>
+                <Button fx:id="assignedBtn" text="Assigned Books" onAction="#handleAssignedBooksBtn" styleClass="button" prefWidth="250" prefHeight="110"/>
+                <Button fx:id="finesBtn" text="Fines" onAction="#handleFinesBtn" styleClass="button" prefWidth="250" prefHeight="110"/>
+                <Button fx:id="historyBtn" text="Renting History" onAction="#handleRentHistBtn" styleClass ="button" prefWidth="250" prefHeight="110"/>
             </VBox>
-            <TableView fx:id = "mainTv" styleClass="table-view" prefWidth = "700" prefHeight = "240">
-                <placeholder>
-                    <Label text="No results found."/>
-                </placeholder>
-                <columns>
-                    <TableColumn fx:id = "IDCol" text = "ID" prefWidth="90.0">
-                        <cellValueFactory>
-                            <PropertyValueFactory property = "ID"/>
-                        </cellValueFactory>
-                    </TableColumn>
-                    <TableColumn fx:id = "titleCol" text = "Title" prefWidth="210.0">
-                        <cellValueFactory>
-                            <PropertyValueFactory property = "Title"/>
-                        </cellValueFactory>
-                    </TableColumn>
-                    <TableColumn fx:id = "authorCol" text = "Author" prefWidth="210.0">
-                        <cellValueFactory>
-                            <PropertyValueFactory property = "Author"/>
-                        </cellValueFactory>
-                    </TableColumn>
-                    <TableColumn fx:id = "genreCol" text = "Genre" prefWidth="190.0">
-                        <cellValueFactory>
-                            <PropertyValueFactory property = "Genre"/>
-                        </cellValueFactory>
-                    </TableColumn>
-                    <TableColumn fx:id = "stockCol" text = "Stock" prefWidth="190.0">
-                        <cellValueFactory>
-                            <PropertyValueFactory property = "Stock"/>
-                        </cellValueFactory>
-                    </TableColumn>
-                    <TableColumn fx:id = "returnDateCol" text = "Return Date" prefWidth="190.0">
-                        <cellValueFactory>
-                            <PropertyValueFactory property = "Return Date"/>
-                        </cellValueFactory>
-                    </TableColumn>
-                </columns>
-            </TableView>
+            <VBox spacing ="10" alignment = "TOP_CENTER">
+                <TableView fx:id="mainTv" styleClass="table-view" prefWidth="771" maxWidth="771" prefHeight="360" maxHeight="360">
+                    <placeholder>
+                        <Label text="No results found."/>
+                    </placeholder>
+                    <columns>
+                        <TableColumn fx:id="idCol" text="ID" prefWidth="140.0"/>
+                        <TableColumn fx:id="titleCol" text="Title" prefWidth="210.0"/>
+                        <TableColumn fx:id="authorCol" text="Author" prefWidth="200.0"/>
+                        <TableColumn fx:id="varCol" prefWidth="200.0"/>
+                    </columns>
+                </TableView>
+                <Button fx:id="actionBtn" onAction="#handleActionBtn" styleClass="button" prefWidth="175"/>
+            </VBox>
         </HBox>
     </VBox>
     <HBox spacing="30" alignment="BOTTOM_CENTER">
