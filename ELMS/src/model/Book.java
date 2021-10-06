@@ -20,7 +20,6 @@ public class Book {
         this.year.set(year);
         this.genre.set(genre);
         this.stock.set(stock);
-        
     }
     
     // Constructor variant used for staff book request
@@ -57,6 +56,4 @@ public class Book {
     public int getStock() { return this.stock.get(); }
     public void setStock(int stock) { this.stock.set(stock); }
     public IntegerProperty stockProperty() { return this.stock; }
-    
-
 }

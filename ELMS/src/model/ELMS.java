@@ -13,14 +13,19 @@ import javafx.collections.ObservableList;
 import javafx.util.Pair;
 
 public class ELMS { 
-    private final ObservableList<Account> accounts = FXCollections.observableArrayList();
+    private final ObservableList<Account> accounts;
     private Account selectedAccount;
     private boolean userSelected;
-    private final ObservableList<Book> books = FXCollections.observableArrayList();
-    private final ObservableList<Pair<Account, Book>> requestedBooks = FXCollections.observableArrayList();
+    private final ObservableList<Book> books;
+    private final ObservableList<Book> availableBooks;
+    private final ObservableList<Pair<Account, Book>> requestedBooks;
     private Book selectedBook;
-
+    
     public ELMS() {
+        this.accounts = FXCollections.observableArrayList();
+        this.books = FXCollections.observableArrayList();
+        this.availableBooks = FXCollections.observableArrayList();
+        this.requestedBooks = FXCollections.observableArrayList();
         selectedAccount = null;
         selectedBook = null;
         userSelected = false;
@@ -146,5 +151,9 @@ public class ELMS {
     
     public ObservableList<Pair<Account, Book>> getRequests() {
         return this.requestedBooks;
+    }
+
+    public ObservableList<Book> getAvailableBooks() {
+        return this.availableBooks;
     }
 }
