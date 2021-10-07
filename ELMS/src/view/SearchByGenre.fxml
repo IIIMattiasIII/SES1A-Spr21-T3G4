@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox styleClass = "search" spacing = "10" alignment = "center" xmlns:fx = "http://javafx.com/fxml/1" fx:controller = "controller.SearchByGenre">
+    
+   <HBox spacing ="50" alignment = "center">
+       
+     <Label styleClass="h1" text = "Search By Genre:"/>
+     <TextField fx:id = "bookGenre"/>
+     <Button fx:id = "button" text = "Search" onAction = "#setList"/>
+     <Button fx:id = "reset" text = "Reset" onAction = "#resetlist"/>  
+      
+   </HBox>
+    
+    <ListView fx:id = "List" prefWidth = "300" prefHeight = "500">  
+        
+        <placeholder>
+            <Label text = "No Books"/>
+         </placeholder>
+         
+     </ListView>  
+     
+    <stylesheets>
+        
+        <URL value = "@styles.css"/>
+        
+    </stylesheets>
+        
+    <Button fx:id = "borrow_button" text = "Borrow" onAction = "#handleBorrow3"/>    
+    
+    <Text fx:id = "text"/>
+      
+    
+   <HBox spacing="30" alignment="BOTTOM_CENTER">
+       
+        <Button text="Return to Menu" onAction="#handleReturnBtn" styleClass="button" prefWidth="150" />
+        <Button text="Exit eLibrary" onAction="#handleExitBtn" styleClass="button" prefWidth="150" />
+        
+    </HBox>
+    
+    
+</VBox>
+

@@ -20,18 +20,26 @@ public class ELMS {
     private final ObservableList<Book> availableBooks;
     private final ObservableList<Pair<Account, Book>> requestedBooks;
     private Book selectedBook;
-    
+    private Search search;
+    private Borrowings borrowings;
+
     public ELMS() {
         this.accounts = FXCollections.observableArrayList();
         this.books = FXCollections.observableArrayList();
         this.availableBooks = FXCollections.observableArrayList();
         this.requestedBooks = FXCollections.observableArrayList();
+        search = new Search(this);
+        borrowings = new Borrowings();
         selectedAccount = null;
         selectedBook = null;
         userSelected = false;
         importAccounts();
         importBooks();
     }
+    
+    public Search getSearch(){return search;}
+    
+    public Borrowings getBorrowings(){return borrowings;}
     
     private void importBooks() {
         BufferedReader csvReader;

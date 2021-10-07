@@ -33,7 +33,7 @@ public class Account {
     public int getID() { return this.ID.get(); }
     public ReadOnlyIntegerProperty idProperty() { return ID; }
     
-    public int getName() { return this.ID.get(); }
+    public String getName(){return name.get();}
     public ReadOnlyStringProperty nameProperty() { return name; }
     
     public int getPassHash() { return password.hashCode(); }
