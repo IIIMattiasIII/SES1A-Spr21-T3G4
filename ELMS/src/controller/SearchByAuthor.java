@@ -42,7 +42,7 @@ ObservableList<String> authors = FXCollections.observableArrayList();
   public SearchByAuthor() throws IOException {
         //
     }
-  @FXML private void initialize(){ List.setItems(search.allAuthors());
+  @FXML private void initialize(){ List.setItems(getELMS().getSearch().allAuthors());
                                   
   }
   
@@ -69,7 +69,7 @@ public String getauthor(){return author;}
 @FXML public void setList(ActionEvent e)throws IOException{
     
     //ViewLoader.showStage(getELMS(), "/view/AuthorBooks.fxml","practise",new Stage());
-    List.setItems(search.byAuthor(getSelectedItem()));
+    List.setItems(getELMS().getSearch().byAuthor(getSelectedItem()));
 }
 
 @FXML public void resetlist(){initialize();}
@@ -82,11 +82,11 @@ public String getauthor(){return author;}
     
     Account user =getELMS().getSelectedAccount();
     
-    forBorrow = search.byName(getSelectedItem());
+    forBorrow = getELMS().getSearch().byName(getSelectedItem());
     
     for(Book book : forBorrow){
         
-    borrowings.borrowBook(book, user);
+    getELMS().getBorrowings().borrowBook(book, user);
     
     text.setText("You have successfully borrowed the book "+book.getTitle());
     

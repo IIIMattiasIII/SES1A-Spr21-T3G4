@@ -18,12 +18,20 @@ public class ELMS {
     private Account selectedAccount = null;
     private final ObservableList<Book> books = FXCollections.observableArrayList();
     private boolean userSelected;
+    private Search search;
+    private Borrowings borrowings;
 
     public ELMS() {
         userSelected = false;
         importAccounts();
         importBooks();
+        search = new Search(books);
+        borrowings = new Borrowings();
     }
+    
+    public Search getSearch(){return search;}
+    
+    public Borrowings getBorrowings(){return borrowings;}
     
     private void importBooks() {
         BufferedReader csvReader;

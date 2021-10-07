@@ -71,9 +71,9 @@ public final ELMS getELMS() { return model; }
   //  Book title = search.byName(getSelectedBook());
     ObservableList<Book> forBorrow = FXCollections.observableArrayList();
     Account user =getELMS().getSelectedAccount();
-    forBorrow = search.byauthor(getSelectedItem());
+    forBorrow = getELMS().getSearch().byauthor(getSelectedItem());
     for(Book book : forBorrow){
-    borrowings.borrowBook(book, user);
+    getELMS().getBorrowings().borrowBook(book, user);
     text.setText("You have successfully borrowed the book "+book.getTitle());
     
     }

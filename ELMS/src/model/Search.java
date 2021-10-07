@@ -5,6 +5,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 public class Search {
+    ELMS elms;
     ObservableList<Book> books = FXCollections.observableArrayList(); // Book class
 
     //constructors
@@ -12,8 +13,9 @@ public class Search {
     // The value of inputBooks will == ELMS.books
     // The ELMS class will need an attribute of class Search
     // So the class will have a link/reference to the list of books
-    public Search(ObservableList<Book> inputBooks) {
-        books = inputBooks;
+    public Search(ObservableList<Book> inputbooks) {
+      
+        books = inputbooks;
 
     }
     

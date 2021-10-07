@@ -37,9 +37,9 @@ public class SearchByGenre extends Controller<ELMS>  {
     }
 @FXML private void initialize(){ 
     
-    System.out.println(search.allGenres());
+    System.out.println(getELMS().getSearch().allGenres());
     
-    List.setItems(search.allGenres());}
+    List.setItems(getELMS().getSearch().allGenres());}
 
 
 @FXML public String getName(){
@@ -57,9 +57,9 @@ public final ELMS getELMS() { return model; }
 
 @FXML private void setList(ActionEvent e)throws IOException{
     
-    List.setItems(search.byCategory(getItem()));
+    List.setItems(getELMS().getSearch().byCategory(getItem()));
 }
-@FXML private void resetlist(ActionEvent e) throws IOException{   List.setItems(search.allGenres()); }
+@FXML private void resetlist(ActionEvent e) throws IOException{   List.setItems(getELMS().getSearch().allGenres()); }
 
 @FXML public void handleBorrow3(ActionEvent event){//borrowings.borrowBook(search.byName(getSelectedBook()),getAccount())
     
@@ -69,11 +69,11 @@ public final ELMS getELMS() { return model; }
     
     Account user =getELMS().getSelectedAccount();
     
-    forBorrow = search.byName(getItem());
+    forBorrow = getELMS().getSearch().byName(getItem());
     
     for(Book book : forBorrow){
         
-    borrowings.borrowBook(book, user);
+    getELMS().getBorrowings().borrowBook(book, user);
     
     text.setText("You have successfully borrowed the book "+book.getTitle());
     

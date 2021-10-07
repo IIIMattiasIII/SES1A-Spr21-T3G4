@@ -32,13 +32,14 @@ public class SearchByBooks extends Controller<ELMS>  {
 @FXML private TextField BookName;
 @FXML private Button borrow_button;
 @FXML private Button search_Button; 
+@FXML private ListView List;
 @FXML private Text text;
  
   public SearchByBooks() throws IOException {
         //
     }
   
- @FXML private void initialize(){ availableList();}
+ @FXML private void initialize(){ List.setItems(getELMS().getSearch().getAvailablebooks());}
 
 
 @FXML public String getName(){
@@ -49,8 +50,10 @@ public final ELMS getELMS() { return model; }
 
 @FXML public void setList(ActionEvent e)throws IOException{
     
-    List.setItems(search.byTitle(getName()));
+    List.setItems(getELMS().getSearch().byTitle(getName()));
 }
+
+@FXML private void resetList(ActionEvent e){getELMS().getSearch().getAvailablebooks();}
 
 @FXML public void handleExitBtn(ActionEvent e) { Platform.exit(); }
 
@@ -66,9 +69,9 @@ private String getSelectedBook(){
   //  Book title = search.byName(getSelectedBook());
     ObservableList<Book> forBorrow = FXCollections.observableArrayList();
     Account user =getELMS().getSelectedAccount();
-    forBorrow = search.byName(getSelectedBook());
+    forBorrow = getELMS().getSearch().byName(getSelectedBook());
     for(Book book : forBorrow){
-    borrowings.borrowBook(book, user);
+    getELMS().getBorrowings().borrowBook(book, user);
     text.setText("You have successfully borrowed the book "+book.getTitle());
     
     }
