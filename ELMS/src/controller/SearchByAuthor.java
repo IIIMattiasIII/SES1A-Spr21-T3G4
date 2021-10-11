@@ -5,6 +5,7 @@ import javafx.application.Platform;
 import au.edu.uts.ap.javafx.*;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -13,6 +14,7 @@ import javafx.fxml.*;
 import javafx.scene.control.*;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafx.util.Pair;
 import model.ELMS;
 import model.Account;
 import model.Book;
@@ -74,24 +76,39 @@ public String getauthor(){return author;}
 
 @FXML public void resetlist(){initialize();}
 
-@FXML public void handleBorrow2(ActionEvent event){//borrowings.borrowBook(search.byName(getSelectedBook()),getAccount())
+@FXML public void handleBorrow2(ActionEvent event){
+    
+    Date date = new Date();
+    
+    ObservableList <Book> books = FXCollections.observableArrayList();
+    
+    books = getELMS().getSearch().byName(getSelectedItem());
+    
+    for(Book book : books){
+       
+       getELMS().getSelectedAccount().borrow(new Pair<>(date,book));
+     text.setText(book.getTitle() + " borrowed"); 
+    }  
+    }
+
+//@FXML public void handleBorrow2(ActionEvent event){//borrowings.borrowBook(search.byName(getSelectedBook()),getAccount())
     
   //  Book title = search.byName(getSelectedBook());
   
-    ObservableList<Book> forBorrow = FXCollections.observableArrayList();
+    //ObservableList<Book> forBorrow = FXCollections.observableArrayList();
     
-    Account user =getELMS().getSelectedAccount();
+    //Account user =getELMS().getSelectedAccount();
     
-    forBorrow = getELMS().getSearch().byName(getSelectedItem());
+    //forBorrow = getELMS().getSearch().byName(getSelectedItem());
     
-    for(Book book : forBorrow){
+    //for(Book book : forBorrow){
         
-    getELMS().getBorrowings().borrowBook(book, user);
+    //getELMS().getBorrowings().borrowBook(book, user);
     
-    text.setText("You have successfully borrowed the book "+book.getTitle());
+   // text.setText("You have successfully borrowed the book "+book.getTitle());
     
-    }
-}
+   // }
+//}
 
 @FXML public void handleExitBtn(ActionEvent e) { Platform.exit(); }
 
