@@ -48,7 +48,10 @@
                         <TableColumn fx:id="varCol" prefWidth="200.0"/>
                     </columns>
                 </TableView>
-                <Button fx:id="actionBtn" onAction="#handleActionBtn" styleClass="button" prefWidth="175"/>
+                <HBox spacing="20" alignment="CENTER">
+                    <Button fx:id="actionBtn" onAction="#handleActionBtn" styleClass="button" prefWidth="175"/>
+                    <Button fx:id="renewBtn" onAction="#handleRenewBtn" styleClass="button" prefWidth="175"/>
+                </HBox>
             </VBox>
         </HBox>
     </VBox>

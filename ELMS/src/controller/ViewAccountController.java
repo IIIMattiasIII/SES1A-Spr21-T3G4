@@ -24,11 +24,13 @@ public class ViewAccountController extends Controller<ELMS> {
     @FXML private Button finesBtn;
     @FXML private Button historyBtn;
     @FXML private Button actionBtn;
+    @FXML private Button renewBtn;
     private Button prevBtn;
     private Account user;
     
     @FXML private void initialize() {
         actionBtn.disableProperty().bind(Bindings.isEmpty(mainTv.getSelectionModel().getSelectedItems()));
+        renewBtn.disableProperty().bind(Bindings.isEmpty(mainTv.getSelectionModel().getSelectedItems()));
         user = getELMS().getSelectedAccount();
         rentBtn.fire();
     }
@@ -51,6 +53,8 @@ public class ViewAccountController extends Controller<ELMS> {
         // ^ To be added once observable list is updated to a Pair and date is added
         actionBtn.setText("Return Book");
         actionBtn.setVisible(true);
+        renewBtn.setText("Renew Book");
+        renewBtn.setVisible(true);
     }
     
     @FXML public void handleAssignedBooksBtn(ActionEvent e) throws IOException {
@@ -101,10 +105,15 @@ public class ViewAccountController extends Controller<ELMS> {
         }
         actionBtn.setText(null);
         actionBtn.setVisible(false);
+        renewBtn.setVisible(false);
     }
     
     @FXML public void handleActionBtn(ActionEvent e) {
         // Add actions in for actionBtn
+    }
+
+    @FXML public void handleRenewBtn (ActionEvent e) {
+        // add actions for renewBtn here
     }
 
     @FXML public void handleExitBtn(ActionEvent e) { Platform.exit(); }
