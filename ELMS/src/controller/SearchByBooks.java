@@ -5,8 +5,10 @@
  */
 
 package controller;
+import javafx.application.Platform;
 import au.edu.uts.ap.javafx.*;
 import java.io.IOException;
+import java.util.ArrayList;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -14,11 +16,12 @@ import javafx.event.ActionEvent;
 import javafx.fxml.*;
 import javafx.scene.control.*;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
+import model.ELMS;
 import model.Account;
 import model.Book;
+import model.Search;
 import model.ELMS;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
 
 
 /**
@@ -29,18 +32,14 @@ public class SearchByBooks extends Controller<ELMS>  {
 @FXML private TextField BookName;
 @FXML private Button borrow_button;
 @FXML private Button search_Button; 
-@FXML private TableView<Book> List;
-@FXML private TableColumn<Book,String> name;
+@FXML private ListView List;
 @FXML private Text text;
  
   public SearchByBooks() throws IOException {
         //
     }
   
- @FXML private void initialize(){ //List.setItems(getELMS().getSearch().getAvailablebooks());
-   List.setItems(getELMS().getBooks());  
-   name.setCellValueFactory(cellData -> cellData.getValue().authorProperty());
-           }
+ @FXML private void initialize(){ List.setItems(getELMS().getSearch().getAvailablebooks());}
 
 
 @FXML public String getName(){
@@ -50,21 +49,16 @@ public class SearchByBooks extends Controller<ELMS>  {
 public final ELMS getELMS() { return model; }
 
 @FXML public void setList(ActionEvent e)throws IOException{
-     List.setItems(getELMS().getSearch().byName(getSelectedBook()));  
-   name.setCellValueFactory(cellData -> cellData.getValue().titleProperty());
-    //List.setItems(getELMS().getSearch().byTitle(getName()));
+    
+    List.setItems(getELMS().getSearch().byTitle(getName()));
 }
 
-@FXML private void resetList(ActionEvent e){
-    List.setItems(getELMS().getBooks());  
-   name.setCellValueFactory(cellData -> cellData.getValue().titleProperty());
-}
+@FXML private void resetList(ActionEvent e){getELMS().getSearch().getAvailablebooks();}
 
 @FXML public void handleExitBtn(ActionEvent e) { Platform.exit(); }
 
 private String getSelectedBook(){
- return(String) List.getSelectionModel().getSelectedItem().titleProperty().get();
- //return(String) List.getSelectionModel().getSelectedItem();
+ return(String) List.getSelectionModel().getSelectedItem();
  
 }
 

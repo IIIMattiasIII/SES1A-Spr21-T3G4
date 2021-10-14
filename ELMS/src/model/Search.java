@@ -13,9 +13,9 @@ public class Search {
     // The value of inputBooks will == ELMS.availableBooks
     // The ELMS class will need an attribute of class Search
     // So the class will have a link/reference to the list of availableBooks
-    public Search(ELMS model, ObservableList<Book> book) {
+    public Search(ELMS model) {
         this.model = model;
-        availableBooks = book;
+        availableBooks = model.getAvailableBooks();
     }
     
     private ELMS getELMS() {

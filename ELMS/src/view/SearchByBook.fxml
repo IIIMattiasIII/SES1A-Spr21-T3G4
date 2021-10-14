@@ -8,10 +8,6 @@
 <?import javafx.scene.layout.*?>
 <?import controller.SearchByBooks?>
 
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.cell.PropertyValueFactory?>
-
 <VBox styleClass = "search" xmlns:fx = "http://javafx.com/fxml/1" fx:controller = "controller.SearchByBooks" spacing = "40" alignment = "center" >
     <HBox styleClass = "list-view"  spacing = "40" alignment = "center">
     <Label  text = "Search By Book:"/>
@@ -21,19 +17,11 @@
     </HBox>
     
     <VBox alignment = "center" spacing = "30">
-     <TableView styleClass = "h2" fx:id = "List" prefWidth = "30" prefHeight = "500">  
+     <ListView styleClass = "h2" fx:id = "List" prefWidth = "30" prefHeight = "500">  
         <placeholder>
             <Label text = "No books"/>
          </placeholder>
-         <columns>
-             <TableColumn fx:id = "name" text = "Name">
-                 
-                <cellValueFactory> <PropertyValueFactory property = "Name"/> </cellValueFactory> 
-                 
-             </TableColumn>
-             
-         </columns>
-     </TableView>
+     </ListView>
     </VBox>
     
 

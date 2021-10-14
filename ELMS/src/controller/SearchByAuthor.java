@@ -27,13 +27,11 @@ public class SearchByAuthor extends Controller<ELMS>  {
     
 @FXML private TextField BookAuthor;
 
-@FXML private TableView<Book>  List;
-
-@FXML private TableColumn<Book,String>name;
+@FXML private ListView  List;
 
 @FXML private Button search_Button; 
 
-
+@FXML private ListView List2;
 
 @FXML private Text text;
 
@@ -42,19 +40,18 @@ String author = "";
 ObservableList<String> authors = FXCollections.observableArrayList();
 
   public SearchByAuthor() throws IOException {
-    
         //
     }
-  @FXML private void initialize(){ 
-   List.setItems(getELMS().getBooks());  
-   name.setCellValueFactory(cellData -> cellData.getValue().authorProperty());                           
+  @FXML private void initialize(){ List.setItems(getELMS().getSearch().allAuthors());
+                                  
   }
   
-
+ 
+  
   @FXML private String getSelectedItem(){
       
       
-      return(String) List.getSelectionModel().getSelectedItem().authorProperty().get();
+      return(String) List.getSelectionModel().getSelectedItem();
   
   }
 
@@ -70,17 +67,16 @@ public final ELMS getELMS() { return model; }
 public String getauthor(){return author;}
 
 @FXML public void setList(ActionEvent e)throws IOException{
-   List.setItems(getELMS().getSearch().byauthor(getSelectedItem()));  
-   name.setCellValueFactory(cellData -> cellData.getValue().titleProperty()); 
+    
     //ViewLoader.showStage(getELMS(), "/view/AuthorBooks.fxml","practise",new Stage());
-    //List.setItems(getELMS().getSearch().byAuthor(getSelectedItem()));
+    List.setItems(getELMS().getSearch().byAuthor(getSelectedItem()));
 }
 
 @FXML public void resetlist(){initialize();}
 
 @FXML public void handleBorrow2(ActionEvent event){//borrowings.borrowBook(search.byName(getSelectedBook()),getAccount())
     
-   // Book title = getELMS().getSearch().byName(getSelectedItem());
+  //  Book title = search.byName(getSelectedBook());
   
     ObservableList<Book> forBorrow = FXCollections.observableArrayList();
     
