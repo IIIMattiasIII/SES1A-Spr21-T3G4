@@ -32,7 +32,7 @@
         <HBox alignment = "TOP_CENTER" spacing = "40">
             <VBox spacing ="20" alignment = "CENTER_LEFT">
                 <Button fx:id="rentBtn" text="Rented Books" onAction="#handleRentBooksBtn" styleClass="button" prefWidth="250" prefHeight="110"/>
-                <Button fx:id="assignedBtn" text="Assigned Books" onAction="#handleAssignedBooksBtn" styleClass="button" prefWidth="250" prefHeight="110"/>
+                <Button fx:id="prescribedBtn" text="Prescribed Books" onAction="#handlePrescribedBooksBtn" styleClass="button" prefWidth="250" prefHeight="110"/>
                 <Button fx:id="finesBtn" text="Fines" onAction="#handleFinesBtn" styleClass="button" prefWidth="250" prefHeight="110"/>
                 <Button fx:id="historyBtn" text="Renting History" onAction="#handleRentHistBtn" styleClass ="button" prefWidth="250" prefHeight="110"/>
             </VBox>
@@ -45,7 +45,9 @@
                         <TableColumn fx:id="idCol" text="ID" prefWidth="140.0"/>
                         <TableColumn fx:id="titleCol" text="Title" prefWidth="210.0"/>
                         <TableColumn fx:id="authorCol" text="Author" prefWidth="200.0"/>
-                        <TableColumn fx:id="varCol" prefWidth="200.0"/>
+                        <TableColumn fx:id="accCol" text="Assigned By" prefWidth="200.0"/>
+                        <TableColumn fx:id="dateCol" prefWidth="200.0"/>
+                        <TableColumn fx:id="fineCol" text="Fine Amount" prefWidth="200.0"/>
                     </columns>
                 </TableView>
                 <Button fx:id="actionBtn" onAction="#handleActionBtn" styleClass="button" prefWidth="175"/>
