@@ -9,18 +9,22 @@ import javafx.fxml.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.util.Pair;
 import model.Account;
 import model.Book;
 import model.ELMS;
+import model.Date;
 
 public class ViewAccountController extends Controller<ELMS> {    
-    @FXML private TableView<Book> mainTv;
-    @FXML private TableColumn<Book, String> idCol;
-    @FXML private TableColumn<Book, String> titleCol;
-    @FXML private TableColumn<Book, String> authorCol;
-    @FXML private TableColumn<Book, String> varCol;
+    @FXML private TableView mainTv;
+    @FXML private TableColumn<Pair<Book, Object>, String> idCol;
+    @FXML private TableColumn<Pair<Book, Object>, String> titleCol;
+    @FXML private TableColumn<Pair<Book, Object>, String> authorCol;
+    @FXML private TableColumn<Pair<Book, Account>, String> accCol;
+    @FXML private TableColumn<Pair<Book, Date>, String> dateCol;
+    @FXML private TableColumn<Pair<Book, Integer>, String> fineCol;
     @FXML private Button rentBtn;
-    @FXML private Button assignedBtn;
+    @FXML private Button prescribedBtn;
     @FXML private Button finesBtn;
     @FXML private Button historyBtn;
     @FXML private Button actionBtn;
@@ -37,50 +41,56 @@ public class ViewAccountController extends Controller<ELMS> {
     
     public final ELMS getELMS() { return model; }
     
-    private final Book getSelected() { 
+    private final Object getSelected() { 
         return mainTv.getSelectionModel().getSelectedItem();
-        // Method will likely need updating to return a Pair, or multiple methods need to be added
     }
     
-    @FXML public void handleRentBooksBtn(ActionEvent e) throws IOException {
+    @FXML public void handleRentBooksBtn(ActionEvent e) {
         selectBtn(rentBtn);
-        mainTv.setItems(getELMS().getBooks()); // Replace with user's rented books
-        idCol.setCellValueFactory(cellData -> cellData.getValue().idProperty());
-        titleCol.setCellValueFactory(cellData -> cellData.getValue().titleProperty());
-        authorCol.setCellValueFactory(cellData -> cellData.getValue().authorProperty());
-        varCol.setText("Return By Date");
-        // varCol.setCellValueFactory(cellData -> cellData.getValue().titleProperty());  
-        // ^ To be added once observable list is updated to a Pair and date is added
+        dateCol.setText("Return By Date");
+        dateCol.setVisible(true);
+        mainTv.setItems(user.getRented());
+        int size = mainTv.getItems().size() > 12 ? 771 : 754;
+        mainTv.setMaxWidth(size);
+        idCol.setCellValueFactory(cellData -> cellData.getValue().getKey().idProperty());
+        titleCol.setCellValueFactory(cellData -> cellData.getValue().getKey().titleProperty());
+        authorCol.setCellValueFactory(cellData -> cellData.getValue().getKey().authorProperty());
+//        dateCol.setCellValueFactory(cellData -> cellData.getValue());
         actionBtn.setText("Return Book");
         actionBtn.setVisible(true);
         renewBtn.setText("Renew Book");
         renewBtn.setVisible(true);
     }
     
-    @FXML public void handleAssignedBooksBtn(ActionEvent e) throws IOException {
-        selectBtn(assignedBtn);
-        mainTv.setItems(getELMS().getBooks()); // Replace with assigned books
-        idCol.setCellValueFactory(cellData -> cellData.getValue().idProperty());
-        titleCol.setCellValueFactory(cellData -> cellData.getValue().titleProperty());
-        authorCol.setCellValueFactory(cellData -> cellData.getValue().authorProperty());
-        varCol.setText("Assigned By");
-        // varCol.setCellValueFactory(cellData -> cellData.getValue().nameProperty());  
-        // ^ To be added once observable list for assigned books is created
+    @FXML public void handlePrescribedBooksBtn(ActionEvent e) {
+        selectBtn(prescribedBtn);
+        accCol.setVisible(true);
+        mainTv.setItems(user.getAssigned());
+        int size = mainTv.getItems().size() > 12 ? 771 : 754;
+        mainTv.setMaxWidth(size);
+        idCol.setCellValueFactory(cellData -> cellData.getValue().getKey().idProperty());
+        titleCol.setCellValueFactory(cellData -> cellData.getValue().getKey().titleProperty());
+        authorCol.setCellValueFactory(cellData -> cellData.getValue().getKey().authorProperty());
+        accCol.setCellValueFactory(cellData -> cellData.getValue().getValue().nameProperty());
+        
     }
     
-    @FXML public void handleRentHistBtn(ActionEvent e) throws IOException {
+    @FXML public void handleRentHistBtn(ActionEvent e) {
         selectBtn(historyBtn);
-        mainTv.setItems(getELMS().getBooks()); // Replace with renting history books
-        idCol.setCellValueFactory(cellData -> cellData.getValue().idProperty());
-        titleCol.setCellValueFactory(cellData -> cellData.getValue().titleProperty());
-        authorCol.setCellValueFactory(cellData -> cellData.getValue().authorProperty());
-        varCol.setText("Date Returned");
-        // varCol.setCellValueFactory(cellData -> cellData.getValue().nameProperty());  
-        // ^ To be added once observable list for returned books is added
+        dateCol.setText("Date Returned");
+        dateCol.setVisible(true);
+        mainTv.setItems(user.getRentHist());
+        int size = mainTv.getItems().size() > 12 ? 771 : 754;
+        mainTv.setMaxWidth(size);
+        idCol.setCellValueFactory(cellData -> cellData.getValue().getKey().idProperty());
+        titleCol.setCellValueFactory(cellData -> cellData.getValue().getKey().titleProperty());
+        authorCol.setCellValueFactory(cellData -> cellData.getValue().getKey().authorProperty());
+        // dateCol.setCellValueFactory(cellData -> cellData.getValue());  
     }
     
-    @FXML public void handleFinesBtn(ActionEvent e) throws IOException {
+    @FXML public void handleFinesBtn(ActionEvent e) {
         selectBtn(finesBtn);
+        fineCol.setVisible(true);
         // Add code for populating table with fines
     }
     
@@ -96,7 +106,7 @@ public class ViewAccountController extends Controller<ELMS> {
     
     private void resetBtns() {
         rentBtn.setDisable(false);
-        assignedBtn.setDisable(false);
+        prescribedBtn.setDisable(false);
         historyBtn.setDisable(false);
         if (user.isFined()) {
             finesBtn.setDisable(false);
@@ -106,6 +116,9 @@ public class ViewAccountController extends Controller<ELMS> {
         actionBtn.setText(null);
         actionBtn.setVisible(false);
         renewBtn.setVisible(false);
+        accCol.setVisible(false);
+        dateCol.setVisible(false);
+        fineCol.setVisible(false);
     }
     
     @FXML public void handleActionBtn(ActionEvent e) {
