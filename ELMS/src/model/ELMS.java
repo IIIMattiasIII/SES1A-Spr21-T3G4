@@ -28,13 +28,13 @@ public class ELMS {
         this.books = FXCollections.observableArrayList();
         this.availableBooks = FXCollections.observableArrayList();
         this.requestedBooks = FXCollections.observableArrayList();
-        search = new Search(this);
         borrowings = new Borrowings();
         selectedAccount = null;
         selectedBook = null;
         userSelected = false;
         importAccounts();
         importBooks();
+        search = new Search(this,books);
     }
     
     public Search getSearch(){return search;}
