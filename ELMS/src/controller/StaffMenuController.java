@@ -16,7 +16,8 @@ public class StaffMenuController extends Controller<ELMS> {
     public final ELMS getELMS() { return model; }
     
     @FXML public void handleSetBtn(ActionEvent e) throws IOException {
-//        ViewLoader.showStage(getELMS(), "/view/PrescribeBook.fxml", this.stage.getTitle(), new Stage());
+        ViewLoader.showStage(getELMS(), "/view/PrescribeBook.fxml", this.stage.getTitle(), new Stage());
+        // this is temporary - will be connected into search once complete
     }
     
     @FXML public void handleReqBtn(ActionEvent e) throws IOException {

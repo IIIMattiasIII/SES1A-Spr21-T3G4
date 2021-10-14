@@ -1,5 +1,6 @@
 package model;
 
+import java.util.Date;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.ReadOnlyIntegerProperty;
 import javafx.beans.property.ReadOnlyStringProperty;
@@ -8,6 +9,7 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.util.Pair;
 
 public class Account {
     private IntegerProperty ID = new SimpleIntegerProperty();
@@ -15,12 +17,12 @@ public class Account {
     private final int permissionLevel;
     private final String password;
     private final Boolean fined;
-    private final ObservableList<Book> rentedBooks;
-    private final ObservableList<Book> rentHistory;
-    private final ObservableList<Book> assignedBooks;
+    private final ObservableList<Pair<Book, Date>> rentedBooks;
+    private final ObservableList<Pair<Book, Date>> rentHistory;
+    private final ObservableList<Pair<Book, Account>> prescribedBooks;
     
     public Account(int ID, String nameF, String nameS, String password, int permLvl) {
-        this.assignedBooks = FXCollections.observableArrayList();
+        this.prescribedBooks = FXCollections.observableArrayList();
         this.rentHistory = FXCollections.observableArrayList();
         this.rentedBooks = FXCollections.observableArrayList();
         this.ID.set(ID);
@@ -44,16 +46,29 @@ public class Account {
     
     public int getPermissionLevel() { return this.permissionLevel; }
     
-    public ObservableList<Book> getRented() {
+    public ObservableList<Pair<Book, Date>> getRented() {
         return this.rentedBooks;
     }
     
-    public ObservableList<Book> getRentHist() {
+    public ObservableList<Pair<Book, Date>> getRentHist() {
         return this.rentHistory;
     }
     
-    public ObservableList<Book> getAssigned() {
-        return this.assignedBooks;
+    public ObservableList<Pair<Book, Account>> getAssigned() {
+        return this.prescribedBooks;
+    }
+    
+    public void prescribeBook(Book b, Account a) {
+        prescribedBooks.add(new Pair<>(b, a));
+    }
+    
+    public boolean isPrescribed(Book b, Account a) {
+        for (Pair<Book, Account> book : prescribedBooks) {
+            if (book.getKey() == b && book.getValue() == a) {
+                return true;
+            }
+        }
+        return false;
     }
     
     public void borrowBook() {
