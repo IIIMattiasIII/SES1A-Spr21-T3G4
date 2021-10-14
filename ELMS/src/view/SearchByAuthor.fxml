@@ -7,6 +7,11 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+
+
 <VBox styleClass = "search" spacing = "10" alignment = "center" 
       fx:controller = "controller.SearchByAuthor"
       prefWidth="1280"
@@ -23,11 +28,16 @@
         
    
     <VBox alignment = "center" spacing = "30">
-     <ListView fx:id = "List" prefWidth = "300" prefHeight = "500">  
+     <TableView fx:id = "List" prefWidth = "300" prefHeight = "500">  
         <placeholder>
             <Label text = "No Books"/>
          </placeholder>
-     </ListView>
+         <columns>
+             <TableColumn fx:id = "name" text = "Name">
+                 <cellValueFactory> <PropertyValueFactory property = "Name"/> </cellValueFactory> 
+             </TableColumn>
+         </columns>
+     </TableView>
     </VBox>
     <stylesheets>
         <URL value = "@styles.css"/>

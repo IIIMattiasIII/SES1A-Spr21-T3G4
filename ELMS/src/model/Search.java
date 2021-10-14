@@ -16,8 +16,7 @@ public class Search {
     public Search(ELMS model,ObservableList<Book> inputBooks) {
         this.model = model;
         availableBooks = inputBooks;
-        
-    }
+
     
     private ELMS getELMS() {
         return this.model;
