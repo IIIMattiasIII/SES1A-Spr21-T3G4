@@ -2,7 +2,6 @@ package controller;
 
 import au.edu.uts.ap.javafx.*;
 import java.io.IOException;
-import java.util.Date;
 import javafx.application.Platform;
 import javafx.beans.binding.Bindings;
 import javafx.event.ActionEvent;
@@ -14,6 +13,7 @@ import javafx.util.Pair;
 import model.Account;
 import model.Book;
 import model.ELMS;
+import model.Date;
 
 public class ViewAccountController extends Controller<ELMS> {    
     @FXML private TableView mainTv;
@@ -53,7 +53,7 @@ public class ViewAccountController extends Controller<ELMS> {
         idCol.setCellValueFactory(cellData -> cellData.getValue().getKey().idProperty());
         titleCol.setCellValueFactory(cellData -> cellData.getValue().getKey().titleProperty());
         authorCol.setCellValueFactory(cellData -> cellData.getValue().getKey().authorProperty());
-//        dateCol.setCellValueFactory(cellData -> cellData.getValue());
+        dateCol.setCellValueFactory(cellData -> cellData.getValue().getValue().dueDateProperty());
         actionBtn.setText("Return Book");
         actionBtn.setVisible(true);
     }
@@ -73,7 +73,7 @@ public class ViewAccountController extends Controller<ELMS> {
     
     @FXML public void handleRentHistBtn(ActionEvent e) {
         selectBtn(historyBtn);
-        dateCol.setText("Date Returned");
+        dateCol.setText("Date Borrowed");
         dateCol.setVisible(true);
         mainTv.setItems(user.getRentHist());
         int size = mainTv.getItems().size() > 12 ? 771 : 754;
@@ -81,7 +81,7 @@ public class ViewAccountController extends Controller<ELMS> {
         idCol.setCellValueFactory(cellData -> cellData.getValue().getKey().idProperty());
         titleCol.setCellValueFactory(cellData -> cellData.getValue().getKey().titleProperty());
         authorCol.setCellValueFactory(cellData -> cellData.getValue().getKey().authorProperty());
-        // dateCol.setCellValueFactory(cellData -> cellData.getValue());  
+         dateCol.setCellValueFactory(cellData -> cellData.getValue().getValue().initDateProperty());  
     }
     
     @FXML public void handleFinesBtn(ActionEvent e) {
