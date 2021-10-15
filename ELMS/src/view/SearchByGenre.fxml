@@ -7,6 +7,10 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+
 <VBox styleClass = "search" spacing = "10" alignment = "center" xmlns:fx = "http://javafx.com/fxml/1" fx:controller = "controller.SearchByGenre">
     
    <HBox spacing ="50" alignment = "center">
@@ -18,13 +22,41 @@
       
    </HBox>
     
-    <ListView fx:id = "List" prefWidth = "300" prefHeight = "500">  
-        
+    <VBox alignment = "center" spacing = "30">
+     <TableView fx:id = "List" prefWidth = "30" prefHeight = "500">  
         <placeholder>
-            <Label text = "No Books"/>
+            <Label text = "No books"/>
          </placeholder>
-         
-     </ListView>  
+         <columns>
+             
+             <TableColumn fx:id = "name" text = "Book Title">
+                 
+                 
+                 <cellValueFactory><PropertyValueFactory property = "type"/></cellValueFactory>
+                 
+             </TableColumn> 
+             
+             
+              <TableColumn fx:id = "author" text = "Author">
+                 
+                 
+                 <cellValueFactory><PropertyValueFactory property = "type"/></cellValueFactory>
+                 
+             </TableColumn> 
+             
+             
+             <TableColumn fx:id = "genre" text = "Genre">
+                 
+                 
+                 <cellValueFactory><PropertyValueFactory property = "type"/></cellValueFactory>
+                 
+             </TableColumn> 
+             
+             
+             
+         </columns>
+     </TableView>
+    </VBox>
      
     <stylesheets>
         

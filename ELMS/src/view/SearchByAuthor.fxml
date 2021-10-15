@@ -11,7 +11,6 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.cell.PropertyValueFactory?>
 
-
 <VBox styleClass = "search" spacing = "10" alignment = "center" 
       fx:controller = "controller.SearchByAuthor"
       prefWidth="1280"
@@ -21,24 +20,49 @@
     <HBox spacing = "50" alignment = "center">
     <Label styleClass="h1" text = "Search By Author:"/>
     <TextField fx:id = "BookAuthor"/>
-    <Button fx:id = "button" text = "Search" onAction = "#setList"/>
+    <Button fx:id = "search_List" text = "Search from List" onAction = "#setList"/>
+    <Button fx:id = "search_Text" text = "Search by Text" onAction = "#set"/>
     <Button fx:id = "reset" text = "Reset" onAction = "#resetlist"/>  
      </HBox>    
-        
-        
-   
-    <VBox alignment = "center" spacing = "30">
-     <TableView fx:id = "List" prefWidth = "300" prefHeight = "500">  
+     
+            <VBox alignment = "center" spacing = "30">
+     <TableView fx:id = "List" prefWidth = "30" prefHeight = "500">  
         <placeholder>
-            <Label text = "No Books"/>
+            <Label text = "No books"/>
          </placeholder>
          <columns>
-             <TableColumn fx:id = "name" text = "Name">
-                 <cellValueFactory> <PropertyValueFactory property = "Name"/> </cellValueFactory> 
-             </TableColumn>
+             
+             <TableColumn fx:id = "name" text = "Book Title">
+                 
+                 
+                 <cellValueFactory><PropertyValueFactory property = "type"/></cellValueFactory>
+                 
+             </TableColumn> 
+             
+             
+              <TableColumn fx:id = "author" text = "Author">
+                 
+                 
+                 <cellValueFactory><PropertyValueFactory property = "type"/></cellValueFactory>
+                 
+             </TableColumn> 
+             
+             
+             <TableColumn fx:id = "genre" text = "Genre">
+                 
+                 
+                 <cellValueFactory><PropertyValueFactory property = "type"/></cellValueFactory>
+                 
+             </TableColumn> 
+             
+             
+             
          </columns>
      </TableView>
     </VBox>
+        
+   
+  
     <stylesheets>
         <URL value = "@styles.css"/>
     </stylesheets>

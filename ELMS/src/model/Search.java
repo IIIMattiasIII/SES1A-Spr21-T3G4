@@ -17,9 +17,9 @@ public class Search {
         this.model = model;
         availableBooks = inputBooks;
 
-    
+    }
     private ELMS getELMS() {
-        return this.model;
+       return this.model;
     }
     
     public ObservableList<String> byTitle(String title) {
@@ -56,14 +56,14 @@ public class Search {
     return sendAvailable;
     }
     
-    public ObservableList<String> byCategory(String category) {
+    public ObservableList<Book> byCategory(String category) {
 //         IDs contain one letter (J,B,A,P) followed by 4 digit number / eg. J0001, B1234
 //         J-journal, B-book, A-article, P-research paper
-        ObservableList<String> matches = FXCollections.observableArrayList(); // please check!
+        ObservableList<Book> matches = FXCollections.observableArrayList(); // please check!
         
         for (Book bookMatch : availableBooks) {
             if (bookMatch.getGenre().toLowerCase().contains(category.toLowerCase())) {
-                matches.add(bookMatch.getTitle());
+                matches.add(bookMatch);
             }
         }
         return matches;

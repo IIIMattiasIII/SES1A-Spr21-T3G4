@@ -5,11 +5,11 @@
  */
 
 package controller;
+import javafx.application.Platform;
 import au.edu.uts.ap.javafx.*;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
-
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -22,9 +22,8 @@ import javafx.util.Pair;
 import model.ELMS;
 import model.Account;
 import model.Book;
+import model.Search;
 import model.ELMS;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
 
 
 /**
@@ -37,16 +36,20 @@ public class SearchByBooks extends Controller<ELMS>  {
 @FXML private Button search_Button; 
 @FXML private TableView<Book> List;
 @FXML private TableColumn<Book,String> name;
+@FXML private TableColumn<Book,String> author;
+@FXML private TableColumn<Book,String> genre;
 @FXML private Text text;
  
   public SearchByBooks() throws IOException {
         //
     }
   
- @FXML private void initialize(){ //List.setItems(getELMS().getSearch().getAvailablebooks());
-   List.setItems(getELMS().getBooks());  
-   name.setCellValueFactory(cellData -> cellData.getValue().authorProperty());
-           }
+ @FXML private void initialize(){
+     List.setItems(getELMS().getBooks());
+     name.setCellValueFactory(cellData -> cellData.getValue().titleProperty());
+     author.setCellValueFactory(cellData -> cellData.getValue().authorProperty());
+     genre.setCellValueFactory(cellData -> cellData.getValue().genreProperty());
+ }
 
 
 @FXML public String getName(){
@@ -56,22 +59,21 @@ public class SearchByBooks extends Controller<ELMS>  {
 public final ELMS getELMS() { return model; }
 
 @FXML public void setList(ActionEvent e)throws IOException{
-     List.setItems(getELMS().getSearch().byName(getSelectedBook()));  
-   name.setCellValueFactory(cellData -> cellData.getValue().titleProperty());
-    //List.setItems(getELMS().getSearch().byTitle(getName()));
+    
+    List.setItems(getELMS().getSearch().byName(getSelectedBook()));
+    name.setCellValueFactory(cellData -> cellData.getValue().titleProperty());
+    author.setCellValueFactory(cellData -> cellData.getValue().authorProperty());
+    genre.setCellValueFactory(cellData -> cellData.getValue().genreProperty());
 }
 
-@FXML private void resetList(ActionEvent e){
-    List.setItems(getELMS().getBooks());  
-   name.setCellValueFactory(cellData -> cellData.getValue().titleProperty());
-}
+@FXML private void resetList(ActionEvent e){initialize();}
 
 @FXML public void handleExitBtn(ActionEvent e) { Platform.exit(); }
 
 private String getSelectedBook(){
+    
  return(String) List.getSelectionModel().getSelectedItem().titleProperty().get();
- //return(String) List.getSelectionModel().getSelectedItem();
- 
+
 }
 
 @FXML public void handleReturnBtn(ActionEvent e) throws IOException { 
@@ -94,20 +96,4 @@ private String getSelectedBook(){
     }  
     }
     
-    //borrowings.borrowBook(search.byName(getSelectedBook()),getAccount())
-    //  Book title = search.byName(getSelectedBook());
-    //ObservableList<Book> forBorrow = FXCollections.observableArrayList();
-    //Account user =getELMS().getSelectedAccount();
-    //forBorrow = getELMS().getSearch().byName(getSelectedBook());
-    //for(Book book : forBorrow){
-    //getELMS().getBorrowings().borrowBook(book, user);
-    //text.setText("You have successfully borrowed the book "+book.getTitle());
-    
-    //}
-    //for(Account print: account){
-   // System.out.println(print.getName());
-    //}
-   
-    //System.out.print(user.getName());
 }
-

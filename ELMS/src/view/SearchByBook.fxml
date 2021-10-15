@@ -21,16 +21,36 @@
     </HBox>
     
     <VBox alignment = "center" spacing = "30">
-     <TableView styleClass = "h2" fx:id = "List" prefWidth = "30" prefHeight = "500">  
+     <TableView fx:id = "List" prefWidth = "30" prefHeight = "500">  
         <placeholder>
             <Label text = "No books"/>
          </placeholder>
          <columns>
-             <TableColumn fx:id = "name" text = "Name">
+             
+             <TableColumn fx:id = "name" text = "Book Title">
                  
-                <cellValueFactory> <PropertyValueFactory property = "Name"/> </cellValueFactory> 
                  
-             </TableColumn>
+                 <cellValueFactory><PropertyValueFactory property = "type"/></cellValueFactory>
+                 
+             </TableColumn> 
+             
+             
+              <TableColumn fx:id = "author" text = "Author">
+                 
+                 
+                 <cellValueFactory><PropertyValueFactory property = "type"/></cellValueFactory>
+                 
+             </TableColumn> 
+             
+             
+             <TableColumn fx:id = "genre" text = "Genre">
+                 
+                 
+                 <cellValueFactory><PropertyValueFactory property = "type"/></cellValueFactory>
+                 
+             </TableColumn> 
+             
+             
              
          </columns>
      </TableView>
@@ -52,4 +72,5 @@
     
     
 </VBox>
+
 
