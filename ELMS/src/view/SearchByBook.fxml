@@ -12,11 +12,13 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.cell.PropertyValueFactory?>
 
-<VBox styleClass = "search" xmlns:fx = "http://javafx.com/fxml/1" fx:controller = "controller.SearchByBooks" spacing = "40" alignment = "center" >
-    <HBox styleClass = "list-view"  spacing = "40" alignment = "center">
+<VBox styleClass = "search" xmlns:fx = "http://javafx.com/fxml/1" fx:controller = "controller.SearchByBooks" spacing = "10" alignment = "center" >
+    
+    <HBox spacing = "50" alignment = "center">     
     <Label  text = "Search By Book:"/>
     <TextField styleClass = "textField" fx:id = "BookName" GridPane.columnIndex = "2" GridPane.rowIndex = "0"/>
-    <Button fx:id = "search_button" text = "Search" onAction = "#setList"/>
+    <Button fx:id = "search_button" text = "Search from List" onAction = "#setList"/>
+    <Button fx:id = "search_button2" text = "Search by Text" onAction = "#set"/>
     <Button fx:id = "reset" text = "Reset" onAction = "#resetList"/>  
     </HBox>
     

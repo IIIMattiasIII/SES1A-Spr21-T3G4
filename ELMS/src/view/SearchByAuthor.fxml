@@ -11,12 +11,9 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.cell.PropertyValueFactory?>
 
-<VBox styleClass = "search" spacing = "10" alignment = "center" 
-      fx:controller = "controller.SearchByAuthor"
-      prefWidth="1280"
-      prefHeight="720"
-      maxHeight="720"
-      xmlns:fx = "http://javafx.com/fxml/1" >
+<VBox styleClass = "search" spacing = "10" alignment = "center" fx:controller = "controller.SearchByAuthor" xmlns:fx = "http://javafx.com/fxml/1" >
+    
+    
     <HBox spacing = "50" alignment = "center">
     <Label styleClass="h1" text = "Search By Author:"/>
     <TextField fx:id = "BookAuthor"/>

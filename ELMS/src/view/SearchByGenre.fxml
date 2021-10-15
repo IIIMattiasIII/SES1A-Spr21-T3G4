@@ -17,9 +17,9 @@
        
      <Label styleClass="h1" text = "Search By Genre:"/>
      <TextField fx:id = "bookGenre"/>
-     <Button fx:id = "button" text = "Search" onAction = "#setList"/>
+     <Button text = "Search from List" onAction = "#setList"/>
+     <Button text = "Search By Text" onAction = "#set"/>
      <Button fx:id = "reset" text = "Reset" onAction = "#resetlist"/>  
-      
    </HBox>
     
     <VBox alignment = "center" spacing = "30">

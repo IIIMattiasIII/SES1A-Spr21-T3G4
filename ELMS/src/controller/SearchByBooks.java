@@ -58,6 +58,15 @@ public class SearchByBooks extends Controller<ELMS>  {
 }   
 public final ELMS getELMS() { return model; }
 
+@FXML public void set(ActionEvent e) throws IOException{
+    
+    List.setItems(getELMS().getSearch().byName(getName()));
+    name.setCellValueFactory(cellData -> cellData.getValue().titleProperty());
+    author.setCellValueFactory(cellData -> cellData.getValue().authorProperty());
+    genre.setCellValueFactory(cellData -> cellData.getValue().genreProperty());
+    
+}
+
 @FXML public void setList(ActionEvent e)throws IOException{
     
     List.setItems(getELMS().getSearch().byName(getSelectedBook()));

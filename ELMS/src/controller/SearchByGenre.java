@@ -27,11 +27,6 @@ public class SearchByGenre extends Controller<ELMS>  {
     
     
 @FXML private TextField bookGenre;
-
-@FXML private Button search_Button; 
-
-
-
 @FXML private Text text;
 @FXML private TableView<Book> List;
 @FXML private TableColumn<Book,String> name;
@@ -60,7 +55,12 @@ public class SearchByGenre extends Controller<ELMS>  {
 
 public final ELMS getELMS() { return model; }
 
+@FXML private void set(ActionEvent e){ 
 
+List.setItems(getELMS().getSearch().byCategory(getName()));
+
+
+}
 
 @FXML private void setList(ActionEvent e)throws IOException{
     
