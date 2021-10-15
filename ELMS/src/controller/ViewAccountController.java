@@ -55,7 +55,7 @@ public class ViewAccountController extends Controller<ELMS> {
         idCol.setCellValueFactory(cellData -> cellData.getValue().getKey().idProperty());
         titleCol.setCellValueFactory(cellData -> cellData.getValue().getKey().titleProperty());
         authorCol.setCellValueFactory(cellData -> cellData.getValue().getKey().authorProperty());
-//        dateCol.setCellValueFactory(cellData -> cellData.getValue());
+        dateCol.setCellValueFactory(cellData -> cellData.getValue().getValue().dueDateProperty());
         actionBtn.setText("Return Book");
         actionBtn.setVisible(true);
         renewBtn.setText("Renew Book");
@@ -77,7 +77,7 @@ public class ViewAccountController extends Controller<ELMS> {
     
     @FXML public void handleRentHistBtn(ActionEvent e) {
         selectBtn(historyBtn);
-        dateCol.setText("Date Returned");
+        dateCol.setText("Date Borrowed");
         dateCol.setVisible(true);
         mainTv.setItems(user.getRentHist());
         int size = mainTv.getItems().size() > 12 ? 771 : 754;
@@ -85,7 +85,7 @@ public class ViewAccountController extends Controller<ELMS> {
         idCol.setCellValueFactory(cellData -> cellData.getValue().getKey().idProperty());
         titleCol.setCellValueFactory(cellData -> cellData.getValue().getKey().titleProperty());
         authorCol.setCellValueFactory(cellData -> cellData.getValue().getKey().authorProperty());
-        // dateCol.setCellValueFactory(cellData -> cellData.getValue());  
+         dateCol.setCellValueFactory(cellData -> cellData.getValue().getValue().initDateProperty());  
     }
     
     @FXML public void handleFinesBtn(ActionEvent e) {
