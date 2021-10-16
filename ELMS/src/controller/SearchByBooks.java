@@ -39,6 +39,7 @@ public class SearchByBooks extends Controller<ELMS>  {
 @FXML private TableColumn<Book,String> author;
 @FXML private TableColumn<Book,String> genre;
 @FXML private TableColumn<Book,String> year;
+@FXML private TableColumn<Book,String> availabilities;
 @FXML private Text text;
  
   public SearchByBooks() throws IOException {
@@ -51,7 +52,8 @@ public class SearchByBooks extends Controller<ELMS>  {
      name.setCellValueFactory(cellData -> cellData.getValue().titleProperty());
      author.setCellValueFactory(cellData -> cellData.getValue().authorProperty());
      genre.setCellValueFactory(cellData -> cellData.getValue().genreProperty());
-    
+     year.setCellValueFactory(cellData -> cellData.getValue().yearProperty().asString());
+     availabilities.setCellValueFactory(cellData -> cellData.getValue().stockProperty().asString());
  }
 
 
@@ -67,6 +69,8 @@ public final ELMS getELMS() { return model; }
     name.setCellValueFactory(cellData -> cellData.getValue().titleProperty());
     author.setCellValueFactory(cellData -> cellData.getValue().authorProperty());
     genre.setCellValueFactory(cellData -> cellData.getValue().genreProperty());
+    year.setCellValueFactory(cellData -> cellData.getValue().yearProperty().asString());
+    availabilities.setCellValueFactory(cellData -> cellData.getValue().stockProperty().asString());
     
 }
 
@@ -76,6 +80,8 @@ public final ELMS getELMS() { return model; }
     name.setCellValueFactory(cellData -> cellData.getValue().titleProperty());
     author.setCellValueFactory(cellData -> cellData.getValue().authorProperty());
     genre.setCellValueFactory(cellData -> cellData.getValue().genreProperty());
+    year.setCellValueFactory(cellData -> cellData.getValue().yearProperty().asString());
+    availabilities.setCellValueFactory(cellData -> cellData.getValue().stockProperty().asString());
 }
 
 @FXML private void resetList(ActionEvent e){initialize();}
@@ -104,6 +110,7 @@ private String getSelectedBook(){
     for(Book book : books){
        
        getELMS().getSelectedAccount().borrow(new Pair<>(book,date));
+       book.setStock(book.stockProperty().get()-1);
      text.setText(book.getTitle() + " borrowed"); 
     }  
     }

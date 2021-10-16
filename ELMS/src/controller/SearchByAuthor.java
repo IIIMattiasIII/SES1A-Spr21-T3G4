@@ -33,6 +33,8 @@ public class SearchByAuthor extends Controller<ELMS>  {
 @FXML private TableColumn<Book,String> name;
 @FXML private TableColumn<Book,String> author;
 @FXML private TableColumn<Book,String> genre;
+@FXML private TableColumn<Book,String> year;
+@FXML private TableColumn<Book,String> availabilities;
 @FXML private Text text;
 
 
@@ -47,6 +49,8 @@ ObservableList<String> authors = FXCollections.observableArrayList();
      name.setCellValueFactory(cellData -> cellData.getValue().titleProperty());
      author.setCellValueFactory(cellData -> cellData.getValue().authorProperty());
      genre.setCellValueFactory(cellData -> cellData.getValue().genreProperty());
+     year.setCellValueFactory(cellData -> cellData.getValue().yearProperty().asString());
+     availabilities.setCellValueFactory(cellData -> cellData.getValue().stockProperty().asString());
                                   
   }
   
@@ -75,6 +79,8 @@ public final ELMS getELMS() { return model; }
      name.setCellValueFactory(cellData -> cellData.getValue().titleProperty());
      author.setCellValueFactory(cellData -> cellData.getValue().authorProperty());
      genre.setCellValueFactory(cellData -> cellData.getValue().genreProperty());
+     year.setCellValueFactory(cellData -> cellData.getValue().yearProperty().asString());
+     availabilities.setCellValueFactory(cellData -> cellData.getValue().stockProperty().asString());
 }
 
 @FXML public void setList(ActionEvent e)throws IOException{
@@ -84,6 +90,8 @@ public final ELMS getELMS() { return model; }
      name.setCellValueFactory(cellData -> cellData.getValue().titleProperty());
      author.setCellValueFactory(cellData -> cellData.getValue().authorProperty());
      genre.setCellValueFactory(cellData -> cellData.getValue().genreProperty());
+     year.setCellValueFactory(cellData -> cellData.getValue().yearProperty().asString());
+     availabilities.setCellValueFactory(cellData -> cellData.getValue().stockProperty().asString());
 }
 
 @FXML public void resetlist(){initialize();}

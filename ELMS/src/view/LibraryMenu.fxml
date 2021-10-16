@@ -26,14 +26,16 @@
         </ImageView>
         <Label styleClass="h1" text="SEARCH BY:"/> <!--title of page goes in the quotations here-->
     </HBox>
-    <HBox spacing="10" alignment="CENTER" prefHeight="410">
-       <Button fx:id = "Button1" text = "Book Name" onAction = "#handleButton1"/>
-       <Button fx:id = "Button2" text = "Author" onAction = "#handleButton2"/>
-       <Button fx:id = "Button3" text = "Genre" onAction = "#handleButton3"/>
+    <VBox spacing="50" alignment="CENTER" prefHeight="410">
+    <HBox spacing="50" alignment="CENTER" prefHeight = "410">
+       <Button fx:id = "Button1" text = "Book Name" onAction = "#handleButton1" styleClass="menuButton"/>
+       <Button fx:id = "Button2" text = "Author" onAction = "#handleButton2" styleClass="menuButton"/>
+       <Button fx:id = "Button3" text = "Genre" onAction = "#handleButton3" styleClass="menuButton"/>
        
        
         <!--stage content goes here-->
     </HBox> 
+    </VBox>
     <HBox spacing="50" alignment="BOTTOM_CENTER">
         <Button text="Return to Menu" onAction="#handleReturnBtn" styleClass="button" prefWidth="150" />
         <Button text="Exit eLibrary" onAction="#handleExitBtn" styleClass="button" prefWidth="150" />

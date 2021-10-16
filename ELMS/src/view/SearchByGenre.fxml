@@ -52,7 +52,22 @@
                  
              </TableColumn> 
              
+             <TableColumn fx:id = "year" text = "Year">
              
+             
+                 
+                 <cellValueFactory><PropertyValueFactory property = "type"/></cellValueFactory>
+                 
+             
+             
+            </TableColumn>
+            
+            <TableColumn fx:id = "availabilities" text = "Availabilities">
+                
+                
+                <cellValueFactory><PropertyValueFactory property = "type"/></cellValueFactory>
+                
+            </TableColumn>
              
          </columns>
      </TableView>

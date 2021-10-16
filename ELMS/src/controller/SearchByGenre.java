@@ -32,6 +32,8 @@ public class SearchByGenre extends Controller<ELMS>  {
 @FXML private TableColumn<Book,String> name;
 @FXML private TableColumn<Book,String> author;
 @FXML private TableColumn<Book,String> genre;
+@FXML private TableColumn<Book,String> year;
+@FXML private TableColumn<Book,String> availabilities;
 
  public SearchByGenre() throws IOException {
         //
@@ -41,6 +43,8 @@ public class SearchByGenre extends Controller<ELMS>  {
      name.setCellValueFactory(cellData -> cellData.getValue().titleProperty());
      author.setCellValueFactory(cellData -> cellData.getValue().authorProperty());
      genre.setCellValueFactory(cellData -> cellData.getValue().genreProperty());
+     year.setCellValueFactory(CellData -> CellData.getValue().yearProperty().asString());
+     availabilities.setCellValueFactory(CellData -> CellData.getValue().stockProperty().asString());
     }
 
 
@@ -68,6 +72,9 @@ List.setItems(getELMS().getSearch().byCategory(getName()));
      name.setCellValueFactory(cellData -> cellData.getValue().titleProperty());
      author.setCellValueFactory(cellData -> cellData.getValue().authorProperty());
      genre.setCellValueFactory(cellData -> cellData.getValue().genreProperty());
+     year.setCellValueFactory(cellData -> cellData.getValue().yearProperty().asString());
+     availabilities.setCellValueFactory(cellData -> cellData.getValue().stockProperty().asString());
+     
 }
 @FXML private void resetlist(ActionEvent e) throws IOException{  initialize(); }
 
@@ -84,6 +91,7 @@ List.setItems(getELMS().getSearch().byCategory(getName()));
        
        getELMS().getSelectedAccount().borrow(new Pair<>(book,date));
      text.setText(book.getTitle() + " borrowed"); 
+     book.setStock(book.getStock()- 1);
     }  
     }
 
