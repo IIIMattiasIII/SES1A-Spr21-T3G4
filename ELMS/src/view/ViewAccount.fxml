@@ -53,6 +53,7 @@
                 <HBox spacing="20" alignment="CENTER">
                     <Button fx:id="actionBtn" onAction="#handleActionBtn" styleClass="button" prefWidth="175"/>
                     <Button fx:id="renewBtn" onAction="#handleRenewBtn" styleClass="button" prefWidth="175"/>
+                    <Label fx:id="errorTxt" styleClass="message"/>
                 </HBox>
             </VBox>
         </HBox>

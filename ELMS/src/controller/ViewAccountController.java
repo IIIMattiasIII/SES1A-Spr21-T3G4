@@ -7,6 +7,7 @@ import javafx.beans.binding.Bindings;
 import javafx.event.ActionEvent;
 import javafx.fxml.*;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.util.Pair;
@@ -29,6 +30,7 @@ public class ViewAccountController extends Controller<ELMS> {
     @FXML private Button historyBtn;
     @FXML private Button actionBtn;
     @FXML private Button renewBtn;
+    @FXML private Label errorTxt;
     private Button prevBtn;
     private Account user;
     
@@ -37,6 +39,7 @@ public class ViewAccountController extends Controller<ELMS> {
         renewBtn.disableProperty().bind(Bindings.isEmpty(mainTv.getSelectionModel().getSelectedItems()));
         user = getELMS().getSelectedAccount();
         rentBtn.fire();
+        errorTxt.setVisible(false);
     }
     
     public final ELMS getELMS() { return model; }
@@ -125,8 +128,23 @@ public class ViewAccountController extends Controller<ELMS> {
         // Add actions in for actionBtn
     }
 
+    void displayErrorRenew(String s) {
+        errorTxt.setVisible(true);
+        errorTxt.setText(s);
+    }
+
     @FXML public void handleRenewBtn (ActionEvent e) {
-        // add actions for renewBtn here
+        Pair<Book, Date> selected = (Pair<Book, Date>) getSelected();
+        
+        Date date = selected.getValue();
+        
+        if (!user.isFined()) {
+            date.updateToCurrent();
+            mainTv.refresh();
+        }
+        else {
+            displayErrorRenew("Unable to renew due to outstanding fines.");
+        }
     }
 
     @FXML public void handleExitBtn(ActionEvent e) { Platform.exit(); }

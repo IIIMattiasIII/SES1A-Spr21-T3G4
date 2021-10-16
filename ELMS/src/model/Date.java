@@ -16,7 +16,12 @@ public class Date {
     }
     
     public void updateToCurrent() {
-        initTime = System.currentTimeMillis();
+        if (dueTime == 0) {
+            initTime = System.currentTimeMillis();
+        }
+        else {
+            initTime = dueTime;
+        }
         dueTime = initTime+1209660000; // +2 weeks and 1 minute in millis
         initDate.set(new SimpleDateFormat("dd/MM/yy 'at' HH:mm").format(new java.util.Date(initTime)));
         dueDate.set(new SimpleDateFormat("dd/MM/yy 'at' HH:mm").format(new java.util.Date(dueTime)));

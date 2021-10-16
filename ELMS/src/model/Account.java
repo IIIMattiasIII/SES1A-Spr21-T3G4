@@ -8,6 +8,7 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.util.Pair;
 
 public class Account {
     private IntegerProperty ID = new SimpleIntegerProperty();
@@ -15,7 +16,7 @@ public class Account {
     private final int permissionLevel;
     private final String password;
     private final Boolean fined;
-    private final ObservableList<Book> rentedBooks;
+    private final ObservableList<Pair<Book,Date>> rentedBooks;
     private final ObservableList<Book> rentHistory;
     private final ObservableList<Book> assignedBooks;
     
@@ -28,6 +29,16 @@ public class Account {
         permissionLevel = permLvl;
         this.password = password;
         fined = false;
+
+        //temporary code for testing with rentedBooks as a Pair//
+//        Book xBook = new Book("B1234", "Test book", "Person A", 2021, "Fiction", 1);
+//        Date xDate = new Date();
+//        Pair<Book,Date> xx = new Pair(xBook, xDate);
+//        rentedBooks.add(xx);
+//        Book yBook = new Book("B4321", "Test book 2", "Person B", 2021, "Fiction", 1);
+//        Date yDate = new Date();
+//        Pair<Book,Date> yy = new Pair(yBook, yDate);
+//        rentedBooks.add(yy);
     }
     
     public int getID() { return this.ID.get(); }
@@ -44,7 +55,7 @@ public class Account {
     
     public int getPermissionLevel() { return this.permissionLevel; }
     
-    public ObservableList<Book> getRented() {
+    public ObservableList<Pair<Book,Date>> getRented() {
         return this.rentedBooks;
     }
     
