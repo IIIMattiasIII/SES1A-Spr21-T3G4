@@ -9,7 +9,7 @@ import javafx.application.Platform;
 import au.edu.uts.ap.javafx.*;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Date;
+import model.Date;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -38,9 +38,11 @@ public class SearchByBooks extends Controller<ELMS>  {
 @FXML private TableColumn<Book,String> name;
 @FXML private TableColumn<Book,String> author;
 @FXML private TableColumn<Book,String> genre;
+@FXML private TableColumn<Book,String> year;
 @FXML private Text text;
  
   public SearchByBooks() throws IOException {
+      
         //
     }
   
@@ -49,6 +51,7 @@ public class SearchByBooks extends Controller<ELMS>  {
      name.setCellValueFactory(cellData -> cellData.getValue().titleProperty());
      author.setCellValueFactory(cellData -> cellData.getValue().authorProperty());
      genre.setCellValueFactory(cellData -> cellData.getValue().genreProperty());
+    
  }
 
 
@@ -100,7 +103,7 @@ private String getSelectedBook(){
     
     for(Book book : books){
        
-       getELMS().getSelectedAccount().borrow(new Pair<>(date,book));
+       getELMS().getSelectedAccount().borrow(new Pair<>(book,date));
      text.setText(book.getTitle() + " borrowed"); 
     }  
     }

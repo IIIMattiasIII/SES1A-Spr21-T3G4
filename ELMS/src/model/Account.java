@@ -17,23 +17,22 @@ public class Account {
     private final int permissionLevel;
     private final String password;
     private final Boolean fined;
-    private final ObservableList<Book> rentedBooks;
+    private final ObservableList<Pair<Book,Date>> rentedBooks;
     private final ObservableList<Book> rentHistory;
     private final ObservableList<Book> assignedBooks;
-    private final ObservableList<Pair<Date,Book>> borrowed;
+   
     
     public Account(int ID, String nameF, String nameS, String password, int permLvl) {
         this.assignedBooks = FXCollections.observableArrayList();
         this.rentHistory = FXCollections.observableArrayList();
         this.rentedBooks = FXCollections.observableArrayList();
-        this.borrowed = FXCollections.observableArrayList();
         this.ID.set(ID);
         this.name.set(nameF + " " + nameS);
         permissionLevel = permLvl;
         this.password = password;
         fined = false;
     }
-    public void borrow(Pair pair){  borrowed.add(pair); }
+    public void borrow(Pair pair){  rentedBooks.add(pair); }
     public int getID() { return this.ID.get(); }
     public ReadOnlyIntegerProperty idProperty() { return ID; }
     
@@ -48,7 +47,7 @@ public class Account {
     
     public int getPermissionLevel() { return this.permissionLevel; }
     
-    public ObservableList<Book> getRented() {
+    public ObservableList<Pair<Book,Date>> getRented() {
         return this.rentedBooks;
     }
     

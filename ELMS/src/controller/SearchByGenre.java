@@ -4,7 +4,7 @@ import javafx.stage.Stage;
 import au.edu.uts.ap.javafx.*;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Date;
+import model.Date;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -82,7 +82,7 @@ List.setItems(getELMS().getSearch().byCategory(getName()));
     
     for(Book book : books){
        
-       getELMS().getSelectedAccount().borrow(new Pair<>(date,book));
+       getELMS().getSelectedAccount().borrow(new Pair<>(book,date));
      text.setText(book.getTitle() + " borrowed"); 
     }  
     }

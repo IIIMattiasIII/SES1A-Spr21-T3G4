@@ -52,6 +52,12 @@
                  
              </TableColumn> 
              
+             <TableColumn fx:id = "year" text = "Year">
+                 
+                 
+                 <cellValueFactory><PropertyValueFactory property = "type"/></cellValueFactory>
+                 
+             </TableColumn> 
              
              
          </columns>
