@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import controller.SearchByBooks?>
+
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+
+<VBox styleClass = "search" xmlns:fx = "http://javafx.com/fxml/1" fx:controller = "controller.SearchByYear" spacing = "10" alignment = "center" >
+    
+    <HBox spacing = "50" alignment = "center">     
+    <Label  text = "Search By Year:"/>
+    <TextField styleClass = "textField" fx:id = "bookYear" />
+    
+    <Button fx:id = "search_button" text = "Search from List" onAction = "#setList"/>
+    <Button fx:id = "search_button2" text = "Search by Text" onAction = "#set"/>
+    <Button fx:id = "reset" text = "Reset" onAction = "#resetList"/> 
+     
+    </HBox>
+    
+    <VBox alignment = "center" spacing = "30">
+     <TableView fx:id = "List" prefWidth = "30" prefHeight = "500">  
+        <placeholder>
+            <Label text = "No books"/>
+         </placeholder>
+         <columns>
+             
+             <TableColumn fx:id = "name" text = "Book Title">
+                 
+                 
+                 <cellValueFactory><PropertyValueFactory property = "type"/></cellValueFactory>
+                 
+             </TableColumn> 
+             
+             
+              <TableColumn fx:id = "author" text = "Author">
+                 
+                 
+                 <cellValueFactory><PropertyValueFactory property = "type"/></cellValueFactory>
+                 
+             </TableColumn> 
+             
+             
+             <TableColumn fx:id = "genre" text = "Genre">
+                 
+                 
+                 <cellValueFactory><PropertyValueFactory property = "type"/></cellValueFactory>
+                 
+             </TableColumn> 
+             
+             <TableColumn fx:id = "year" text = "Year">
+                 
+                 
+                 <cellValueFactory><PropertyValueFactory property = "type"/></cellValueFactory>
+                 
+             </TableColumn> 
+             
+             <TableColumn fx:id = "availabilities" text = "Availabilities">
+                 
+                 
+                 <cellValueFactory><PropertyValueFactory property = "type"/></cellValueFactory>
+                 
+             </TableColumn> 
+             
+         </columns>
+     </TableView>
+    </VBox>
+    
+
+    <stylesheets>
+        <URL value = "@styles.css"/>
+    </stylesheets>
+        
+    <Button fx:id = "borrow_button" text = "Borrow" onAction = "#handleBorrow"/>   
+    <Text styleClass = "h1" fx:id = "text" text="not borrowed yet"/>
+      
+    <HBox spacing="30" alignment="BOTTOM_CENTER">
+        <Button text="Return to Menu" onAction="#handleReturnBtn" styleClass="button" prefWidth="150" />
+        <Button text="Exit eLibrary" onAction="#handleExitBtn" styleClass="button" prefWidth="150" />
+    </HBox>
+        
+    
+    
+</VBox>

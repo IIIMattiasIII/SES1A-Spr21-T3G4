@@ -46,6 +46,22 @@ public class Search {
         }
         return matches;
     }
+     
+    public ObservableList<Book> byYear(int title) {
+        // loop over database (list of availableBooks) // return availableBooks that match
+       ObservableList<Book> matches = FXCollections.observableArrayList(); // please check
+        
+        for (Book bookMatch : availableBooks) {
+            
+            if (bookMatch.getYear() == title ) {
+                matches.add(bookMatch);
+               
+            }
+        }
+        return matches;
+    } 
+     
+     
     //public ObservableList<Book> byName(String title) {
     
     public ObservableList<String> getAvailablebooks(){
