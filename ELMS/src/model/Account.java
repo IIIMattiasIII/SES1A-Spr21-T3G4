@@ -8,6 +8,7 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.util.Pair;
 
 public class Account {
     private IntegerProperty ID = new SimpleIntegerProperty();
@@ -15,8 +16,8 @@ public class Account {
     private final int permissionLevel;
     private final String password;
     private final Boolean fined;
-    private final ObservableList<Book> rentedBooks;
-    private final ObservableList<Book> rentHistory;
+    private final ObservableList<Pair<Book, Date>> rentedBooks;
+    private final ObservableList<Pair<Book, Date>> rentHistory;
     private final ObservableList<Book> assignedBooks;
     
     public Account(int ID, String nameF, String nameS, String password, int permLvl) {
@@ -44,11 +45,11 @@ public class Account {
     
     public int getPermissionLevel() { return this.permissionLevel; }
     
-    public ObservableList<Book> getRented() {
+    public ObservableList<Pair<Book, Date>> getRented() {
         return this.rentedBooks;
     }
     
-    public ObservableList<Book> getRentHist() {
+    public ObservableList<Pair<Book, Date>> getRentHist() {
         return this.rentHistory;
     }
     
@@ -56,11 +57,21 @@ public class Account {
         return this.assignedBooks;
     }
     
-    public void borrowBook() {
-        //
+    public boolean hasBorrowed(Book b) {
+        for (Pair<Book, Date> p : rentedBooks) {
+            if (p.getKey() == b) {
+                return true;
+            }
+        }
+        return false;
     }
     
-    public void returnBook(){
-        //
+    public void borrowBook(Pair<Book, Date> b) {
+        rentedBooks.add(b);
+        rentHistory.add(b);
+    }
+    
+    public void returnBook(Pair<Book, Date> b){
+        rentedBooks.remove(b);
     }
 }

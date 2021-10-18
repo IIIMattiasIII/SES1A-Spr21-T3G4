@@ -140,6 +140,18 @@
     -fx-background-color: -backgroundMid;
 }
 
+.list-view .table-cell{
+    -fx-text-fill: -textLight;
+}
+
+.list-cell{
+    -fx-background-color: -background;
+}
+
+.list-cell:odd{
+    -fx-background-color: -backgroundMid;
+}
+
 .list-cell:selected {
     -fx-background-color: -highlight;
     -fx-text-fill: -textLight;

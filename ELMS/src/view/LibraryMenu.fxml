@@ -10,7 +10,6 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.text.*?>
 
-<!--replace ELMSController with the name of the controller for the given view-->
 <VBox xmlns:fx="http://javafx.com/fxml"
       fx:controller="controller.LibraryMenuController" 
       alignment="center" spacing="10"
@@ -24,17 +23,53 @@
                 <Image url="@logo_scaled.png"/>
             </image> 
         </ImageView>
-        <Label styleClass="h1" text="SEARCH BY:"/> <!--title of page goes in the quotations here-->
+        <Label styleClass="h1" text="Search Available Books"/>
     </HBox>
-    <HBox spacing="10" alignment="CENTER" prefHeight="410">
-       <Button fx:id = "Button1" text = "Book Name" onAction = "#handleButton1"/>
-       <Button fx:id = "Button2" text = "Author" onAction = "#handleButton2"/>
-       <Button fx:id = "Button3" text = "Genre" onAction = "#handleButton3"/>
-       
-       
-        <!--stage content goes here-->
-    </HBox> 
-    <HBox spacing="50" alignment="BOTTOM_CENTER">
+    <VBox spacing="20" alignment="CENTER" prefHeight="360">
+        <HBox spacing="10" alignment="CENTER"> 
+            <Label text="Search Keyword: " styleClass="message"/>
+            <TextField fx:id="searchTf" prefWidth="200.0" styleClass="textField"/>
+            <Button text="Search" onAction="#handleSearchBtn" styleClass="button" prefWidth="150" prefHeight="40"/>
+            <Button text="Reset" onAction="#handleResetBtn" styleClass="button" prefWidth="150" prefHeight="40"/>
+        </HBox>
+        <HBox spacing="10" alignment="CENTER"> 
+            <Label text="Parameter: " styleClass="message"/>
+            <fx:define>
+                <ToggleGroup fx:id="paramTog"/>
+            </fx:define>
+            <RadioButton fx:id="paramTitle" text="Title" toggleGroup="$paramTog" selected="true"/>
+            <RadioButton fx:id="paramAuthor" text="Author" toggleGroup="$paramTog" />
+            <RadioButton fx:id="paramYear" text="Year" toggleGroup="$paramTog" />
+            <RadioButton fx:id="paramGenre" text="Genre" toggleGroup="$paramTog" />
+        </HBox>
+        <HBox spacing="20" alignment="CENTER"> 
+            <ListView fx:id="paramLv" prefHeight="225" prefWidth="220.0" styleClass="table-view">
+                <placeholder>
+                    <Label text="${'Select a paramter to see\nall options in a category\nor search with a keyword.'}"/>
+                </placeholder>
+            </ListView>
+            <TableView fx:id="mainTv" prefHeight="225" prefWidth="860.0" styleClass="table-view">
+                <placeholder>
+                    <Label text="No results found."/>
+                </placeholder>
+                <columns>
+                    <TableColumn fx:id="idCol" text="ID" prefWidth="110.0"/>
+                    <TableColumn fx:id="titleCol" text="Title" prefWidth="200.0"/>
+                    <TableColumn fx:id="authorCol" text="Author" prefWidth="190.0"/>
+                    <TableColumn fx:id="yearCol" text="Year" prefWidth="100.0"/>
+                    <TableColumn fx:id="genreCol" text="Genre" prefWidth="180.0"/>
+                    <TableColumn fx:id="stockCol" text="Stock" prefWidth="80.0"/>
+                </columns>
+            </TableView>
+        </HBox>
+    </VBox>
+    <VBox spacing="10" alignment="CENTER" prefHeight="30">
+        <HBox spacing="10" alignment="CENTER"> 
+            <Button text="Borrow" fx:id ="borrowBtn" onAction="#handleBorrowBtn" styleClass="button" prefWidth="150" />
+        </HBox>
+        <Label fx:id="msgTxt" styleClass="message"/>
+    </VBox>
+    <HBox spacing="30" alignment="BOTTOM_CENTER">
         <Button text="Return to Menu" onAction="#handleReturnBtn" styleClass="button" prefWidth="150" />
         <Button text="Exit eLibrary" onAction="#handleExitBtn" styleClass="button" prefWidth="150" />
     </HBox>
