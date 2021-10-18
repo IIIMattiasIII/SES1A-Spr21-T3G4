@@ -87,6 +87,13 @@ public class ViewAccountController extends Controller<ELMS> {
     @FXML public void handleFinesBtn(ActionEvent e) {
         selectBtn(finesBtn);
         fineCol.setVisible(true);
+        dateCol.setText("Fine");
+        int size = mainTv.getItems().size() > 12 ? 771 : 754;
+        mainTv.setMaxWidth(size);
+        /*idCol.setCellValueFactory(cellData -> cellData.getValue().getKey().idProperty());
+        titleCol.setCellValueFactory(cellData -> cellData.getValue().getKey().titleProperty());
+        authorCol.setCellValueFactory(cellData -> cellData.getValue().getKey().authorProperty());
+        fineCol.setCellValueFactory(cellData -> cellData.getValue().getValue().dueDateProperty());*/
         // Add code for populating table with fines
     }
     
