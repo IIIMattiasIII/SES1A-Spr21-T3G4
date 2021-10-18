@@ -134,16 +134,24 @@ public class ViewAccountController extends Controller<ELMS> {
     }
 
     @FXML public void handleRenewBtn (ActionEvent e) {
+        boolean found = false;
         Pair<Book, Date> selected = (Pair<Book, Date>) getSelected();
         
         Date date = selected.getValue();
+        Book selectedBook = selected.getKey();
         
-        if (!user.isFined()) {
+        for (Pair<Book, Integer> book : user.getFinedBooks()) {
+            if (selectedBook.getTitle().equals(book.getKey().getTitle())) {
+                displayErrorRenew("Unable to renew due to outstanding fines.");
+                found = true;
+                break;
+            }
+        }
+        
+        if (!found) {
+            errorTxt.setVisible(false);
             date.updateToCurrent();
             mainTv.refresh();
-        }
-        else {
-            displayErrorRenew("Unable to renew due to outstanding fines.");
         }
     }
 

@@ -19,26 +19,29 @@ public class Account {
     private final ObservableList<Pair<Book,Date>> rentedBooks;
     private final ObservableList<Book> rentHistory;
     private final ObservableList<Book> assignedBooks;
+    private final ObservableList<Pair<Book, Integer>> finedBooks;
     
     public Account(int ID, String nameF, String nameS, String password, int permLvl) {
         this.assignedBooks = FXCollections.observableArrayList();
         this.rentHistory = FXCollections.observableArrayList();
         this.rentedBooks = FXCollections.observableArrayList();
+        this.finedBooks = FXCollections.observableArrayList();
         this.ID.set(ID);
         this.name.set(nameF + " " + nameS);
         permissionLevel = permLvl;
         this.password = password;
         fined = false;
 
-        //temporary code for testing with rentedBooks as a Pair//
-//        Book xBook = new Book("B1234", "Test book", "Person A", 2021, "Fiction", 1);
-//        Date xDate = new Date();
-//        Pair<Book,Date> xx = new Pair(xBook, xDate);
-//        rentedBooks.add(xx);
-//        Book yBook = new Book("B4321", "Test book 2", "Person B", 2021, "Fiction", 1);
-//        Date yDate = new Date();
-//        Pair<Book,Date> yy = new Pair(yBook, yDate);
-//        rentedBooks.add(yy);
+        //temporary code for testing with rentedBooks as a Pair + using "Test Book" in the fined list//
+       Book xBook = new Book("B1234", "Test book", "Person A", 2021, "Fiction", 1);
+       Date xDate = new Date();
+       Pair<Book,Date> xx = new Pair(xBook, xDate);
+       rentedBooks.add(xx);
+       Book yBook = new Book("B4321", "Test book 2", "Person B", 2021, "Fiction", 1);
+       Date yDate = new Date();
+       Pair<Book,Date> yy = new Pair(yBook, yDate);
+       rentedBooks.add(yy);
+       finedBooks.add(new Pair(xBook, 5));
     }
     
     public int getID() { return this.ID.get(); }
@@ -65,6 +68,10 @@ public class Account {
     
     public ObservableList<Book> getAssigned() {
         return this.assignedBooks;
+    }
+
+    public ObservableList<Pair<Book,Integer>> getFinedBooks() {
+        return this.finedBooks;
     }
     
     public void borrowBook() {
