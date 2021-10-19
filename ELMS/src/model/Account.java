@@ -1,6 +1,5 @@
 package model;
 
-import java.util.Date;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.ReadOnlyIntegerProperty;
 import javafx.beans.property.ReadOnlyStringProperty;
@@ -21,7 +20,7 @@ public class Account {
     private final ObservableList<Pair<Book, Date>> rentHistory;
     private final ObservableList<Pair<Book, Account>> prescribedBooks;
     private final ObservableList<Pair<Book, Float>> finedBooks;
-    
+
     public Account(int ID, String nameF, String nameS, String password, int permLvl) {
         this.prescribedBooks = FXCollections.observableArrayList();
         this.rentHistory = FXCollections.observableArrayList();

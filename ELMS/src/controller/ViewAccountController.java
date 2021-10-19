@@ -9,6 +9,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.*;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.util.Pair;
@@ -27,14 +28,18 @@ public class ViewAccountController extends Controller<ELMS> {
     @FXML private Button finesBtn;
     @FXML private Button historyBtn;
     @FXML private Button actionBtn;
+    @FXML private Button renewBtn;
+    @FXML private Label errorTxt;
     private Button prevBtn;
     private Account user;
     
     @FXML private void initialize() {
         actionBtn.disableProperty().bind(Bindings.isEmpty(mainTv.getSelectionModel().getSelectedItems()));
+        renewBtn.disableProperty().bind(Bindings.isEmpty(mainTv.getSelectionModel().getSelectedItems()));
         user = getELMS().getSelectedAccount();
         user.checkOverdue();
         rentBtn.fire();
+        errorTxt.setVisible(false);
     }
     
     public final ELMS getELMS() { return model; }
@@ -42,13 +47,13 @@ public class ViewAccountController extends Controller<ELMS> {
     private final Object getSelected() { 
         return mainTv.getSelectionModel().getSelectedItem();
     }
-    
+
     private void setContents(ObservableList o) {
         mainTv.setItems(o);
         int size = mainTv.getItems().size() > 12 ? 771 : 754;
         mainTv.setMaxWidth(size);
     }
-    
+
     @FXML public void handleRentBooksBtn(ActionEvent e) {
         selectBtn(rentBtn);
         dateCol.setText("Return By Date");
@@ -60,6 +65,8 @@ public class ViewAccountController extends Controller<ELMS> {
         dateCol.setCellValueFactory(cellData -> cellData.getValue().getValue().dueDateProperty());
         actionBtn.setText("Return Book");
         actionBtn.setVisible(true);
+        renewBtn.setText("Renew Book");
+        renewBtn.setVisible(true);
     }
     
     @FXML public void handlePrescribedBooksBtn(ActionEvent e) {
@@ -115,6 +122,7 @@ public class ViewAccountController extends Controller<ELMS> {
         }
         actionBtn.setText(null);
         actionBtn.setVisible(false);
+        renewBtn.setVisible(false);
         accCol.setVisible(false);
         dateCol.setVisible(false);
         fineCol.setVisible(false);
@@ -122,6 +130,28 @@ public class ViewAccountController extends Controller<ELMS> {
     
     @FXML public void handleActionBtn(ActionEvent e) {
         // Add actions in for actionBtn
+    }
+
+    void displayErrorRenew(String s) {
+        errorTxt.setVisible(true);
+        errorTxt.setText(s);
+    }
+
+    @FXML public void handleRenewBtn (ActionEvent e) {
+        boolean found = false;
+        Pair<Book, Date> selected = (Pair<Book, Date>) getSelected();
+        for (Pair<Book, Float> pair : user.getFined()) {
+            if (selected.getKey().getTitle().equals(pair.getKey().getTitle())) {
+                displayErrorRenew("Unable to renew due to outstanding fines.");
+                found = true;
+                break;
+            }
+        }
+        if (!found) {
+            errorTxt.setVisible(false);
+            selected.getValue().updateToCurrent();
+            mainTv.refresh();
+        }
     }
 
     @FXML public void handleExitBtn(ActionEvent e) { Platform.exit(); }

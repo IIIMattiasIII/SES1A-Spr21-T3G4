@@ -50,7 +50,11 @@
                         <TableColumn fx:id="fineCol" text="Fine Amount" prefWidth="200.0"/>
                     </columns>
                 </TableView>
-                <Button fx:id="actionBtn" onAction="#handleActionBtn" styleClass="button" prefWidth="175"/>
+                <HBox spacing="20" alignment="CENTER">
+                    <Button fx:id="actionBtn" onAction="#handleActionBtn" styleClass="button" prefWidth="175"/>
+                    <Button fx:id="renewBtn" onAction="#handleRenewBtn" styleClass="button" prefWidth="175"/>
+                </HBox>
+                <Label fx:id="errorTxt" styleClass="message"/>
             </VBox>
         </HBox>
     </VBox>
