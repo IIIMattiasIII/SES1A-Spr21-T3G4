@@ -4,16 +4,15 @@ import au.edu.uts.ap.javafx.*;
 import java.io.IOException;
 import javafx.application.Platform;
 import javafx.beans.binding.Bindings;
+import javafx.beans.property.ReadOnlyObjectWrapper;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.util.Pair;
-import model.Account;
-import model.Book;
-import model.ELMS;
-import model.Date;
+import model.*;
 
 public class ViewAccountController extends Controller<ELMS> {    
     @FXML private TableView mainTv;
@@ -22,7 +21,7 @@ public class ViewAccountController extends Controller<ELMS> {
     @FXML private TableColumn<Pair<Book, Object>, String> authorCol;
     @FXML private TableColumn<Pair<Book, Account>, String> accCol;
     @FXML private TableColumn<Pair<Book, Date>, String> dateCol;
-    @FXML private TableColumn<Pair<Book, Integer>, String> fineCol;
+    @FXML private TableColumn<Pair<Book, Float>, String> fineCol;
     @FXML private Button rentBtn;
     @FXML private Button prescribedBtn;
     @FXML private Button finesBtn;
@@ -34,6 +33,7 @@ public class ViewAccountController extends Controller<ELMS> {
     @FXML private void initialize() {
         actionBtn.disableProperty().bind(Bindings.isEmpty(mainTv.getSelectionModel().getSelectedItems()));
         user = getELMS().getSelectedAccount();
+        user.checkOverdue();
         rentBtn.fire();
     }
     
@@ -43,13 +43,17 @@ public class ViewAccountController extends Controller<ELMS> {
         return mainTv.getSelectionModel().getSelectedItem();
     }
     
+    private void setContents(ObservableList o) {
+        mainTv.setItems(o);
+        int size = mainTv.getItems().size() > 12 ? 771 : 754;
+        mainTv.setMaxWidth(size);
+    }
+    
     @FXML public void handleRentBooksBtn(ActionEvent e) {
         selectBtn(rentBtn);
         dateCol.setText("Return By Date");
         dateCol.setVisible(true);
-        mainTv.setItems(user.getRented());
-        int size = mainTv.getItems().size() > 12 ? 771 : 754;
-        mainTv.setMaxWidth(size);
+        setContents(user.getRented());
         idCol.setCellValueFactory(cellData -> cellData.getValue().getKey().idProperty());
         titleCol.setCellValueFactory(cellData -> cellData.getValue().getKey().titleProperty());
         authorCol.setCellValueFactory(cellData -> cellData.getValue().getKey().authorProperty());
@@ -61,9 +65,7 @@ public class ViewAccountController extends Controller<ELMS> {
     @FXML public void handlePrescribedBooksBtn(ActionEvent e) {
         selectBtn(prescribedBtn);
         accCol.setVisible(true);
-        mainTv.setItems(user.getAssigned());
-        int size = mainTv.getItems().size() > 12 ? 771 : 754;
-        mainTv.setMaxWidth(size);
+        setContents(user.getAssigned());
         idCol.setCellValueFactory(cellData -> cellData.getValue().getKey().idProperty());
         titleCol.setCellValueFactory(cellData -> cellData.getValue().getKey().titleProperty());
         authorCol.setCellValueFactory(cellData -> cellData.getValue().getKey().authorProperty());
@@ -75,26 +77,21 @@ public class ViewAccountController extends Controller<ELMS> {
         selectBtn(historyBtn);
         dateCol.setText("Date Borrowed");
         dateCol.setVisible(true);
-        mainTv.setItems(user.getRentHist());
-        int size = mainTv.getItems().size() > 12 ? 771 : 754;
-        mainTv.setMaxWidth(size);
+        setContents(user.getRentHist());
         idCol.setCellValueFactory(cellData -> cellData.getValue().getKey().idProperty());
         titleCol.setCellValueFactory(cellData -> cellData.getValue().getKey().titleProperty());
         authorCol.setCellValueFactory(cellData -> cellData.getValue().getKey().authorProperty());
-         dateCol.setCellValueFactory(cellData -> cellData.getValue().getValue().initDateProperty());  
+        dateCol.setCellValueFactory(cellData -> cellData.getValue().getValue().initDateProperty());  
     }
     
     @FXML public void handleFinesBtn(ActionEvent e) {
         selectBtn(finesBtn);
         fineCol.setVisible(true);
-        dateCol.setText("Fine");
-        int size = mainTv.getItems().size() > 12 ? 771 : 754;
-        mainTv.setMaxWidth(size);
-        /*idCol.setCellValueFactory(cellData -> cellData.getValue().getKey().idProperty());
+        setContents(user.getFined());
+        idCol.setCellValueFactory(cellData -> cellData.getValue().getKey().idProperty());
         titleCol.setCellValueFactory(cellData -> cellData.getValue().getKey().titleProperty());
         authorCol.setCellValueFactory(cellData -> cellData.getValue().getKey().authorProperty());
-        fineCol.setCellValueFactory(cellData -> cellData.getValue().getValue().dueDateProperty());*/
-        // Add code for populating table with fines
+//        fineCol.setCellValueFactory(cellData -> new ReadOnlyObjectWrapper<String>(cellData.getValue().getValue()+""));
     }
     
     private void selectBtn(Button b) {

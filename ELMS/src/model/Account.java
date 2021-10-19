@@ -20,11 +20,13 @@ public class Account {
     private final ObservableList<Pair<Book, Date>> rentedBooks;
     private final ObservableList<Pair<Book, Date>> rentHistory;
     private final ObservableList<Pair<Book, Account>> prescribedBooks;
+    private final ObservableList<Pair<Book, Float>> finedBooks;
     
     public Account(int ID, String nameF, String nameS, String password, int permLvl) {
         this.prescribedBooks = FXCollections.observableArrayList();
         this.rentHistory = FXCollections.observableArrayList();
         this.rentedBooks = FXCollections.observableArrayList();
+        this.finedBooks = FXCollections.observableArrayList();
         this.ID.set(ID);
         this.name.set(nameF + " " + nameS);
         permissionLevel = permLvl;
@@ -58,6 +60,10 @@ public class Account {
         return this.prescribedBooks;
     }
     
+    public ObservableList<Pair<Book, Float>> getFined() {
+        return this.finedBooks;
+    }
+    
     public void prescribeBook(Book b, Account a) {
         prescribedBooks.add(new Pair<>(b, a));
     }
@@ -77,5 +83,9 @@ public class Account {
     
     public void returnBook(){
         //
+    }
+    
+    public void checkOverdue() {
+        // TBD
     }
 }
