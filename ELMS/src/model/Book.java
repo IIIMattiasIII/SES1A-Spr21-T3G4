@@ -59,11 +59,26 @@ public class Book {
     public int getStock() { return this.stock.get(); }
     public void setStock(int stock) { this.stock.set(stock); }
     public IntegerProperty stockProperty() { return this.stock; }
-
-    /* methods added for borrow function */
     
-    public Boolean hasTitle(String name){
-        return title.get().toLowerCase().contains(name.toLowerCase());
-   }
+    public Boolean borrow() {
+        this.stock.set(this.stock.get()-1);
+        return stock.get() == 0;
+    }
+    
+    public boolean hasTitle(String s){
+        return title.get().toLowerCase().contains(s.toLowerCase());
+    }
+    
+    public Boolean hasAuthor(String s){
+        return author.get().toLowerCase().contains(s.toLowerCase());
+    }
+    
+    public boolean hasYear(int i){
+        return year.get() == i;
+    }
+    
+    public boolean hasGenre(String s){
+        return genre.get().toLowerCase().contains(s.toLowerCase());
+    }
 }
 

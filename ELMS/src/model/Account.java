@@ -20,7 +20,6 @@ public class Account {
     private final ObservableList<Pair<Book, Date>> rentHistory;
     private final ObservableList<Pair<Book, Account>> prescribedBooks;
     private final ObservableList<Pair<Book, Float>> finedBooks;
-
     public Account(int ID, String nameF, String nameS, String password, int permLvl) {
         this.prescribedBooks = FXCollections.observableArrayList();
         this.rentHistory = FXCollections.observableArrayList();
@@ -76,12 +75,22 @@ public class Account {
         return false;
     }
     
-    public void borrowBook() {
-        //
+    public boolean hasBorrowed(Book b) {
+        for (Pair<Book, Date> p : rentedBooks) {
+            if (p.getKey() == b) {
+                return true;
+            }
+        }
+        return false;
     }
     
-    public void returnBook(){
-        //
+    public void borrowBook(Pair<Book, Date> b) {
+        rentedBooks.add(b);
+        rentHistory.add(b);
+    }
+    
+    public void returnBook(Pair<Book, Date> b){
+        rentedBooks.remove(b);
     }
     
     public void checkOverdue() {
