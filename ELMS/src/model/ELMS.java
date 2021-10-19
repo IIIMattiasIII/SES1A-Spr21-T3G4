@@ -138,6 +138,7 @@ public class ELMS {
     
     public void setSelectedAccount(Account a) {
         selectedAccount = a;
+        selectedAccount.checkOverdue();
         userSelected = true;
     }
     
