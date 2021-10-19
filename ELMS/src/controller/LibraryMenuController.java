@@ -18,6 +18,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Toggle;
 import javafx.scene.control.ToggleGroup;
+import javafx.stage.Stage;
 import javafx.util.Pair;
 import model.*;
 
@@ -39,11 +40,16 @@ public class LibraryMenuController extends Controller<ELMS> {
     private ObservableList<Book> tablePop = FXCollections.observableArrayList();
     @FXML private TextField searchTf;
     @FXML private Button borrowBtn;
+    @FXML private Button presBtn;
     @FXML private Label msgTxt;
     
     @FXML public void initialize() {
         setupLists();
         borrowBtn.disableProperty().bind(Bindings.isEmpty(mainTv.getSelectionModel().getSelectedItems()));
+        presBtn.disableProperty().bind(Bindings.isEmpty(mainTv.getSelectionModel().getSelectedItems()));
+        if (getELMS().getSelectedAccount().getPermissionLevel() > 1) {
+            presBtn.setVisible(false);
+        }
         idCol.setCellValueFactory(cellData -> cellData.getValue().idProperty());
         titleCol.setCellValueFactory(cellData -> cellData.getValue().titleProperty());
         authorCol.setCellValueFactory(cellData -> cellData.getValue().authorProperty());
@@ -229,7 +235,7 @@ public class LibraryMenuController extends Controller<ELMS> {
         setTableItems(tablePop);
     }
     
-    public void handleBorrowBtn(ActionEvent e) {
+    @FXML public void handleBorrowBtn(ActionEvent e) {
         if (getELMS().getSelectedAccount().isFined()) {
             displayMsg("You currenlty have outstanding fines. Borrowing is not permitted.");
         } else if (getSelBook().getStock() < 1) {
@@ -242,6 +248,15 @@ public class LibraryMenuController extends Controller<ELMS> {
             if (getSelBook().borrow()) {
                 getELMS().getAvailableBooks().remove(getSelBook());
             }
+        }
+    }
+    
+    @FXML public void handlePresBtn(ActionEvent e) throws IOException {
+        if (getSelBook() != null) {
+            getELMS().setSelectedBook(getSelBook());
+            ViewLoader.showStage(getELMS(), "/view/PrescribeBook.fxml", this.stage.getTitle(), new Stage());
+        } else {
+            displayMsg("Invalid selection.");
         }
     }
     

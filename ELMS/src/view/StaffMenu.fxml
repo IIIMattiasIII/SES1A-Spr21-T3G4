@@ -26,7 +26,6 @@
         <Label styleClass="h1" text="Staff Menu"/>
     </HBox>
     <VBox spacing="40" alignment="CENTER" prefHeight="410">
-        <Button text="Prescribe a Book" onAction="#handleSetBtn" styleClass="menuButton" maxWidth="350" maxHeight="100"/>
         <Button text="Request a Book" onAction="#handleReqBtn" styleClass="menuButton" maxWidth="350" maxHeight="100"/>
     </VBox> 
     <HBox spacing="30" alignment="BOTTOM_CENTER">
