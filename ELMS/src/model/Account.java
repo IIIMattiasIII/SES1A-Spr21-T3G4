@@ -15,11 +15,11 @@ public class Account {
     private final StringProperty name = new SimpleStringProperty();
     private final int permissionLevel;
     private final String password;
-    private final Boolean fined;
+    private Boolean fined;
     private final ObservableList<Pair<Book, Date>> rentedBooks;
     private final ObservableList<Pair<Book, Date>> rentHistory;
     private final ObservableList<Pair<Book, Account>> prescribedBooks;
-    private final ObservableList<Pair<Book, Float>> finedBooks;
+    private final ObservableList<Pair<Book, Double>> finedBooks;
     public Account(int ID, String nameF, String nameS, String password, int permLvl) {
         this.prescribedBooks = FXCollections.observableArrayList();
         this.rentHistory = FXCollections.observableArrayList();
@@ -58,7 +58,7 @@ public class Account {
         return this.prescribedBooks;
     }
     
-    public ObservableList<Pair<Book, Float>> getFined() {
+    public ObservableList<Pair<Book, Double>> getFined() {
         return this.finedBooks;
     }
     
@@ -89,11 +89,26 @@ public class Account {
         rentHistory.add(b);
     }
     
-    public void returnBook(Pair<Book, Date> b){
+    public Boolean returnBook(Pair<Book, Date> b){
+        for (Pair<Book, Double> p : finedBooks) {
+            if (p.getKey() == b.getKey()) {
+                return false;
+            }
+        }
         rentedBooks.remove(b);
+        return true;
     }
     
     public void checkOverdue() {
-        // TBD
+        long t = System.currentTimeMillis();
+        finedBooks.clear();
+        for (Pair<Book, Date> p : rentedBooks) {
+            if (p.getValue().getDueTime() <= t) {
+                long diff = t-p.getValue().getDueTime();
+                double mult =  java.lang.Math.floor(diff/604800000)+1;  // For every week it stays overdue, fine amount is accrued
+                finedBooks.add(new Pair<>(p.getKey(), p.getKey().getFineAmount()*mult));
+            }
+        }
+        fined = !finedBooks.isEmpty();       
     }
 }

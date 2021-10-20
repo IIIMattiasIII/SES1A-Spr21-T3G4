@@ -54,7 +54,7 @@
                     <Button fx:id="actionBtn" onAction="#handleActionBtn" styleClass="button" prefWidth="175"/>
                     <Button fx:id="renewBtn" onAction="#handleRenewBtn" styleClass="button" prefWidth="175"/>
                 </HBox>
-                <Label fx:id="errorTxt" styleClass="message"/>
+                <Label fx:id="msgTxt" styleClass="message"/>
             </VBox>
         </HBox>
     </VBox>
