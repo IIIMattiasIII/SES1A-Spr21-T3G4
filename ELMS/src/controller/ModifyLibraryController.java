@@ -2,7 +2,6 @@ package controller;
 
 import au.edu.uts.ap.javafx.*;
 import java.io.IOException;
-import javafx.application.Platform;
 import javafx.beans.binding.Bindings;
 import javafx.event.ActionEvent;
 import javafx.fxml.*;
@@ -10,6 +9,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import model.Book;
 import model.ELMS;
@@ -21,7 +21,6 @@ public class ModifyLibraryController extends Controller<ELMS> {
     @FXML private TableColumn<Book, String> authorCol;
     @FXML private TableColumn<Book, String> yearCol;
     @FXML private TableColumn<Book, String> genreCol;
-    
     @FXML private Button removeBtn;
     @FXML private Button modBtn;
     @FXML private Label msgTxt;
@@ -55,7 +54,9 @@ public class ModifyLibraryController extends Controller<ELMS> {
     @FXML public void handleModBtn(ActionEvent e) throws IOException {
         if (getSelected() != null) {
             getELMS().setSelectedBook(getSelected());
-            ViewLoader.showStage(getELMS(), "/view/ModifyBook.fxml", this.stage.getTitle(), new Stage());
+            Stage s = new Stage();
+            s.getIcons().add(new Image("icon.png"));
+            ViewLoader.showStage(getELMS(), "/view/ModifyBook.fxml", this.stage.getTitle(), s);
         } else {
             displayMsg("Invalid selection.");
         }
@@ -69,7 +70,9 @@ public class ModifyLibraryController extends Controller<ELMS> {
         }
     }
 
-    @FXML public void handleExitBtn(ActionEvent e) { Platform.exit(); }
+    @FXML public void handleExitBtn(ActionEvent e) throws IOException {
+        ViewLoader.showStage(getELMS(), "/view/Login.fxml", this.stage.getTitle(), this.stage);
+    }
     
     @FXML public void handleReturnBtn(ActionEvent e) throws IOException { 
         ViewLoader.showStage(getELMS(), "/view/ELMS.fxml", this.stage.getTitle(), this.stage);

@@ -10,10 +10,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import model.ELMS;
 import model.Account;
-import model.*;
 
 
 
@@ -86,11 +86,10 @@ public class LoginController extends Controller<ELMS> {
 
     @FXML
     public void handleRegBtn(ActionEvent e) throws IOException {
-        ViewLoader.showStage(getELMS(), "/view/Register.fxml", this.stage.getTitle(), new Stage());
+        Stage s = new Stage();
+        s.getIcons().add(new Image("icon.png"));
+        ViewLoader.showStage(getELMS(), "/view/Register.fxml", this.stage.getTitle(), s);
     }
 
-    @FXML
-    public void handleExitBtn(ActionEvent e) {
-        Platform.exit();
-    }
+    @FXML public void handleExitBtn(ActionEvent e) { Platform.exit(); }
 }

@@ -1,7 +1,6 @@
 package controller;
 
 import au.edu.uts.ap.javafx.*;
-import javafx.beans.binding.Bindings;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.*;
@@ -10,7 +9,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import model.Book;
 import model.ELMS;
-import controller.ModifyLibraryController;
 
 public class ModifyBookController extends Controller<ELMS> {
 

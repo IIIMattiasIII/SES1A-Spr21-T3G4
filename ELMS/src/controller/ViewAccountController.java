@@ -3,7 +3,6 @@ package controller;
 import au.edu.uts.ap.javafx.*;
 import java.io.IOException;
 import java.text.DecimalFormat;
-import javafx.application.Platform;
 import javafx.beans.binding.Bindings;
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.collections.ObservableList;
@@ -181,7 +180,10 @@ public class ViewAccountController extends Controller<ELMS> {
         }
     }
 
-    @FXML public void handleExitBtn(ActionEvent e) { Platform.exit(); }
+    @FXML public void handleExitBtn(ActionEvent e) throws IOException {
+        ViewLoader.showStage(getELMS(), "/view/Login.fxml", this.stage.getTitle(), this.stage);
+    }
+    
     @FXML public void handleReturnBtn(ActionEvent e) throws IOException { 
         ViewLoader.showStage(getELMS(), "/view/ELMS.fxml", this.stage.getTitle(), this.stage);
     }

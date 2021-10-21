@@ -2,10 +2,8 @@ package controller;
 
 import au.edu.uts.ap.javafx.*;
 import java.io.IOException;
-import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.*;
-import javafx.scene.control.ListView;
 import javafx.scene.control.Button;
 import model.ELMS;
 
@@ -49,6 +47,8 @@ public class ELMSController extends Controller<ELMS> {
         ViewLoader.showStage(getELMS(), "/view/StaffMenu.fxml", this.stage.getTitle(), this.stage);
     }
     
-    @FXML public void handleExitBtn(ActionEvent e) { Platform.exit(); }
+    @FXML public void handleExitBtn(ActionEvent e) throws IOException {
+        ViewLoader.showStage(getELMS(), "/view/Login.fxml", this.stage.getTitle(), this.stage);
+    }
     
 }
