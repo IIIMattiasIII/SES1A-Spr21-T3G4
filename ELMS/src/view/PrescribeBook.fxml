@@ -40,7 +40,7 @@
     </VBox> 
     <HBox spacing="30" alignment="BOTTOM_CENTER">
         <Button fx:id="presBtn" text="Prescribe" onAction="#handlePresBtn" style="button" prefHeight="80" prefWidth="150" defaultButton="true" />
-        <Button fx:id="closeBtn" text="Cancel" onAction="#handleCloseBtn" styleClass="button" prefHeight="80" prefWidth="150" cancelButton="true" />
+        <Button fx:id="closeBtn" text="Close" onAction="#handleCloseBtn" styleClass="button" prefHeight="80" prefWidth="150" cancelButton="true" />
     </HBox>
     <stylesheets>
         <URL value="@styles.css"/>

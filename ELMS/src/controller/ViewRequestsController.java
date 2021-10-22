@@ -48,8 +48,8 @@ public class ViewRequestsController extends Controller<ELMS> {
     @FXML public void handleRemoveBtn(ActionEvent e) {
         msgTxt.setVisible(false);
         if (getSelected() != null) {
+            displayMsg("Request for '"+ getSelected().getValue().getTitle() +"' has been removed.");
             getELMS().getRequests().remove(getSelected());
-            displayMsg("Request for "+ getSelected().getValue().getTitle() +"has been removed.");
         } else {
             displayMsg("Invalid selection.");
         }

@@ -91,13 +91,8 @@ public class RegisterController extends Controller<ELMS> {
 
     void register() {
         msgTxt.setVisible(false);
-        int role;
         RadioButton selRad = (RadioButton) roleTog.getSelectedToggle(); // Getting and setting the permission level based on the toggle
-        if (selRad.getText().equals("Staff")) {
-            role = 1;
-        } else {
-            role = 2;
-        }
+        int role = selRad.getText().equals("Staff") ? 1 : 2;
         if (idTf.getText().length() > 1 && getNameF().length() > 1 && getNameS().length() > 1 && getPass().length() > 4) {
             if (getPass().equals(getPassRep())) { // Check the passwords match
                 boolean idMatch = false;

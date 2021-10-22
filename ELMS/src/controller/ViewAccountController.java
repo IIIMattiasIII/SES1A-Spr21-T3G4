@@ -29,6 +29,7 @@ public class ViewAccountController extends Controller<ELMS> {
     @FXML private Button historyBtn;
     @FXML private Button actionBtn;
     @FXML private Button renewBtn;
+    @FXML private Label title;
     @FXML private Label msgTxt;
     private Button prevBtn;
     private Account user;
@@ -38,6 +39,7 @@ public class ViewAccountController extends Controller<ELMS> {
         renewBtn.disableProperty().bind(Bindings.isEmpty(mainTv.getSelectionModel().getSelectedItems()));
         user = getELMS().getSelectedAccount();
         user.checkOverdue();
+        title.setText("View Account | "+user.getName());
         rentBtn.fire();
         msgTxt.setVisible(false);
     }

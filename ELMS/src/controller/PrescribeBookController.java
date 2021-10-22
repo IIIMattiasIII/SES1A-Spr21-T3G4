@@ -23,6 +23,14 @@ public class PrescribeBookController extends Controller<ELMS> {
     private ObservableList<Account> contents = FXCollections.observableArrayList();
     
     @FXML public void initialize() {
+        setContents();
+        presBtn.disableProperty().bind(Bindings.isEmpty(mainTv.getSelectionModel().getSelectedItems()));
+        idCol.setCellValueFactory(cellData -> cellData.getValue().idProperty().asString());
+        nameCol.setCellValueFactory(cellData -> cellData.getValue().nameProperty());
+    }
+    
+    private void setContents() {
+        contents.clear();
         for (Account a : getELMS().getAccounts()) {
             if (a.getPermissionLevel() == 2) {
                 if (!a.isPrescribed(getELMS().getSelectedBook(), getELMS().getSelectedAccount())) {
@@ -33,9 +41,6 @@ public class PrescribeBookController extends Controller<ELMS> {
         mainTv.setItems(contents);
         int size = contents.size() > 8 ? 421 : 404;
         mainTv.setMaxWidth(size);
-        presBtn.disableProperty().bind(Bindings.isEmpty(mainTv.getSelectionModel().getSelectedItems()));
-        idCol.setCellValueFactory(cellData -> cellData.getValue().idProperty().asString());
-        nameCol.setCellValueFactory(cellData -> cellData.getValue().nameProperty());
     }
 
     public final ELMS getELMS() { return model; }
@@ -55,9 +60,7 @@ public class PrescribeBookController extends Controller<ELMS> {
             if (!getSelected().isPrescribed(getELMS().getSelectedBook(), getELMS().getSelectedAccount())) {
                 getSelected().prescribeBook(getELMS().getSelectedBook(), getELMS().getSelectedAccount());
                 displayMsg(getELMS().getSelectedBook().getTitle() + " has been assigned to selected student.");
-                closeBtn.setText("Close");
-            //        updateBtn.setDisable(true);  <-- This is returning errors. Will use the line below until this is fixed.
-                presBtn.setVisible(false);
+                setContents();
             } else {
                 displayMsg("You've already prescribed this book to the selected student.");
             }

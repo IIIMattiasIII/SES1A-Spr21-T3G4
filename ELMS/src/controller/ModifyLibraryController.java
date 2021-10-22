@@ -77,7 +77,8 @@ public class ModifyLibraryController extends Controller<ELMS> {
     
     @FXML public void handleRemoveBtn(ActionEvent e) throws IOException {
         if (getSelected() != null) {
-            getELMS().getBooks().remove(getSelected()); // Needs to be updated to getAvailableBooks once availables books list is added
+            getELMS().getAvailableBooks().remove(getSelected());
+            getELMS().getBooks().remove(getSelected());
         } else {
             displayMsg("Invalid selection.");
         }

@@ -1,7 +1,7 @@
 0,admin,,password,0
-1,John,Smith,who13,1
-2,Jane,Doe,1missing,2
-3,Arthur,Dent,panictowel,2
-4,Desmond,Miles,allpermit,2
-11,Karim,Mohammad,121,2
-1121,Mohammad,Karim,121,2
+1,staff,demo,password,1
+2,student,demo,password,2
+3,John,Smith,who13,1
+4,Jane,Doe,1missing,2
+5,Arthur,Dent,!panic,2
+6,Desmond,Miles,allpermit,2

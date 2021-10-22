@@ -26,7 +26,7 @@
                 <Image url="@logo_scaled.png"/>
             </image> 
         </ImageView>
-        <Label styleClass="h1" text="View Account"/>
+        <Label fx:id="title" styleClass="h1" text="View Account"/>
     </HBox>
     <VBox spacing="20" alignment="CENTER_LEFT" prefHeight="410">
         <HBox alignment = "TOP_CENTER" spacing = "40">
