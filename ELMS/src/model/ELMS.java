@@ -53,6 +53,7 @@ public class ELMS {
     }
     
     private void updateAvailables() {
+        availableBooks.clear();
         for (Book b : books) {
             if (b.getStock() > 0) {
                 availableBooks.add(b);
@@ -165,5 +166,16 @@ public class ELMS {
 
     public ObservableList<Book> getAvailableBooks() {
         return this.availableBooks;
+    }
+    
+    public void borrowBook(Book b) {
+        getSelectedAccount().borrowBook(new Pair<>(b, new Date()));
+        b.setStock(b.getStock()-1);
+        updateAvailables();
+    }
+    
+    public void returnBook(Book b) {
+        b.setStock(b.getStock()+1);
+        updateAvailables();
     }
 }

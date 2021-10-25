@@ -243,11 +243,8 @@ public class LibraryMenuController extends Controller<ELMS> {
         } else if (getELMS().getSelectedAccount().hasBorrowed(getSelBook())) {
             displayMsg("You have already borrowed this book.");
         } else {
-            getELMS().getSelectedAccount().borrowBook(new Pair<>(getSelBook(), new Date()));
+            getELMS().borrowBook(getSelBook());
             displayMsg("You have borrowed " + getSelBook().getTitle() + ".");
-            if (getSelBook().borrow()) {
-                getELMS().getAvailableBooks().remove(getSelBook());
-            }
         }
     }
     

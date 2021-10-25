@@ -144,6 +144,7 @@ public class ViewAccountController extends Controller<ELMS> {
         if (actionBtn.getText().equalsIgnoreCase("Return Book")) {
             Pair<Book, Date> selected = (Pair<Book, Date>) getSelected();
             if (user.returnBook(selected)) {
+                getELMS().returnBook(selected.getKey());
                 displayMsg("You have returned '" + selected.getKey().getTitle() + "'.");
             } else {
                 displayMsg("Unable to return due to outstanding fines.");
