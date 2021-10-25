@@ -73,7 +73,7 @@ public class LoginController extends Controller<ELMS> {
             }
         }
         if (selected != null) { // if the details were correct and an account was selected, change the view to the homepage
-            ViewLoader.showStage(getELMS(), "/view/ELMS.fxml", this.stage.getTitle(), this.stage);
+            ViewLoader.showStage(getELMS(), "/view/ELMSMenu.fxml", this.stage.getTitle(), this.stage);
         } else {
             displayMsg("Invalid ID or password. Please try again.");
         }

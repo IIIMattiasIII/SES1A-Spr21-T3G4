@@ -22,7 +22,7 @@ import javafx.stage.Stage;
 import javafx.util.Pair;
 import model.*;
 
-public class LibraryMenuController extends Controller<ELMS> {    
+public class LibrarySearchController extends Controller<ELMS> {    
     @FXML private ToggleGroup paramTog;
     @FXML private Toggle paramTitle;
     @FXML private ListView<String> paramLv;
@@ -264,6 +264,6 @@ public class LibraryMenuController extends Controller<ELMS> {
     }
     
     @FXML public void handleReturnBtn(ActionEvent e) throws IOException { 
-        ViewLoader.showStage(getELMS(), "/view/ELMS.fxml", this.stage.getTitle(), this.stage);
+        ViewLoader.showStage(getELMS(), "/view/ELMSMenu.fxml", this.stage.getTitle(), this.stage);
     }
 }

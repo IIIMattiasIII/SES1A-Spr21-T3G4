@@ -26,6 +26,6 @@ public class StaffMenuController extends Controller<ELMS> {
     }
     
     @FXML public void handleReturnBtn(ActionEvent e) throws IOException { 
-        ViewLoader.showStage(getELMS(), "/view/ELMS.fxml", this.stage.getTitle(), this.stage);
+        ViewLoader.showStage(getELMS(), "/view/ELMSMenu.fxml", this.stage.getTitle(), this.stage);
     }
 }

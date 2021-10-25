@@ -11,7 +11,7 @@
 <?import javafx.scene.text.*?>
 
 <VBox xmlns:fx="http://javafx.com/fxml"
-      fx:controller="controller.LibraryMenuController" 
+      fx:controller="controller.LibrarySearchController" 
       alignment="center" spacing="10"
       styleClass="root"
       prefWidth="1280"

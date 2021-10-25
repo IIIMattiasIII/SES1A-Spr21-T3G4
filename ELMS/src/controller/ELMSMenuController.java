@@ -7,7 +7,7 @@ import javafx.fxml.*;
 import javafx.scene.control.Button;
 import model.ELMS;
 
-public class ELMSController extends Controller<ELMS> {    
+public class ELMSMenuController extends Controller<ELMS> {    
     @FXML private Button adminBtn;
     @FXML private Button staffBtn;
     
@@ -32,7 +32,7 @@ public class ELMSController extends Controller<ELMS> {
     public final ELMS getELMS() { return model; }
     
     @FXML public void handleLibBtn(ActionEvent e) throws IOException {
-        ViewLoader.showStage(getELMS(), "/view/LibraryMenu.fxml", this.stage.getTitle(), this.stage);
+        ViewLoader.showStage(getELMS(), "/view/LibrarySearch.fxml", this.stage.getTitle(), this.stage);
     }
     
     @FXML public void handleAccBtn(ActionEvent e) throws IOException {
