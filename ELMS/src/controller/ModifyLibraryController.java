@@ -3,6 +3,8 @@ package controller;
 import au.edu.uts.ap.javafx.*;
 import java.io.IOException;
 import javafx.beans.binding.Bindings;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.*;
 import javafx.scene.control.Button;
@@ -21,6 +23,7 @@ public class ModifyLibraryController extends Controller<ELMS> {
     @FXML private TableColumn<Book, String> authorCol;
     @FXML private TableColumn<Book, String> yearCol;
     @FXML private TableColumn<Book, String> genreCol;
+    private ObservableList<Book> tablePop = FXCollections.observableArrayList();
     @FXML private Button removeBtn;
     @FXML private Button modBtn;
     @FXML private Label msgTxt;
@@ -29,7 +32,7 @@ public class ModifyLibraryController extends Controller<ELMS> {
     public void initialize() {
         modBtn.disableProperty().bind(Bindings.isEmpty(booksTv.getSelectionModel().getSelectedItems()));
         removeBtn.disableProperty().bind(Bindings.isEmpty(booksTv.getSelectionModel().getSelectedItems()));
-        booksTv.setItems(getELMS().getBooks()); // Needs to be updated to getAvailableBooks once availableBooks list is added
+        setContents();
         idCol.setCellValueFactory(cellData -> cellData.getValue().idProperty());
         titleCol.setCellValueFactory(cellData -> cellData.getValue().titleProperty());
         authorCol.setCellValueFactory(cellData -> cellData.getValue().authorProperty());
@@ -44,6 +47,16 @@ public class ModifyLibraryController extends Controller<ELMS> {
     
     private Book getSelected() {
         return booksTv.getSelectionModel().getSelectedItem();
+    }
+    
+    private void setContents() {
+        tablePop.clear();
+        for (Book b : getELMS().getBooks()) {
+            if (b.getStock() == b.getFullStock()) {
+                tablePop.add(b);
+            }
+        }
+        booksTv.setItems(tablePop);
     }
     
     void displayMsg(String s) {

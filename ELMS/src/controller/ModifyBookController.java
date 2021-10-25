@@ -91,7 +91,8 @@ public class ModifyBookController extends Controller<ELMS> {
         selBook.setAuthor(this.getAuthor());
         selBook.setYear(this.getYear());
         selBook.setGenre(this.getGenre());
-        selBook.setStock(this.getStock());             
+        selBook.setStock(this.getStock());           
+        selBook.setFullStock(this.getStock());           
         displayMsg("Book has been updated. You can now close this window.");
         closeBtn.setText("Close");
         //        updateBtn.setDisable(true);  <-- This is returning errors. Will use the line below until this is fixed.

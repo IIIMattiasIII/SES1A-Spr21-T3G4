@@ -16,6 +16,7 @@ public class Book {
     private final StringProperty genre = new SimpleStringProperty();
     private final IntegerProperty stock = new SimpleIntegerProperty();
     private double fineAmount;
+    private int fullStock;
     
     public Book(String ID, String title, String author, int year, String genre, int stock) {
         this.id.set(ID);
@@ -25,6 +26,7 @@ public class Book {
         this.genre.set(genre);
         this.stock.set(stock);
         fineAmount = 3.90;
+        fullStock = this.stock.get();
     }
     
     // Constructor variant used for staff book request
@@ -36,6 +38,7 @@ public class Book {
         this.genre.set(null);
         this.stock.set(0);
         fineAmount = 3.90;
+        fullStock = this.stock.get();
     }
     
     public String getID() { return this.id.get(); }
@@ -64,6 +67,9 @@ public class Book {
     
     public double getFineAmount() { return this.fineAmount; }
     public void setFineAmount(double d) { fineAmount = d; }
+    
+    public int getFullStock() { return this.fullStock; }
+    public void setFullStock(int i) { this.fullStock = i; }
     
     public Boolean borrow() {
         this.stock.set(this.stock.get()-1);
