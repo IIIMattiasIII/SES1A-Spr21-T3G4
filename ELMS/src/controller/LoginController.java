@@ -41,6 +41,9 @@ public class LoginController extends Controller<ELMS> {
             }
         });
         msgTxt.setVisible(false);
+        if (getELMS().maintenance) {
+            displayMsg("The ELMS is currently under maintenance. Please come back later.");
+        }
     }
 
     public final ELMS getELMS() {
@@ -61,21 +64,25 @@ public class LoginController extends Controller<ELMS> {
     }
 
     void login() throws IOException {
-        msgTxt.setVisible(false);
-        Account selected = null;
-        for (Account a : getELMS().getAccounts()) {
-            if (a != null && a.getID() == this.getID()) { // Compare IDs - search with entered
-                if (a.getPassHash() == this.getPass()) { // Compare password hashes
-                    selected = a; 
-                    getELMS().setSelectedAccount(selected);
-                    break;
+        if (!getELMS().maintenance || this.getID() == 0) {
+            msgTxt.setVisible(false);
+            Account selected = null;
+            for (Account a : getELMS().getAccounts()) {
+                if (a != null && a.getID() == this.getID()) { // Compare IDs - search with entered
+                    if (a.getPassHash() == this.getPass()) { // Compare password hashes
+                        selected = a; 
+                        getELMS().setSelectedAccount(selected);
+                        break;
+                    }
                 }
             }
-        }
-        if (selected != null) { // if the details were correct and an account was selected, change the view to the homepage
-            ViewLoader.showStage(getELMS(), "/view/ELMSMenu.fxml", this.stage.getTitle(), this.stage);
+            if (selected != null) { // if the details were correct and an account was selected, change the view to the homepage
+                ViewLoader.showStage(getELMS(), "/view/ELMSMenu.fxml", this.stage.getTitle(), this.stage);
+            } else {
+                displayMsg("Invalid ID or password. Please try again.");
+            }
         } else {
-            displayMsg("Invalid ID or password. Please try again.");
+            displayMsg("The ELMS is currently under maintenance. Please come back later.");
         }
     }
 
@@ -86,9 +93,13 @@ public class LoginController extends Controller<ELMS> {
 
     @FXML
     public void handleRegBtn(ActionEvent e) throws IOException {
-        Stage s = new Stage();
-        s.getIcons().add(new Image("icon.png"));
-        ViewLoader.showStage(getELMS(), "/view/Register.fxml", this.stage.getTitle(), s);
+        if (getELMS().maintenance) {
+            displayMsg("The ELMS is currently under maintenance. Please come back later.");
+        } else {
+            Stage s = new Stage();
+            s.getIcons().add(new Image("icon.png"));
+            ViewLoader.showStage(getELMS(), "/view/Register.fxml", this.stage.getTitle(), s);
+        }
     }
 
     @FXML public void handleExitBtn(ActionEvent e) { Platform.exit(); }

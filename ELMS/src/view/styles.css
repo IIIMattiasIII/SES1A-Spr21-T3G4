@@ -76,6 +76,16 @@
     -fx-border-color: -backgroundLight;
 }
 
+.menuButtonToggled {
+    -fx-font-family: "Verdana";
+    -fx-pref-width: 400px;
+    -fx-pref-height: 200px;
+    -fx-font-size: 28px;
+    -fx-background-color: -backgroundLight;
+    -fx-text-fill: -highlight;
+    -fx-border-color: -highlight;
+}
+
 .message {
     -fx-font-family: "Verdana";
     -fx-text-fill: -textLight;

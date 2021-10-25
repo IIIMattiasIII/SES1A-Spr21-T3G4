@@ -20,6 +20,7 @@ public class ELMS {
     private final ObservableList<Book> availableBooks;
     private final ObservableList<Pair<Account, Book>> requestedBooks;
     private Book selectedBook;
+    public boolean maintenance;
 
     public ELMS() {
         this.accounts = FXCollections.observableArrayList();
@@ -29,6 +30,7 @@ public class ELMS {
         selectedAccount = null;
         selectedBook = null;
         userSelected = false;
+        maintenance = false;
         importAccounts();
         importBooks();
         updateAvailables();
