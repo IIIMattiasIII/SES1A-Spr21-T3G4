@@ -26,6 +26,10 @@
         <Label styleClass="h1" text="Prescribe Book"/>
     </HBox>
     <VBox spacing="10" alignment="CENTER" prefHeight="410">
+        <HBox spacing="10" alignment="CENTER" prefHeight="80">
+            <Label text="Refine Students: "/>
+            <TextField fx:id="searchTf" prefWidth="200.0" styleClass="textField"/>
+        </HBox> 
         <TableView fx:id="mainTv" prefHeight="250" prefWidth="421" maxWidth="421" 
                 styleClass="table-view">
             <placeholder>

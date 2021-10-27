@@ -111,4 +111,13 @@ public class Account {
         }
         fined = !finedBooks.isEmpty();       
     }
+    
+    public Boolean hasID(String s) {
+        String id = this.ID.get()+"";
+        return id.contains(s);
+    }
+    
+    public Boolean hasName(String s) {
+        return this.name.get().toLowerCase().contains(s.toLowerCase());
+    }
 }
