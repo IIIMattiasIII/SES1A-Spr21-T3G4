@@ -19,7 +19,6 @@ import javafx.scene.control.Toggle;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
-import javafx.util.Pair;
 import model.*;
 
 public class LibrarySearchController extends Controller<ELMS> {    
@@ -73,6 +72,11 @@ public class LibrarySearchController extends Controller<ELMS> {
                 }
             );
         });
+        searchTf.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (!searchTf.getText().isEmpty() && !oldValue.equals(newValue)) { 
+                search();
+            }
+        });
         resetTable();
     }
     
@@ -115,8 +119,8 @@ public class LibrarySearchController extends Controller<ELMS> {
         int size = mainTv.getItems().size() > 7 ? 858 : 841;
         mainTv.setPrefWidth(size);
     }
-   
-    public void handleSearchBtn(ActionEvent e) {
+    
+    private void search() {
         if (getSelRad().getText().equals("Title")) {
             paramLv.setItems(null);
             paramLv.setPlaceholder(new Label("Title results visible in table."));

@@ -29,7 +29,6 @@
         <HBox spacing="10" alignment="CENTER"> 
             <Label text="Search Keyword: " styleClass="message"/>
             <TextField fx:id="searchTf" prefWidth="200.0" styleClass="textField"/>
-            <Button text="Search" onAction="#handleSearchBtn" styleClass="button" prefWidth="150" prefHeight="40"/>
             <Button text="Reset" onAction="#handleResetBtn" styleClass="button" prefWidth="150" prefHeight="40"/>
         </HBox>
         <HBox spacing="10" alignment="CENTER"> 
