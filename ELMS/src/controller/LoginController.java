@@ -1,4 +1,5 @@
 package controller;
+
 import au.edu.uts.ap.javafx.*;
 import java.io.IOException;
 import javafx.application.Platform;
@@ -14,8 +15,6 @@ import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import model.ELMS;
 import model.Account;
-
-
 
 public class LoginController extends Controller<ELMS> {
     @FXML

@@ -11,8 +11,7 @@ import javafx.stage.Stage;
 import model.ELMS;
 
 public class AdminMenuController extends Controller<ELMS> { 
-    @FXML
-    private Button maintBtn;
+    @FXML private Button maintBtn;
     
     @FXML public void initialize() {
         updateMaintStyle();

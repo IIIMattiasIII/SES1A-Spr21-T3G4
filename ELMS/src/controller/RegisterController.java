@@ -15,7 +15,6 @@ import model.Account;
 import model.ELMS;
 
 public class RegisterController extends Controller<ELMS> {
-
     @FXML
     private ToggleGroup roleTog;
     @FXML
