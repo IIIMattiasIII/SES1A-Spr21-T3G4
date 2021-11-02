@@ -12,6 +12,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.image.Image;
+import javafx.stage.Stage;
 import javafx.util.Pair;
 import model.*;
 
@@ -29,6 +31,7 @@ public class ViewAccountController extends Controller<ELMS> {
     @FXML private Button historyBtn;
     @FXML private Button actionBtn;
     @FXML private Button renewBtn;
+    @FXML private Button previewBtn;
     @FXML private Label title;
     @FXML private Label msgTxt;
     private Button prevBtn;
@@ -37,6 +40,7 @@ public class ViewAccountController extends Controller<ELMS> {
     @FXML private void initialize() {
         actionBtn.disableProperty().bind(Bindings.isEmpty(mainTv.getSelectionModel().getSelectedItems()));
         renewBtn.disableProperty().bind(Bindings.isEmpty(mainTv.getSelectionModel().getSelectedItems()));
+        previewBtn.disableProperty().bind(Bindings.isEmpty(mainTv.getSelectionModel().getSelectedItems()));
         user = getELMS().getSelectedAccount();
         user.checkOverdue();
         title.setText("View Account | "+user.getName());
@@ -72,7 +76,6 @@ public class ViewAccountController extends Controller<ELMS> {
         dateCol.setCellValueFactory(cellData -> cellData.getValue().getValue().dueDateProperty());
         actionBtn.setText("Return Book");
         actionBtn.setVisible(true);
-        renewBtn.setText("Renew Book");
         renewBtn.setVisible(true);
     }
     
@@ -180,6 +183,19 @@ public class ViewAccountController extends Controller<ELMS> {
             msgTxt.setVisible(false);
             selected.getValue().updateToCurrent();
             displayMsg("You have renewed '" + selected.getKey().getTitle() + "'.");
+        }
+    }
+    
+    @FXML public void handlePreviewBtn(ActionEvent e) throws IOException {
+        Pair<Book, Object> p = (Pair<Book, Object>) getSelected();
+        Book selBook = p.getKey();
+        if (selBook != null) {
+            getELMS().setSelectedBook(selBook);
+            Stage s = new Stage();
+            s.getIcons().add(new Image("icon.png"));
+            ViewLoader.showStage(getELMS(), "/view/PreviewBook.fxml", this.stage.getTitle(), s);
+        } else {
+            displayMsg("Invalid selection.");
         }
     }
 

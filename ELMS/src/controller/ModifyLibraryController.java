@@ -57,11 +57,24 @@ public class ModifyLibraryController extends Controller<ELMS> {
             }
         }
         booksTv.setItems(tablePop);
+        int size = booksTv.getItems().size() > 10 ? 901 : 884;
+        booksTv.setMaxWidth(size);
     }
     
     void displayMsg(String s) {
         msgTxt.setVisible(true);
         msgTxt.setText(s);
+    }
+    
+    @FXML public void handlePreviewBtn(ActionEvent e) throws IOException {
+        if (getSelected() != null) {
+            getELMS().setSelectedBook(getSelected());
+            Stage s = new Stage();
+            s.getIcons().add(new Image("icon.png"));
+            ViewLoader.showStage(getELMS(), "/view/PreviewBook.fxml", this.stage.getTitle(), s);
+        } else {
+            displayMsg("Invalid selection.");
+        }
     }
     
     @FXML public void handleModBtn(ActionEvent e) throws IOException {
@@ -74,6 +87,7 @@ public class ModifyLibraryController extends Controller<ELMS> {
             displayMsg("Invalid selection.");
         }
     }
+    
     
     @FXML public void handleRemoveBtn(ActionEvent e) throws IOException {
         if (getSelected() != null) {

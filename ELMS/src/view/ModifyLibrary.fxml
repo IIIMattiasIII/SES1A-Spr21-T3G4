@@ -25,8 +25,8 @@
         </ImageView>
         <Label styleClass="h1" text="Modify a Book in the Library"/>
     </HBox>
-    <VBox spacing="20" alignment="CENTER" prefHeight="410">
-        <TableView fx:id="booksTv" prefHeight="250" prefWidth="901" maxWidth="901" styleClass="table-view">
+    <VBox spacing="20" alignment="CENTER" prefHeight="520">
+        <TableView fx:id="booksTv" prefHeight="520" prefWidth="901" maxWidth="901" styleClass="table-view">
             <placeholder>
                 <Label text="No results found."/>
             </placeholder>
@@ -39,15 +39,16 @@
             </columns>
         </TableView>
         <Label fx:id="msgTxt" styleClass="message"/>
-        <HBox spacing="60" alignment="CENTER">
-            <Button text="Remove Book" fx:id="removeBtn" onAction="#handleRemoveBtn" styleClass="menuButton" maxWidth="250" maxHeight="75"/>
-            <Button text="Modify Book" fx:id="modBtn" onAction="#handleModBtn" styleClass="menuButton" maxWidth="250" maxHeight="75"/>
+        <HBox spacing="20" alignment="CENTER" prefHeight="40">
+            <Button text="Remove Book" fx:id="removeBtn" onAction="#handleRemoveBtn" styleClass="button" maxWidth="175"/>
+            <Button text="Preview Book" fx:id="previewBtn" onAction="#handlePreviewBtn" styleClass="button" maxWidth="175"/>
+            <Button text="Modify Book" fx:id="modBtn" onAction="#handleModBtn" styleClass="button" maxWidth="175"/>
             <padding>
-                <Insets bottom="35"/>
+                <Insets bottom="15"/>
             </padding>
         </HBox>
     </VBox>  
-    <HBox spacing="10" alignment="BOTTOM_CENTER">
+    <HBox spacing="20" alignment="BOTTOM_CENTER">
         <Button text="Return to Menu" onAction="#handleReturnBtn" styleClass="button" prefWidth="150" />
         <Button text="Exit eLibrary" onAction="#handleExitBtn" styleClass="button" prefWidth="150" />
     </HBox>

@@ -52,7 +52,8 @@
                 </TableView>
                 <HBox spacing="20" alignment="CENTER">
                     <Button fx:id="actionBtn" onAction="#handleActionBtn" styleClass="button" prefWidth="175"/>
-                    <Button fx:id="renewBtn" onAction="#handleRenewBtn" styleClass="button" prefWidth="175"/>
+                    <Button fx:id="previewBtn" text="Preview Book" onAction="#handlePreviewBtn" styleClass="button" prefWidth="175"/>
+                    <Button fx:id="renewBtn" text="Renew Book" onAction="#handleRenewBtn" styleClass="button" prefWidth="175"/>
                 </HBox>
                 <Label fx:id="msgTxt" styleClass="message"/>
             </VBox>

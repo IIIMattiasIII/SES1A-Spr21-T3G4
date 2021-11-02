@@ -226,7 +226,7 @@ public class LibrarySearchController extends Controller<ELMS> {
         }
     }
     
-    public void handleResetBtn(ActionEvent e) {
+    @FXML public void handleResetBtn(ActionEvent e) {
         resetTable();
         searchTf.clear();
         paramTog.selectToggle(paramTitle);
@@ -258,6 +258,17 @@ public class LibrarySearchController extends Controller<ELMS> {
             Stage s = new Stage();
             s.getIcons().add(new Image("icon.png"));
             ViewLoader.showStage(getELMS(), "/view/PrescribeBook.fxml", this.stage.getTitle(), s);
+        } else {
+            displayMsg("Invalid selection.");
+        }
+    }
+    
+    @FXML public void handlePreviewBtn(ActionEvent e) throws IOException {
+        if (getSelBook() != null) {
+            getELMS().setSelectedBook(getSelBook());
+            Stage s = new Stage();
+            s.getIcons().add(new Image("icon.png"));
+            ViewLoader.showStage(getELMS(), "/view/PreviewBook.fxml", this.stage.getTitle(), s);
         } else {
             displayMsg("Invalid selection.");
         }

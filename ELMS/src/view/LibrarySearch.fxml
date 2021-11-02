@@ -66,6 +66,7 @@
         <HBox spacing="10" alignment="CENTER"> 
             <Button text="Prescribe" fx:id ="presBtn" onAction="#handlePresBtn" styleClass="button" prefWidth="150" />
             <Button text="Borrow" fx:id ="borrowBtn" onAction="#handleBorrowBtn" styleClass="button" prefWidth="150" />
+            <Button text="Preview" fx:id ="previewBtn" onAction="#handlePreviewBtn" styleClass="button" prefWidth="150" />
         </HBox>
         <Label fx:id="msgTxt" styleClass="message"/>
     </VBox>

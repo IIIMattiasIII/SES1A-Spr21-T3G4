@@ -1,5 +1,6 @@
 package model;
 
+import au.edu.uts.ap.javafx.ViewLoader;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
@@ -10,6 +11,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.image.Image;
+import javafx.stage.Stage;
 import javafx.util.Pair;
 
 public class ELMS { 
@@ -169,7 +172,7 @@ public class ELMS {
     public ObservableList<Book> getAvailableBooks() {
         return this.availableBooks;
     }
-    
+
     public void borrowBook(Book b) {
         getSelectedAccount().borrowBook(new Pair<>(b, new Date()));
         b.setStock(b.getStock()-1);

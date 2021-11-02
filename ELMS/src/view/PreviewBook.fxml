@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="controller.PreviewBookController" 
+      alignment="center" spacing="10"
+      styleClass="root"
+      prefWidth="640"
+      prefHeight="720"
+      maxHeight="720">
+    <HBox spacing="10" alignment="TOP_CENTER" prefHeight="32">
+        <Label styleClass="h1" fx:id="titleLbl"/>
+    </HBox>
+    <VBox fx:id="vbox" spacing="10" alignment="CENTER" prefHeight="600">
+        <ImageView fx:id="iv"/>
+    </VBox> 
+    <HBox spacing="30" alignment="BOTTOM_CENTER">
+        <Button fx:id="closeBtn" text="Close" onAction="#handleCloseBtn" styleClass="button" prefWidth="150" cancelButton="true" />
+    </HBox>
+    <stylesheets>
+        <URL value="@styles.css"/>
+    </stylesheets>
+</VBox>
