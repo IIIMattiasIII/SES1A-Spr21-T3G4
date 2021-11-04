@@ -55,15 +55,17 @@
 }
 
 
-/*.largeButton {
+.actionButton {
     -fx-font-family: "Verdana";
-    -fx-pref-width: 200px;
-    -fx-pref-height: 200px;
-    -fx-font-size: 28px;
-    -fx-background-color: #dedede;
-    -fx-text-fill: white;
-    -fx-border-color: white;
-}*/
+    -fx-pref-width: 175px;
+    -fx-pref-height: 40px;
+    -fx-font-size: 16px;
+    -fx-background-color: -backgroundMid;
+    -fx-text-fill: -textLight;
+    -fx-border-color: -backgroundLight;
+    -fx-background-radius: 5;
+    -fx-border-radius: 5;
+}
 
 
 .menuButton {

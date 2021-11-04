@@ -39,7 +39,7 @@
             </columns>
         </TableView>
         <Label fx:id="msgTxt" styleClass="message"/>
-        <Button fx:id="removeBtn" text="Remove from List" styleClass="button" onAction="#handleRemoveBtn" />
+        <Button fx:id="removeBtn" text="Remove from List" styleClass="actionButton" onAction="#handleRemoveBtn" />
     </VBox> 
     <HBox spacing="30" alignment="BOTTOM_CENTER">
         <Button text="Return to Menu" onAction="#handleReturnBtn" styleClass="button" prefWidth="150" />

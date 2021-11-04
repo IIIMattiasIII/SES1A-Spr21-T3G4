@@ -37,8 +37,8 @@
         <Label fx:id="msgTxt" styleClass="message"/>
     </VBox>  
     <HBox spacing="10" alignment="BOTTOM_CENTER">
-        <Button fx:id="reqBtn" text="Request Book" onAction="#handleReqBtn" style="button" prefHeight="80" prefWidth="150" defaultButton="true" />
-        <Button fx:id="closeBtn" text="Cancel" onAction="#handleCloseBtn" styleClass="button" prefHeight="80" prefWidth="150" cancelButton="true" />
+        <Button fx:id="reqBtn" text="Request Book" onAction="#handleReqBtn" styleClass="actionButton" minHeight="60" defaultButton="true" />
+        <Button fx:id="closeBtn" text="Cancel" onAction="#handleCloseBtn" styleClass="actionButton" minHeight="60" cancelButton="true" />
     </HBox>
     <stylesheets>
         <URL value="@styles.css"/>

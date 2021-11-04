@@ -32,7 +32,7 @@
         <Button fx:id="maintBtn" text="Toggle Maintenance" onAction="#handleMaintBtn" styleClass="menuButton" maxWidth="400" maxHeight="120" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
     </GridPane> 
     <HBox spacing="30" alignment="BOTTOM_CENTER">
-        <Button text="Return to Menu" onAction="#handleReturnBtn" styleClass="button" prefWidth="150" />
+        <Button text="Return to Menu" onAction="#handleReturnBtn" styleClass="button" prefWidth="150" cancelButton="true" />
         <Button text="Exit eLibrary" onAction="#handleExitBtn" styleClass="button" prefWidth="150" />
     </HBox>
     <stylesheets>

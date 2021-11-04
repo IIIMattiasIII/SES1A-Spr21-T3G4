@@ -29,7 +29,7 @@
         <HBox spacing="10" alignment="CENTER"> 
             <Label text="Search Keyword: " styleClass="message"/>
             <TextField fx:id="searchTf" prefWidth="200.0" styleClass="textField"/>
-            <Button text="Reset" onAction="#handleResetBtn" styleClass="button" prefWidth="150" prefHeight="40"/>
+            <Button text="Reset" onAction="#handleResetBtn" styleClass="actionButton"/>
         </HBox>
         <HBox spacing="10" alignment="CENTER"> 
             <Label text="Parameter: " styleClass="message"/>
@@ -62,16 +62,16 @@
             </TableView>
         </HBox>
     </VBox>
-    <VBox spacing="10" alignment="CENTER" prefHeight="30">
-        <HBox spacing="10" alignment="CENTER"> 
-            <Button text="Prescribe" fx:id ="presBtn" onAction="#handlePresBtn" styleClass="button" prefWidth="150" />
-            <Button text="Borrow" fx:id ="borrowBtn" onAction="#handleBorrowBtn" styleClass="button" prefWidth="150" />
-            <Button text="Preview" fx:id ="previewBtn" onAction="#handlePreviewBtn" styleClass="button" prefWidth="150" />
+    <VBox spacing="10" alignment="CENTER">
+        <HBox spacing="10" alignment="CENTER" prefHeight="40"> 
+            <Button text="Prescribe" fx:id ="presBtn" onAction="#handlePresBtn" styleClass="actionButton" />
+            <Button text="Borrow" fx:id ="borrowBtn" onAction="#handleBorrowBtn" styleClass="actionButton" />
+            <Button text="Preview" fx:id ="previewBtn" onAction="#handlePreviewBtn" styleClass="actionButton" />
         </HBox>
         <Label fx:id="msgTxt" styleClass="message"/>
     </VBox>
     <HBox spacing="30" alignment="BOTTOM_CENTER">
-        <Button text="Return to Menu" onAction="#handleReturnBtn" styleClass="button" prefWidth="150" />
+        <Button text="Return to Menu" onAction="#handleReturnBtn" styleClass="button" prefWidth="150" cancelButton="true"/>
         <Button text="Exit eLibrary" onAction="#handleExitBtn" styleClass="button" prefWidth="150" />
     </HBox>
     <stylesheets>

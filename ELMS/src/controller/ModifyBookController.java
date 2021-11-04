@@ -24,13 +24,15 @@ public class ModifyBookController extends Controller<ELMS> {
     @FXML
     private TextField stockTf;
     @FXML
+    private TextField fineTf;
+    @FXML
     private Button updateBtn;
     @FXML
     private Button closeBtn;
     @FXML
     private Label msgTxt;
     private Book selBook;
-    
+
     @FXML
     public void initialize() {
         selBook = getELMS().getSelectedBook();
@@ -41,6 +43,7 @@ public class ModifyBookController extends Controller<ELMS> {
         yearTf.setText(selBook.getYear()+"");
         genreTf.setText(selBook.getGenre());
         stockTf.setText(selBook.getStock()+"");
+        fineTf.setText(selBook.getFineAmount()+"");
         // Change listener to force the contents of the stock text field to be only numbers
         stockTf.textProperty().addListener((ObservableValue<? extends String> observable, String oldValue, String newValue) -> {
             if (!newValue.matches("\\d*")) {
@@ -78,6 +81,10 @@ public class ModifyBookController extends Controller<ELMS> {
         return Integer.parseInt(stockTf.getText().trim());
     }
 
+    private final int getFine() {
+        return Integer.parseInt(fineTf.getText().trim());
+    }
+
     void displayMsg(String s) {
         msgTxt.setVisible(true);
         msgTxt.setText(s);
@@ -90,8 +97,9 @@ public class ModifyBookController extends Controller<ELMS> {
         selBook.setAuthor(this.getAuthor());
         selBook.setYear(this.getYear());
         selBook.setGenre(this.getGenre());
-        selBook.setStock(this.getStock());           
-        selBook.setFullStock(this.getStock());           
+        selBook.setStock(this.getStock());
+        selBook.setFullStock(this.getStock());
+        selBook.setFineAmount(this.getFine());
         displayMsg("Book has been updated. You can now close this window.");
         closeBtn.setText("Close");
         //        updateBtn.setDisable(true);  <-- This is returning errors. Will use the line below until this is fixed.

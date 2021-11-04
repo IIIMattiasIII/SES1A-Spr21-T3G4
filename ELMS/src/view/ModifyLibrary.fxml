@@ -39,17 +39,17 @@
             </columns>
         </TableView>
         <Label fx:id="msgTxt" styleClass="message"/>
-        <HBox spacing="20" alignment="CENTER" prefHeight="40">
-            <Button text="Remove Book" fx:id="removeBtn" onAction="#handleRemoveBtn" styleClass="button" maxWidth="175"/>
-            <Button text="Preview Book" fx:id="previewBtn" onAction="#handlePreviewBtn" styleClass="button" maxWidth="175"/>
-            <Button text="Modify Book" fx:id="modBtn" onAction="#handleModBtn" styleClass="button" maxWidth="175"/>
+        <HBox spacing="10" alignment="CENTER" prefHeight="40">
+            <Button text="Remove Book" fx:id="removeBtn" onAction="#handleRemoveBtn" styleClass="actionButton"/>
+            <Button text="Preview Book" fx:id="previewBtn" onAction="#handlePreviewBtn" styleClass="actionButton"/>
+            <Button text="Modify Book" fx:id="modBtn" onAction="#handleModBtn" styleClass="actionButton"/>
             <padding>
                 <Insets bottom="15"/>
             </padding>
         </HBox>
     </VBox>  
-    <HBox spacing="20" alignment="BOTTOM_CENTER">
-        <Button text="Return to Menu" onAction="#handleReturnBtn" styleClass="button" prefWidth="150" />
+    <HBox spacing="30" alignment="BOTTOM_CENTER">
+        <Button text="Return to Menu" onAction="#handleReturnBtn" styleClass="button" prefWidth="150" cancelButton="true" />
         <Button text="Exit eLibrary" onAction="#handleExitBtn" styleClass="button" prefWidth="150" />
     </HBox>
     <stylesheets>
