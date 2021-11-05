@@ -81,8 +81,8 @@ public class ModifyBookController extends Controller<ELMS> {
         return Integer.parseInt(stockTf.getText().trim());
     }
 
-    private final int getFine() {
-        return Integer.parseInt(fineTf.getText().trim());
+    private final double getFine() {
+        return Double.parseDouble(fineTf.getText().trim());
     }
 
     void displayMsg(String s) {

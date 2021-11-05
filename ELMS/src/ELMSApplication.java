@@ -11,6 +11,8 @@ public class ELMSApplication extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
+        stage.setX(50);
+        stage.setY(50);
         stage.getIcons().add(new Image("icon.png"));
         ViewLoader.showStage(new ELMS(), "/view/Login.fxml", "eLibrary Management System", stage);
     }

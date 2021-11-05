@@ -25,6 +25,7 @@ public class ModifyLibraryController extends Controller<ELMS> {
     @FXML private TableColumn<Book, String> genreCol;
     private ObservableList<Book> tablePop = FXCollections.observableArrayList();
     @FXML private Button removeBtn;
+    @FXML private Button previewBtn;
     @FXML private Button modBtn;
     @FXML private Label msgTxt;
 
@@ -32,6 +33,7 @@ public class ModifyLibraryController extends Controller<ELMS> {
     public void initialize() {
         modBtn.disableProperty().bind(Bindings.isEmpty(booksTv.getSelectionModel().getSelectedItems()));
         removeBtn.disableProperty().bind(Bindings.isEmpty(booksTv.getSelectionModel().getSelectedItems()));
+        previewBtn.disableProperty().bind(Bindings.isEmpty(booksTv.getSelectionModel().getSelectedItems()));
         setContents();
         idCol.setCellValueFactory(cellData -> cellData.getValue().idProperty());
         titleCol.setCellValueFactory(cellData -> cellData.getValue().titleProperty());
@@ -93,6 +95,7 @@ public class ModifyLibraryController extends Controller<ELMS> {
         if (getSelected() != null) {
             getELMS().getAvailableBooks().remove(getSelected());
             getELMS().getBooks().remove(getSelected());
+            setContents();
         } else {
             displayMsg("Invalid selection.");
         }
